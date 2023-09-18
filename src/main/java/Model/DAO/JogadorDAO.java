@@ -155,9 +155,9 @@ public class JogadorDAO {
             Connection conn = Conexao.getConnection();
             Statement st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM jogadores");
+            ResultSet rs = st.executeQuery("SELECT * FROM Jogadores");
             while (rs.next()){
-                list.add(new Jogador(rs.getInt("id"),
+                list.add(new Jogador(rs.getInt("id_jogador"),
                         rs.getString("nome"),
                         rs.getInt("numero"),
                         rs.getString("posicao")));

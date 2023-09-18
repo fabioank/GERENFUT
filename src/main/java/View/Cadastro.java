@@ -5,6 +5,7 @@
 package View;
 
 import Controller.CadastroController;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -18,7 +19,7 @@ public class Cadastro extends javax.swing.JFrame {
     public Cadastro() {
         initComponents();
         controller = new CadastroController(this);
-        
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
     }
 
@@ -43,7 +44,7 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNumeroJogador = new javax.swing.JTextField();
-        txtPosicaoJogador = new javax.swing.JTextField();
+        cbPosicoes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,10 +78,12 @@ public class Cadastro extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Numero: ");
+        jLabel1.setText("Numero camisa: ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Posição: ");
+
+        cbPosicoes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Goleiro", "Lateral Esquerdo", "Lateral Direito ", "Zagueiro", "Volante", "Meio campo", "Atacante" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,14 +100,14 @@ public class Cadastro extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblSenhaCadastro))
+                                    .addComponent(lblSenhaCadastro)
+                                    .addComponent(jLabel1))
                                 .addGap(6, 6, 6)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNumeroJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCpfCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPosicaoJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNumeroJogador, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(txtCpfCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(txtSenhaCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(cbPosicoes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(lblNomeCadastro)
@@ -147,15 +150,15 @@ public class Cadastro extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPosicaoJogador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(cbPosicoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSenhaCadastro))
                 .addGap(32, 32, 32)
                 .addComponent(btnCadastrar)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -203,6 +206,7 @@ public class Cadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JComboBox<String> cbPosicoes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblCadastro;
@@ -213,7 +217,6 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JTextField txtCpfCadastro;
     private javax.swing.JTextField txtNomeCadastro;
     private javax.swing.JTextField txtNumeroJogador;
-    private javax.swing.JTextField txtPosicaoJogador;
     private javax.swing.JTextField txtSenhaCadastro;
     // End of variables declaration//GEN-END:variables
 
@@ -249,13 +252,14 @@ public class Cadastro extends javax.swing.JFrame {
         this.txtNumeroJogador = txtNumeroJogador;
     }
 
-    public JTextField getTxtPosicaoJogador() {
-        return txtPosicaoJogador;
+    public JComboBox<String> getCbPosicoes() {
+        return cbPosicoes;
     }
 
-    public void setTxtPosicaoJogador(JTextField txtPosicaoJogador) {
-        this.txtPosicaoJogador = txtPosicaoJogador;
+    public void setCbPosicoes(JComboBox<String> cbPosicoes) {
+        this.cbPosicoes = cbPosicoes;
     }
+
 
  
 

@@ -19,6 +19,7 @@ public class ExcluirJogador extends javax.swing.JFrame {
         initComponents();
         controller = new ExcluirJogadorController(this);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**

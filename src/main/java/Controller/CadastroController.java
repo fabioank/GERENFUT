@@ -4,6 +4,7 @@ import Model.DAO.JogadorDAO;
 import Model.Jogador;
 import View.Cadastro;
 import View.Login;
+import com.sun.source.tree.TryTree;
 import javax.swing.JOptionPane;
 
 public class CadastroController {
@@ -34,22 +35,23 @@ public class CadastroController {
                 JOptionPane.showMessageDialog(null, "Por favor, informe o numero do jogador!");
                 return;
             }
-            else if (view.getTxtPosicaoJogador().getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Por favor, informe a posição!");
-                return;
-            }
             else if (view.getTxtSenhaCadastro().getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Por favor, informe uma senha!");
                 return;
             }
-            
+            int numero = 0;
             String nome = view.getTxtNomeCadastro().getText();
             String cpf = view.getTxtCpfCadastro().getText();
-            int numero = Integer.parseInt(view.getTxtNumeroJogador().getText());
-            String posicao = view.getTxtPosicaoJogador().getText();
+            try {
+                numero = Integer.parseInt(view.getTxtNumeroJogador().getText());
+            } catch (NumberFormatException e) {
+               JOptionPane.showMessageDialog(null, "O campo 'número camisa' deve ser preenchido com um valor inteiro");
+               return;
+            }
+            String posicao = view.getCbPosicoes().getSelectedItem().toString();
             String senha = view.getTxtSenhaCadastro().getText();
             
-            Jogador jogador = new Jogador(0, nome, cpf, numero, posicao);
+            Jogador jogador = new Jogador(0, nome, cpf, numero, posicao, senha);
             
             boolean jaCadastrado = JogadorDAO.verificaCadastro(jogador);
             
@@ -59,15 +61,12 @@ public class CadastroController {
             }
             
             JogadorDAO.inserirJogador(jogador);
-            
             JOptionPane.showMessageDialog(null, "Jogador cadastrado com sucesso!");
-            
+            view.dispose();
             Login login = new Login();
-            view.dispose();;
             login.setVisible(true);
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog( null, "Não foi possivel adicionar o jogador" );
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar o jogador");
         }
     }  
 }

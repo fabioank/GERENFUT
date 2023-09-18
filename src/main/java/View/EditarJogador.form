@@ -34,17 +34,17 @@
                           <Component id="lblNome" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtNome" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="txtPosicao" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="txtSenha" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="txtNumero" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtNome" pref="141" max="32767" attributes="0"/>
+                          <Component id="txtSenha" pref="141" max="32767" attributes="0"/>
+                          <Component id="txtNumero" alignment="0" pref="141" max="32767" attributes="0"/>
+                          <Component id="cbPosicao" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="lblCpf" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="25" max="32767" attributes="0"/>
                       <Component id="txtCpf" min="-2" pref="141" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -93,8 +93,8 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtPosicao" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPosicao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbPosicao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -153,8 +153,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtNumero">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPosicao">
-    </Component>
     <Component class="javax.swing.JTextField" name="txtSenha">
     </Component>
     <Component class="javax.swing.JButton" name="btnSalvarAlteracoes">
@@ -188,6 +186,24 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btlBuscarDadosActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbPosicao">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="7">
+            <StringItem index="0" value="Goleiro"/>
+            <StringItem index="1" value="Lateral Esquerdo"/>
+            <StringItem index="2" value="Lateral Direito "/>
+            <StringItem index="3" value="Zagueiro"/>
+            <StringItem index="4" value="Volante"/>
+            <StringItem index="5" value="Meio campo"/>
+            <StringItem index="6" value="Atacante"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

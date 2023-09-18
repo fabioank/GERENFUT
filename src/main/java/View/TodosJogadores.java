@@ -4,20 +4,18 @@
  */
 package View;
 
+import Controller.TodosJogadoresController;
 import javax.swing.JTable;
 
-/**
- *
- * @author fabio
- */
+
 public class TodosJogadores extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TodosJogadores
-     */
+    private final TodosJogadoresController controller;
     public TodosJogadores() {
         initComponents();
+        controller = new TodosJogadoresController(this);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -31,15 +29,13 @@ public class TodosJogadores extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblJogadores = new javax.swing.JTable();
+        btnTodosJogadores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tblJogadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID JOGADOR", "NOME", "NUMERO", "POSIÇÃO"
@@ -47,19 +43,38 @@ public class TodosJogadores extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblJogadores);
 
+        btnTodosJogadores.setText("Ver Jogadores");
+        btnTodosJogadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTodosJogadoresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTodosJogadores)
+                .addGap(260, 260, 260))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(btnTodosJogadores)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTodosJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosJogadoresActionPerformed
+        controller.todosJogadores();
+    }//GEN-LAST:event_btnTodosJogadoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,6 +112,7 @@ public class TodosJogadores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTodosJogadores;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblJogadores;
     // End of variables declaration//GEN-END:variables

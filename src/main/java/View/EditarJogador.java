@@ -5,6 +5,7 @@
 package View;
 
 import Controller.EditarJogadorController;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 public class EditarJogador extends javax.swing.JFrame {
@@ -16,6 +17,7 @@ public class EditarJogador extends javax.swing.JFrame {
         initComponents();
         controller = new EditarJogadorController(this);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -34,12 +36,12 @@ public class EditarJogador extends javax.swing.JFrame {
         lblSenha = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtNumero = new javax.swing.JTextField();
-        txtPosicao = new javax.swing.JTextField();
         txtSenha = new javax.swing.JTextField();
         btnSalvarAlteracoes = new javax.swing.JButton();
         lblCpf = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
         btlBuscarDados = new javax.swing.JButton();
+        cbPosicao = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +84,8 @@ public class EditarJogador extends javax.swing.JFrame {
             }
         });
 
+        cbPosicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Goleiro", "Lateral Esquerdo", "Lateral Direito ", "Zagueiro", "Volante", "Meio campo", "Atacante" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,15 +100,15 @@ public class EditarJogador extends javax.swing.JFrame {
                             .addComponent(lblSenha)
                             .addComponent(lblNome))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .addComponent(txtNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .addComponent(cbPosicao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(lblCpf)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                         .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
@@ -141,8 +145,8 @@ public class EditarJogador extends javax.swing.JFrame {
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPosicao))
+                    .addComponent(lblPosicao)
+                    .addComponent(cbPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSenha)
@@ -205,6 +209,7 @@ public class EditarJogador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btlBuscarDados;
     private javax.swing.JButton btnSalvarAlteracoes;
+    private javax.swing.JComboBox<String> cbPosicao;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblEditarJogador;
     private javax.swing.JLabel lblNome;
@@ -214,7 +219,6 @@ public class EditarJogador extends javax.swing.JFrame {
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtPosicao;
     private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 
@@ -234,13 +238,14 @@ public class EditarJogador extends javax.swing.JFrame {
         this.txtNumero = txtNumero;
     }
 
-    public JTextField getTxtPosicao() {
-        return txtPosicao;
+    public JComboBox<String> getCbPosicao() {
+        return cbPosicao;
     }
 
-    public void setTxtPosicao(JTextField txtPosicao) {
-        this.txtPosicao = txtPosicao;
+    public void setCbPosicao(JComboBox<String> cbPosicao) {
+        this.cbPosicao = cbPosicao;
     }
+
 
     public JTextField getTxtCpf() {
         return txtCpf;

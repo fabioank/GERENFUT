@@ -26,7 +26,7 @@ public class Jogador {
         this.numero = numero;
         this.posicao = posicao;
     }
-    public Jogador(int id, String name, String cpf, int numero, String posicao) {
+    public Jogador(int id, String name, String cpf, int numero, String posicao, String senha) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
