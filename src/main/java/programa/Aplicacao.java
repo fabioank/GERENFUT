@@ -1,12 +1,15 @@
-package View;
+package programa;
 
 import View.Login;
 import db.Conexao;
 
-public class Programa {
+public class Aplicacao {
+
     public static void main(String[] args) {
         
         Conexao.createDataBase();
-        new Login().setVisible(true);
+        
+        Login login = new Login();
+        login.setVisible(true);
     }
 }

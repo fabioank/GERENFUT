@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.DAO.JogadorDAO;
-import View.Cadastro;
+import View.CadastrarJogador;
 import View.Login;
 import View.MenuPrincipal;
 import javax.swing.JOptionPane;
@@ -13,9 +13,9 @@ public class LoginController {
         this.view = view;
     }
     
-    public void IrParaCadastro(){
+    public void irParaCadastro(){
         
-        Cadastro cadastro = new Cadastro();
+        CadastrarJogador cadastro = new CadastrarJogador();
         cadastro.setVisible(true);
         view.dispose();
     }
@@ -29,8 +29,8 @@ public class LoginController {
         
         if(login == true){
             MenuPrincipal menuPrincipal = new MenuPrincipal();
-            this.view.dispose();
             menuPrincipal.setVisible(true);
+            this.view.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos");
             return;

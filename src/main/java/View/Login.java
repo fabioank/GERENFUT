@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
 import Controller.LoginController;
@@ -14,10 +10,11 @@ public class Login extends javax.swing.JFrame {
     private final LoginController controller;
     
     public Login() {
+        
         initComponents();
         controller = new LoginController(this);
-        
         setLocationRelativeTo(null);
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -136,7 +133,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCpfActionPerformed
 
     private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
-        controller.IrParaCadastro();
+        controller.irParaCadastro();
     }//GEN-LAST:event_btnCriarContaActionPerformed
 
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
@@ -190,9 +187,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 
-    
-    
-    
     public void exibeMensagem(String mensagem) {
         JOptionPane.showMessageDialog(null, mensagem);
     }
@@ -212,8 +206,4 @@ public class Login extends javax.swing.JFrame {
     public void setTxtSenha(JTextField txtSenha) {
         this.txtSenha = txtSenha;
     }
-
-    
-
-    
 }

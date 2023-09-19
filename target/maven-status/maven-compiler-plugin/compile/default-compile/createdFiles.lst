@@ -1,5 +1,6 @@
 View\Cadastro$3.class
 View\ExcluirJogador$4.class
+programa\Aplicacao.class
 View\MenuPrincipal$4.class
 View\TodosJogadores.class
 View\Login$1.class
@@ -23,7 +24,6 @@ View\MenuPrincipal$3.class
 View\MenuPrincipal$1.class
 View\TodosJogadores$1.class
 Model\Jogador.class
-View\Programa.class
 Controller\MenuPrincipalController.class
 View\Cadastro$2.class
 db\Conexao.class

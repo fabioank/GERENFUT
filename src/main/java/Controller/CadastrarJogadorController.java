@@ -2,16 +2,16 @@ package Controller;
 
 import Model.DAO.JogadorDAO;
 import Model.Jogador;
-import View.Cadastro;
+import View.CadastrarJogador;
 import View.Login;
 import com.sun.source.tree.TryTree;
 import javax.swing.JOptionPane;
 
-public class CadastroController {
+public class CadastrarJogadorController {
     
-    private final Cadastro view;
+    private final CadastrarJogador view;
 
-    public CadastroController(Cadastro view) {
+    public CadastrarJogadorController(CadastrarJogador view) {
         this.view = view;
     }
     

@@ -1,9 +1,5 @@
 package Model;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Jogador {
 
     private int id;
@@ -14,6 +10,8 @@ public class Jogador {
     private String senha;
 
     public Jogador(String cpf, String senha){
+        this.cpf = cpf;
+        this.senha = senha;
     }
     public Jogador(String name, int numero, String posicao){
         this.name = name;
