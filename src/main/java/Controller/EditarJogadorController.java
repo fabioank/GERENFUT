@@ -25,13 +25,19 @@ public class EditarJogadorController {
                 String nome = jogador.getName();
                 int numero = jogador.getNumero();
                 String posicao = jogador.getPosicao();
+                boolean situacao = jogador.isSituacao();
 
                 view.getTxtNome().setText(nome);
                 view.getTxtNumero().setText(String.valueOf(numero));
                 view.getCbPosicao().setSelectedItem(posicao);
-            } else {
-                JOptionPane.showMessageDialog(null, "Jogador não encontrado");
-                return;
+                if (situacao == true) {
+                    view.getCbSituacao().setSelectedItem("Ativar");
+                }else if(situacao == false){
+                    view.getCbSituacao().setSelectedItem("Desativar");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Jogador não encontrado");
+                    return;
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Houve um problema inesperado!");
@@ -61,7 +67,9 @@ public class EditarJogadorController {
         }
         String posicao = view.getCbPosicao().getSelectedItem().toString();
 
-        Jogador jogador = new Jogador(nome, numero, posicao);
+        boolean situacao = view.getCbSituacao().getSelectedItem().toString().equals("Ativar");
+    
+        Jogador jogador = new Jogador(nome, numero, posicao, situacao);
 
         boolean senha = JogadorDAO.verificarJogador(view.getTxtCpf().getText(), view.getTxtSenha().getText());
 

@@ -9,11 +9,13 @@ import Controller.MenuPrincipalController;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private final MenuPrincipalController controller;
+
     public MenuPrincipal() {
         initComponents();
         controller = new MenuPrincipalController(this);
         setExtendedState(MAXIMIZED_BOTH);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -25,6 +27,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuItemEditarJogador = new javax.swing.JMenuItem();
         menuItemExcluirJogador = new javax.swing.JMenuItem();
         menuItemVerJogadores = new javax.swing.JMenuItem();
+        menuItemConsultarJogador = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuItemCriarNovoTime = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -69,6 +72,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menuItemNovoJogador.add(menuItemVerJogadores);
 
+        menuItemConsultarJogador.setText("Consultar pela posição");
+        menuItemConsultarJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemConsultarJogadorActionPerformed(evt);
+            }
+        });
+        menuItemNovoJogador.add(menuItemConsultarJogador);
+
         jMenuBar1.add(menuItemNovoJogador);
 
         jMenu2.setText("Time");
@@ -109,6 +120,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         todosJogadores.setVisible(true);
     }//GEN-LAST:event_menuItemVerJogadoresActionPerformed
 
+    private void menuItemConsultarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultarJogadorActionPerformed
+        ConsultarJogador consultarJogador = new ConsultarJogador();
+        consultarJogador.setVisible(true);
+    }//GEN-LAST:event_menuItemConsultarJogadorActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -148,11 +164,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem menuItemConsultarJogador;
     private javax.swing.JMenuItem menuItemCriarNovoTime;
     private javax.swing.JMenuItem menuItemEditarJogador;
     private javax.swing.JMenuItem menuItemExcluirJogador;
     private javax.swing.JMenu menuItemNovoJogador;
     private javax.swing.JMenuItem menuItemVerJogadores;
     // End of variables declaration//GEN-END:variables
- 
+
 }

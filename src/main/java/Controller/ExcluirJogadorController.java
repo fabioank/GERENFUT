@@ -11,7 +11,7 @@ public class ExcluirJogadorController {
     public ExcluirJogadorController(ExcluirJogador view) {
         this.view = view;
     }
-    
+
     public void excluirJogador() {
         try {
             if (view.getTxtCpf().getText().equals("")) {
@@ -25,14 +25,14 @@ public class ExcluirJogadorController {
 
             String cpf = view.getTxtCpf().getText();
             String senha = view.getTxtSenha().getText();
-            
+
             boolean exclusao = JogadorDAO.excluirJogador(cpf, senha);
-            
-            if(exclusao == true){
+
+            if (exclusao == true) {
                 JOptionPane.showMessageDialog(null, "Jogador excluido com sucesso!");
                 view.dispose();
                 return;
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Não foi possivel encontrar o jogador!");
                 return;
             }

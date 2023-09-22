@@ -7,10 +7,10 @@ package View;
 import Controller.TodosJogadoresController;
 import javax.swing.JTable;
 
-
 public class TodosJogadores extends javax.swing.JFrame {
 
     private final TodosJogadoresController controller;
+
     public TodosJogadores() {
         initComponents();
         controller = new TodosJogadoresController(this);
@@ -43,7 +43,7 @@ public class TodosJogadores extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblJogadores);
 
-        btnTodosJogadores.setText("Ver Jogadores");
+        btnTodosJogadores.setText("Carregar Jogadores");
         btnTodosJogadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTodosJogadoresActionPerformed(evt);
@@ -124,6 +124,5 @@ public class TodosJogadores extends javax.swing.JFrame {
     public void setTblJogadores(JTable tblJogadores) {
         this.tblJogadores = tblJogadores;
     }
-
 
 }

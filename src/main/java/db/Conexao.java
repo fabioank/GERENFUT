@@ -39,7 +39,8 @@ public class Conexao {
                     "cpf VARCHAR (11)," +
                     "numero INT," +
                     "posicao VARCHAR(20)," + 
-                    "senha VARCHAR(20))");
+                    "senha VARCHAR(20)," +
+                    "situacao BOOLEAN)");
             System.out.println("Tabela criada com sucesso.");
 
         } catch (java.sql.SQLException e) {

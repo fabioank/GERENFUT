@@ -8,14 +8,15 @@ import javax.swing.JTextField;
 public class Login extends javax.swing.JFrame {
 
     private final LoginController controller;
-    
+
     public Login() {
-        
+
         initComponents();
         controller = new LoginController(this);
         setLocationRelativeTo(null);
-        
+
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
