@@ -27,12 +27,11 @@ public class JogadorDAO {
             } else {
                 return false;
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
-
     public static void inserirJogador(Jogador jogador) {
         Connection conn = Conexao.getConnection();
 
@@ -108,7 +107,7 @@ public class JogadorDAO {
         ResultSet rs;
 
         try {
-            st = conn.prepareStatement("SELECT nome, numero, posicao FROM Jogadores WHERE cpf = ?");
+            st = conn.prepareStatement("SELECT nome, numero, posicao, situacao FROM Jogadores WHERE cpf = ?");
             st.setString(1, cpf);
             rs = st.executeQuery();
 
@@ -116,7 +115,8 @@ public class JogadorDAO {
                 String nome = rs.getString("nome");
                 int numero = rs.getInt("numero");
                 String posicao = rs.getString("posicao");
-                return new Jogador(nome, numero, posicao);
+                boolean situacao = rs.getBoolean("situacao");
+                return new Jogador(nome, numero, posicao, situacao);
             }
 
         } catch (Exception e) {
@@ -128,7 +128,7 @@ public class JogadorDAO {
     public static void atualizarJogador(String cpf, Jogador jogador) {
 
         Connection conn = Conexao.getConnection();
-        PreparedStatement st = null;
+        PreparedStatement st;
 
         try {
             st = conn.prepareStatement("UPDATE Jogadores SET nome = ?, numero = ?, posicao = ?, situacao = ? WHERE cpf = ?");
@@ -141,6 +141,7 @@ public class JogadorDAO {
             st.executeUpdate();
 
         } catch (Exception e) {
+            
         }
 
     }
@@ -151,7 +152,7 @@ public class JogadorDAO {
             Connection conn = Conexao.getConnection();
             Statement st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM Jogadores");
+            ResultSet rs = st.executeQuery("SELECT * FROM Jogadores WHERE situacao = true");
             while (rs.next()) {
                 list.add(new Jogador(rs.getInt("id_jogador"),
                         rs.getString("nome"),

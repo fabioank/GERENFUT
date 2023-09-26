@@ -40,14 +40,13 @@ public class Conexao {
                     "numero INT," +
                     "posicao VARCHAR(20)," + 
                     "senha VARCHAR(20)," +
-                    "situacao BOOLEAN)");
+                    "situacao BIT)");
             System.out.println("Tabela criada com sucesso.");
 
         } catch (java.sql.SQLException e) {
             System.out.println("Erro ao criar banco ou tabela: " + e.getMessage());
         }
     }
-       
 }
     
 

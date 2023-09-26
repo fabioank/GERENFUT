@@ -90,7 +90,7 @@ public class EditarJogador extends javax.swing.JFrame {
         lblSituacao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSituacao.setText("Situação: ");
 
-        cbSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativar", "Desativar" }));
+        cbSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

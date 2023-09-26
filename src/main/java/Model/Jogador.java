@@ -77,7 +77,6 @@ public class Jogador {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
     public boolean isSituacao() {
         return situacao;
     }

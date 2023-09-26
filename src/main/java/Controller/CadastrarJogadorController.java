@@ -34,6 +34,9 @@ public class CadastrarJogadorController {
             } else if (view.getTxtSenhaCadastro().getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Por favor, informe uma senha!");
                 return;
+            } else if (view.getTxtSenhaCadastro().getText().length() < 8) {
+                JOptionPane.showMessageDialog(null, "A senha deve conter no minimo 8 digitos");
+                return;
             }
             int numero = 0;
             String nome = view.getTxtNomeCadastro().getText();

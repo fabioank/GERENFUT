@@ -25,20 +25,22 @@ public class EditarJogadorController {
                 String nome = jogador.getName();
                 int numero = jogador.getNumero();
                 String posicao = jogador.getPosicao();
-                boolean situacao = jogador.isSituacao();
+                Boolean situacao = jogador.isSituacao();
 
                 view.getTxtNome().setText(nome);
                 view.getTxtNumero().setText(String.valueOf(numero));
                 view.getCbPosicao().setSelectedItem(posicao);
                 if (situacao == true) {
-                    view.getCbSituacao().setSelectedItem("Ativar");
-                }else if(situacao == false){
-                    view.getCbSituacao().setSelectedItem("Desativar");
+                    view.getCbSituacao().setSelectedItem("Ativo");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Jogador não encontrado");
-                    return;
+                    view.getCbSituacao().setSelectedItem("Inativo");
                 }
             }
+            
+            if(jogador == null) {
+                JOptionPane.showMessageDialog(null, "O jogador com o CPF informado não foi encontrado");
+            }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Houve um problema inesperado!");
         }
@@ -67,8 +69,8 @@ public class EditarJogadorController {
         }
         String posicao = view.getCbPosicao().getSelectedItem().toString();
 
-        boolean situacao = view.getCbSituacao().getSelectedItem().toString().equals("Ativar");
-    
+        boolean situacao = view.getCbSituacao().getSelectedItem().toString().equals("Ativo");
+
         Jogador jogador = new Jogador(nome, numero, posicao, situacao);
 
         boolean senha = JogadorDAO.verificarJogador(view.getTxtCpf().getText(), view.getTxtSenha().getText());

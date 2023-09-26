@@ -9,10 +9,6 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-/**
- *
- * @author fabio
- */
 public class CadastrarJogador extends javax.swing.JFrame {
 
     private final CadastrarJogadorController controller;
