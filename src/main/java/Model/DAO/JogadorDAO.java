@@ -32,6 +32,7 @@ public class JogadorDAO {
         }
         return false;
     }
+
     public static void inserirJogador(Jogador jogador) {
         Connection conn = Conexao.getConnection();
 
@@ -141,7 +142,7 @@ public class JogadorDAO {
             st.executeUpdate();
 
         } catch (Exception e) {
-            
+
         }
 
     }
@@ -152,12 +153,13 @@ public class JogadorDAO {
             Connection conn = Conexao.getConnection();
             Statement st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM Jogadores WHERE situacao = true");
+            ResultSet rs = st.executeQuery("SELECT id_jogador, nome, numero, posicao, situacao FROM Jogadores");
             while (rs.next()) {
                 list.add(new Jogador(rs.getInt("id_jogador"),
                         rs.getString("nome"),
                         rs.getInt("numero"),
-                        rs.getString("posicao")));
+                        rs.getString("posicao"),
+                        rs.getBoolean("situacao")));
             }
             return list;
 
@@ -167,29 +169,57 @@ public class JogadorDAO {
         }
 
     }
-    public static List<Jogador> consultarJogador(String posicao){
-        
+
+    public static List<Jogador> consultarJogador(String posicao) {
+
         List<Jogador> lista = new ArrayList<>();
-        
+
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
         ResultSet rs = null;
-        
+
         try {
-            st = conn.prepareStatement("SELECT id_jogador, nome, numero, posicao FROM Jogadores WHERE posicao = ?");
+            st = conn.prepareStatement("SELECT id_jogador, nome, numero, posicao, situacao FROM Jogadores WHERE posicao = ?");
             st.setString(1, posicao);
             rs = st.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 lista.add(new Jogador(rs.getInt("id_jogador"),
                         rs.getString("nome"),
                         rs.getInt("numero"),
-                rs.getString("posicao")));
+                        rs.getString("posicao"),
+                        rs.getBoolean("situacao")));
             }
-            
-        return lista;
-            
+
+            return lista;
+
         } catch (Exception e) {
-            
+
+        }
+        return null;
+    }
+
+    public static Jogador encontrarPeloId(int id) {
+
+        Connection conn = Conexao.getConnection();
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try {
+            st = conn.prepareStatement("SELECT * FROM Jogadores WHERE id_jogador = ?");
+            st.setInt(1, id);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                return new Jogador(rs.getInt("id_jogador"),
+                        rs.getString("nome"),
+                        rs.getInt("numero"),
+                        rs.getString("posicao"),
+                        rs.getBoolean("situacao"));
+            }
+
+            return null;
+
+        } catch (Exception e) {
+
         }
         return null;
     }

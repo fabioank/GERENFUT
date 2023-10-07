@@ -27,10 +27,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuItemEditarJogador = new javax.swing.JMenuItem();
         menuItemExcluirJogador = new javax.swing.JMenuItem();
         menuItemVerJogadores = new javax.swing.JMenuItem();
-        menuItemConsultarJogador = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuItemCriarNovoTime = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        menuItemCriarPartida = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jLabel1.setText("jLabel1");
@@ -72,24 +72,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menuItemNovoJogador.add(menuItemVerJogadores);
 
-        menuItemConsultarJogador.setText("Consultar pela posição");
-        menuItemConsultarJogador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemConsultarJogadorActionPerformed(evt);
-            }
-        });
-        menuItemNovoJogador.add(menuItemConsultarJogador);
-
         jMenuBar1.add(menuItemNovoJogador);
 
         jMenu2.setText("Time");
 
-        menuItemCriarNovoTime.setText("Criar novo time");
+        menuItemCriarNovoTime.setText("Cadastrar novo time");
+        menuItemCriarNovoTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCriarNovoTimeActionPerformed(evt);
+            }
+        });
         jMenu2.add(menuItemCriarNovoTime);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Partida");
+
+        menuItemCriarPartida.setText("Criar partida");
+        menuItemCriarPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCriarPartidaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemCriarPartida);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Ranking");
@@ -120,10 +126,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         todosJogadores.setVisible(true);
     }//GEN-LAST:event_menuItemVerJogadoresActionPerformed
 
-    private void menuItemConsultarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultarJogadorActionPerformed
-        ConsultarJogador consultarJogador = new ConsultarJogador();
-        consultarJogador.setVisible(true);
-    }//GEN-LAST:event_menuItemConsultarJogadorActionPerformed
+    private void menuItemCriarNovoTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCriarNovoTimeActionPerformed
+
+    }//GEN-LAST:event_menuItemCriarNovoTimeActionPerformed
+
+    private void menuItemCriarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCriarPartidaActionPerformed
+        CriarPartida criarPartida = new CriarPartida();
+        criarPartida.setVisible(true);
+    }//GEN-LAST:event_menuItemCriarPartidaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -164,8 +174,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem menuItemConsultarJogador;
     private javax.swing.JMenuItem menuItemCriarNovoTime;
+    private javax.swing.JMenuItem menuItemCriarPartida;
     private javax.swing.JMenuItem menuItemEditarJogador;
     private javax.swing.JMenuItem menuItemExcluirJogador;
     private javax.swing.JMenu menuItemNovoJogador;

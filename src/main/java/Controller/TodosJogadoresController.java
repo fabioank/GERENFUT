@@ -18,19 +18,22 @@ public class TodosJogadoresController {
     public void todosJogadores() {
 
         DefaultTableModel tableModel = (DefaultTableModel) view.getTblJogadores().getModel();
-
-        List<Jogador> lista = JogadorDAO.listaTodosJogadores();
-
-        System.out.println(lista.size());
+        tableModel.setRowCount(0);
+        List<Jogador> lista;
+        String filtro = view.getCbFiltro().getSelectedItem().toString();
+        if (filtro.equals("Todos os jogadores")){
+            lista = JogadorDAO.listaTodosJogadores();
+        }else{
+            lista = JogadorDAO.consultarJogador(filtro);
+        }
         for (Jogador jogador : lista) {
             Object[] jogadores = {
                 jogador.getId(),
                 jogador.getName(),
                 jogador.getNumero(),
-                jogador.getPosicao()
-            };
+                jogador.getPosicao(),
+                jogador.isSituacao() ? "Ativo" : "Inativo"};
             tableModel.addRow(jogadores);
-
         }
     }
 }

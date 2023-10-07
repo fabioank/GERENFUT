@@ -5,6 +5,7 @@
 package View;
 
 import Controller.TodosJogadoresController;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 public class TodosJogadores extends javax.swing.JFrame {
@@ -30,6 +31,8 @@ public class TodosJogadores extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblJogadores = new javax.swing.JTable();
         btnTodosJogadores = new javax.swing.JButton();
+        lblFiltro = new javax.swing.JLabel();
+        cbFiltro = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,7 +41,7 @@ public class TodosJogadores extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID JOGADOR", "NOME", "NUMERO", "POSIÇÃO"
+                "ID JOGADOR", "NOME", "NUMERO", "POSIÇÃO", "SITUAÇÃO"
             }
         ));
         jScrollPane1.setViewportView(tblJogadores);
@@ -50,22 +53,36 @@ public class TodosJogadores extends javax.swing.JFrame {
             }
         });
 
+        lblFiltro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFiltro.setText("Filtrar: ");
+
+        cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos os jogadores", "Goleiro", "Lateral Esquerdo", "Lateral Direito ", "Zagueiro", "Volante", "Meio campo", "Atacante" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(108, 108, 108)
+                .addComponent(lblFiltro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnTodosJogadores)
-                .addGap(258, 258, 258))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(btnTodosJogadores)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblFiltro)
+                        .addGap(0, 1, Short.MAX_VALUE))
+                    .addComponent(cbFiltro, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnTodosJogadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -113,7 +130,9 @@ public class TodosJogadores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTodosJogadores;
+    private javax.swing.JComboBox<String> cbFiltro;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFiltro;
     private javax.swing.JTable tblJogadores;
     // End of variables declaration//GEN-END:variables
 
@@ -124,5 +143,14 @@ public class TodosJogadores extends javax.swing.JFrame {
     public void setTblJogadores(JTable tblJogadores) {
         this.tblJogadores = tblJogadores;
     }
+
+    public JComboBox<String> getCbFiltro() {
+        return cbFiltro;
+    }
+
+    public void setCbFiltro(JComboBox<String> cbFiltro) {
+        this.cbFiltro = cbFiltro;
+    }
+    
 
 }

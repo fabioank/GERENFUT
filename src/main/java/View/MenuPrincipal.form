@@ -46,14 +46,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemVerJogadoresActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemConsultarJogador">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Consultar pela posi&#xe7;&#xe3;o"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemConsultarJogadorActionPerformed"/>
-              </Events>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
@@ -63,8 +55,11 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemCriarNovoTime">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Criar novo time"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar novo time"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCriarNovoTimeActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -72,6 +67,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Partida"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemCriarPartida">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Criar partida"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCriarPartidaActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>

@@ -41,6 +41,11 @@ public class Conexao {
                     "posicao VARCHAR(20)," + 
                     "senha VARCHAR(20)," +
                     "situacao BIT)");
+            statement.executeUpdate(
+                    "CREATE TABLE IF NOT EXISTS Time (" +
+                    "id_time INT AUTO_INCREMENT PRIMARY KEY," +
+                    "nome VARCHAR(50),"+
+                    "pontos INT)");
             System.out.println("Tabela criada com sucesso.");
 
         } catch (java.sql.SQLException e) {

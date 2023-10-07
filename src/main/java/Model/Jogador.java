@@ -10,7 +10,9 @@ public class Jogador {
     private String senha;
     private boolean situacao;
 
-    //contstrutor para login
+    public Jogador() {
+    }
+    
     public Jogador(String cpf, String senha){
         this.cpf = cpf;
         this.senha = senha;
@@ -26,11 +28,12 @@ public class Jogador {
         this.posicao = posicao;
         this.situacao = situacao;
     }
-    public Jogador(int id, String name, int numero, String posicao) {
+    public Jogador(int id, String name, int numero, String posicao, boolean situacao) {
         this.id = id;
         this.name = name;
         this.numero = numero;
         this.posicao = posicao;
+        this.situacao = situacao;
     }
     public Jogador(int id, String name, String cpf, int numero, String posicao, String senha,boolean situacao) {
         this.id = id;
