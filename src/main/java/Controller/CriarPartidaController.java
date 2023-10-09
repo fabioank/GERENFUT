@@ -1,7 +1,9 @@
 package Controller;
 
 import Model.DAO.JogadorDAO;
+import Model.DAO.TimeDAO;
 import Model.Jogador;
+import Model.Time;
 import View.CriarPartida;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -16,13 +18,18 @@ public class CriarPartidaController {
 
     public void carregarDados() {
 
-        List<Jogador> lista = JogadorDAO.listaTodosJogadores();
+        List<Jogador> listaJogador = JogadorDAO.listaTodosJogadores();
 
-        for (Jogador jogador : lista) {
+        for (Jogador jogador : listaJogador) {
 
             view.getCbJogadoresTime1().addItem(jogador.getId() + ", " + jogador.getNumero() + ", " + jogador.getName() + " (" + jogador.getPosicao() + ")");
             view.getCbJogadoresTime2().addItem(jogador.getName() + " (" + jogador.getPosicao() + ")");
-
+        }
+        List<Time> listaTime = TimeDAO.todosOsTimes();
+        
+        for(Time time : listaTime){
+            view.getCbTime1().addItem(time.getNome());
+            view.getCbTime2().addItem(time.getNome());
         }
     }
 

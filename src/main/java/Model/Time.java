@@ -6,14 +6,19 @@ public class Time {
     
     private int id_time;
     private String nome;
-    private short pontos;
+    private int pontos;
     private List<Jogador> jogador;
 
-    public Time(String nome, short pontos){
+    public Time(String nome, int pontos){
         this.nome = nome;
         this.pontos = pontos;
     }
-    public Time(int id_time, String nome, short pontos, List<Jogador> jogador) {
+    public Time(int id_time, String nome, int pontos){
+        this.nome = nome;
+        this.pontos = pontos;
+        this.id_time = id_time;
+    }
+    public Time(int id_time, String nome, int pontos, List<Jogador> jogador) {
         this.id_time = id_time;
         this.nome = nome;
         this.pontos = pontos;
@@ -36,7 +41,7 @@ public class Time {
         this.nome = nome;
     }
 
-    public short getPontos() {
+    public int getPontos() {
         return pontos;
     }
 

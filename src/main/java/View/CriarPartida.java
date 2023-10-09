@@ -65,7 +65,11 @@ public class CriarPartida extends javax.swing.JFrame {
         lblTime1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTime1.setText("TIME 1");
 
-        cbTime1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flamengo", "Botafogo", "Corinthians", "Vasco", "Palmeiras", "Fluminense", "Internacional" }));
+        cbTime1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTime1ActionPerformed(evt);
+            }
+        });
 
         cbTime2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flamengo", "Botafogo", "Corinthians", "Vasco", "Palmeiras", "Fluminense", "Internacional" }));
 
@@ -183,9 +187,8 @@ public class CriarPartida extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCadastrarTime)))
+                    .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadastrarTime))
                 .addGap(36, 36, 36)
                 .addComponent(lblJogadoresTime1)
                 .addGap(18, 18, 18)
@@ -211,6 +214,7 @@ public class CriarPartida extends javax.swing.JFrame {
     private void btnCadastrarTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarTimeActionPerformed
         CadastrarTime cadastrarTime = new CadastrarTime();
         cadastrarTime.setVisible(true);
+        
     }//GEN-LAST:event_btnCadastrarTimeActionPerformed
 
     private void cbJogadoresTime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJogadoresTime1ActionPerformed
@@ -220,6 +224,10 @@ public class CriarPartida extends javax.swing.JFrame {
     private void btnAddJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddJogador1ActionPerformed
         controller.adicionarJogador();
     }//GEN-LAST:event_btnAddJogador1ActionPerformed
+
+    private void cbTime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTime1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTime1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,6 +317,23 @@ public class CriarPartida extends javax.swing.JFrame {
     public void setTblJogadoresTime2(JTable tblJogadoresTime2) {
         this.tblJogadoresTime2 = tblJogadoresTime2;
     }
+
+    public JComboBox<String> getCbTime1() {
+        return cbTime1;
+    }
+
+    public void setCbTime1(JComboBox<String> cbTime1) {
+        this.cbTime1 = cbTime1;
+    }
+
+    public JComboBox<String> getCbTime2() {
+        return cbTime2;
+    }
+
+    public void setCbTime2(JComboBox<String> cbTime2) {
+        this.cbTime2 = cbTime2;
+    }
+    
     
 
 

@@ -22,6 +22,7 @@ View\CadastrarJogador$1.class
 View\MenuPrincipal$1.class
 View\TodosJogadores$1.class
 Model\Jogador.class
+View\CriarPartida$5.class
 Controller\ExcluirJogadorController.class
 View\EditarJogador$2.class
 View\ExcluirJogador$1.class
