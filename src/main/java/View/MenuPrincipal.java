@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
 import Controller.MenuPrincipalController;
@@ -21,10 +17,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuItemNovoJogador = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         menuItemEditarJogador = new javax.swing.JMenuItem();
         menuItemExcluirJogador = new javax.swing.JMenuItem();
         menuItemVerJogadores = new javax.swing.JMenuItem();
@@ -32,27 +26,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuItemCriarNovoTime = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuItemCriarPartida = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        menuRanking = new javax.swing.JMenu();
+        menuItemVerRanking = new javax.swing.JMenuItem();
 
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Imagens/ImagemCampo.jpg"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 10, 400, 270);
-
         menuItemNovoJogador.setText("Jogador");
-
-        jMenuItem1.setText("Cadastrar novo jogador");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        menuItemNovoJogador.add(jMenuItem1);
 
         menuItemEditarJogador.setText("Editar jogador");
         menuItemEditarJogador.addActionListener(new java.awt.event.ActionListener() {
@@ -104,18 +86,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Ranking");
-        jMenuBar1.add(jMenu4);
+        menuRanking.setText("Ranking");
+        menuRanking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRankingActionPerformed(evt);
+            }
+        });
+
+        menuItemVerRanking.setText("Ver ranking");
+        menuItemVerRanking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemVerRankingActionPerformed(evt);
+            }
+        });
+        menuRanking.add(menuItemVerRanking);
+
+        jMenuBar1.add(menuRanking);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        CadastrarJogador cadastro = new CadastrarJogador();
-        cadastro.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void menuItemEditarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEditarJogadorActionPerformed
         EditarJogador editarJogador = new EditarJogador();
@@ -133,13 +124,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemVerJogadoresActionPerformed
 
     private void menuItemCriarNovoTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCriarNovoTimeActionPerformed
-
+        CadastrarTime cadastrarTime = new CadastrarTime();
+        cadastrarTime.setVisible(true);
     }//GEN-LAST:event_menuItemCriarNovoTimeActionPerformed
 
     private void menuItemCriarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCriarPartidaActionPerformed
         CriarPartida criarPartida = new CriarPartida();
         criarPartida.setVisible(true);
     }//GEN-LAST:event_menuItemCriarPartidaActionPerformed
+
+    private void menuRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRankingActionPerformed
+        
+    }//GEN-LAST:event_menuRankingActionPerformed
+
+    private void menuItemVerRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVerRankingActionPerformed
+        Ranking ranking = new Ranking();
+        ranking.setVisible(true);
+    }//GEN-LAST:event_menuItemVerRankingActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -175,18 +176,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuItemCriarNovoTime;
     private javax.swing.JMenuItem menuItemCriarPartida;
     private javax.swing.JMenuItem menuItemEditarJogador;
     private javax.swing.JMenuItem menuItemExcluirJogador;
     private javax.swing.JMenu menuItemNovoJogador;
     private javax.swing.JMenuItem menuItemVerJogadores;
+    private javax.swing.JMenuItem menuItemVerRanking;
+    private javax.swing.JMenu menuRanking;
     // End of variables declaration//GEN-END:variables
 
 }

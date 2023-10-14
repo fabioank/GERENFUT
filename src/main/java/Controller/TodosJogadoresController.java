@@ -29,7 +29,7 @@ public class TodosJogadoresController {
         for (Jogador jogador : lista) {
             Object[] jogadores = {
                 jogador.getId(),
-                jogador.getName(),
+                jogador.getNome(),
                 jogador.getNumero(),
                 jogador.getPosicao(),
                 jogador.isSituacao() ? "Ativo" : "Inativo"};

@@ -9,10 +9,19 @@ public class Time {
     private int pontos;
     private List<Jogador> jogador;
 
+    public Time() {
+    }
+
     public Time(String nome, int pontos){
         this.nome = nome;
         this.pontos = pontos;
     }
+
+    public Time(String nome, List<Jogador> jogador) {
+        this.nome = nome;
+        this.jogador = jogador;
+    }
+    
     public Time(int id_time, String nome, int pontos){
         this.nome = nome;
         this.pontos = pontos;

@@ -42,7 +42,7 @@ public class JogadorDAO {
                     + "(nome, cpf, numero, posicao, senha, situacao)"
                     + "VALUES"
                     + "(?, ?, ?, ?, ?, ?)");
-            st.setString(1, jogador.getName());
+            st.setString(1, jogador.getNome());
             st.setString(2, jogador.getCpf());
             st.setInt(3, jogador.getNumero());
             st.setString(4, jogador.getPosicao());
@@ -133,7 +133,7 @@ public class JogadorDAO {
 
         try {
             st = conn.prepareStatement("UPDATE Jogadores SET nome = ?, numero = ?, posicao = ?, situacao = ? WHERE cpf = ?");
-            st.setString(1, jogador.getName());
+            st.setString(1, jogador.getNome());
             st.setInt(2, jogador.getNumero());
             st.setString(3, jogador.getPosicao());
             st.setBoolean(4, jogador.isSituacao());

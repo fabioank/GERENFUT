@@ -19,6 +19,7 @@ public class CriarPartida extends javax.swing.JFrame {
     public CriarPartida() {
         initComponents();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         controller = new CriarPartidaController(this);
         controller.carregarDados();
     }
@@ -40,7 +41,6 @@ public class CriarPartida extends javax.swing.JFrame {
         cbTime2 = new javax.swing.JComboBox<>();
         lblJogadoresTime1 = new javax.swing.JLabel();
         btnIniciarPartida = new javax.swing.JButton();
-        btnCadastrarTime = new javax.swing.JButton();
         cbJogadoresTime2 = new javax.swing.JComboBox<>();
         cbJogadoresTime1 = new javax.swing.JComboBox<>();
         btnAddJogador1 = new javax.swing.JButton();
@@ -51,12 +51,16 @@ public class CriarPartida extends javax.swing.JFrame {
         tblJogadoresTime1 = new javax.swing.JTable();
         btnRemoveJogador1 = new javax.swing.JButton();
         btnRemoveJogador2 = new javax.swing.JButton();
+        lblData = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblCriarPartida.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblCriarPartida.setBackground(new java.awt.Color(0, 0, 0));
+        lblCriarPartida.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblCriarPartida.setForeground(new java.awt.Color(0, 0, 0));
         lblCriarPartida.setText("Criar Nova Partida");
 
         lblTime2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -71,17 +75,13 @@ public class CriarPartida extends javax.swing.JFrame {
             }
         });
 
-        cbTime2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flamengo", "Botafogo", "Corinthians", "Vasco", "Palmeiras", "Fluminense", "Internacional" }));
-
-        lblJogadoresTime1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblJogadoresTime1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblJogadoresTime1.setText("Selecionar jogadores");
 
         btnIniciarPartida.setText("Iniciar Partida");
-
-        btnCadastrarTime.setText("Cadastrar novo time");
-        btnCadastrarTime.addActionListener(new java.awt.event.ActionListener() {
+        btnIniciarPartida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarTimeActionPerformed(evt);
+                btnIniciarPartidaActionPerformed(evt);
             }
         });
 
@@ -99,6 +99,11 @@ public class CriarPartida extends javax.swing.JFrame {
         });
 
         btnAddJogador2.setText("+");
+        btnAddJogador2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddJogador2ActionPerformed(evt);
+            }
+        });
 
         tblJogadoresTime2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,83 +120,108 @@ public class CriarPartida extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Jogador", "Numero", "Posição"
+                "Nome", "Numero", "Posição"
             }
         ));
         jScrollPane2.setViewportView(tblJogadoresTime1);
 
         btnRemoveJogador1.setText("-");
+        btnRemoveJogador1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveJogador1ActionPerformed(evt);
+            }
+        });
 
         btnRemoveJogador2.setText("-");
+        btnRemoveJogador2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveJogador2ActionPerformed(evt);
+            }
+        });
+
+        lblData.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblData.setText("Data: ");
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextField1.setText("dd/mm/aaaa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(384, 384, 384)
+                .addComponent(cbJogadoresTime2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAddJogador2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRemoveJogador2)
+                .addGap(80, 80, 80))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTime1)
+                    .addComponent(cbTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(133, 133, 133))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblTime2)
+                        .addGap(160, 160, 160))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(131, 131, 131)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(btnIniciarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(lblCriarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(lblTime1)
-                        .addGap(299, 299, 299)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(lblTime2))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(cbTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(btnCadastrarTime))
-                            .addComponent(lblJogadoresTime1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(148, 148, 148)
-                                .addComponent(cbJogadoresTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAddJogador2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRemoveJogador2))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(cbJogadoresTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAddJogador1)
+                        .addGap(245, 245, 245)
+                        .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemoveJogador1)))
+                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(281, 281, 281)
+                            .addComponent(btnIniciarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(73, 73, 73)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(131, 131, 131)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(59, 59, 59)
+                            .addComponent(cbJogadoresTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnAddJogador1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnRemoveJogador1)
+                            .addGap(319, 319, 319)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(lblJogadoresTime1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(lblCriarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(37, 37, 37)
                 .addComponent(lblCriarPartida)
-                .addGap(44, 44, 44)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblData)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTime1)
                     .addComponent(lblTime2))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadastrarTime))
-                .addGap(36, 36, 36)
+                    .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblJogadoresTime1)
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddJogador1)
                     .addComponent(cbJogadoresTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,7 +233,7 @@ public class CriarPartida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnIniciarPartida)
                 .addContainerGap())
         );
@@ -211,27 +241,34 @@ public class CriarPartida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrarTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarTimeActionPerformed
-        CadastrarTime cadastrarTime = new CadastrarTime();
-        cadastrarTime.setVisible(true);
-        
-    }//GEN-LAST:event_btnCadastrarTimeActionPerformed
-
     private void cbJogadoresTime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJogadoresTime1ActionPerformed
         
     }//GEN-LAST:event_cbJogadoresTime1ActionPerformed
 
     private void btnAddJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddJogador1ActionPerformed
-        controller.adicionarJogador();
+        controller.adicionarJogadorTimeCasa();
     }//GEN-LAST:event_btnAddJogador1ActionPerformed
 
     private void cbTime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTime1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbTime1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnRemoveJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveJogador1ActionPerformed
+        controller.removerJogadorTimeCasa();
+    }//GEN-LAST:event_btnRemoveJogador1ActionPerformed
+
+    private void btnAddJogador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddJogador2ActionPerformed
+        controller.adicionarJogadorTimeVisitante();
+    }//GEN-LAST:event_btnAddJogador2ActionPerformed
+
+    private void btnRemoveJogador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveJogador2ActionPerformed
+        controller.removerJogadorTimeVisitante();
+    }//GEN-LAST:event_btnRemoveJogador2ActionPerformed
+
+    private void btnIniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPartidaActionPerformed
+        controller.iniciarPartida();
+    }//GEN-LAST:event_btnIniciarPartidaActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -267,7 +304,6 @@ public class CriarPartida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddJogador1;
     private javax.swing.JButton btnAddJogador2;
-    private javax.swing.JButton btnCadastrarTime;
     private javax.swing.JButton btnIniciarPartida;
     private javax.swing.JButton btnRemoveJogador1;
     private javax.swing.JButton btnRemoveJogador2;
@@ -275,10 +311,12 @@ public class CriarPartida extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbJogadoresTime2;
     private javax.swing.JComboBox<String> cbTime1;
     private javax.swing.JComboBox<String> cbTime2;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCriarPartida;
+    private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblJogadoresTime1;
     private javax.swing.JLabel lblTime1;
     private javax.swing.JLabel lblTime2;

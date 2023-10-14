@@ -22,7 +22,7 @@ public class EditarJogadorController {
             Jogador jogador = JogadorDAO.buscarCpf(cpf);
 
             if (jogador != null) {
-                String nome = jogador.getName();
+                String nome = jogador.getNome();
                 int numero = jogador.getNumero();
                 String posicao = jogador.getPosicao();
                 Boolean situacao = jogador.isSituacao();
