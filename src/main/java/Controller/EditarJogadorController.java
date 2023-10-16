@@ -2,15 +2,15 @@ package Controller;
 
 import Model.DAO.JogadorDAO;
 import Model.Jogador;
-import View.EditarJogador;
-import View.MenuPrincipal;
+import View.EditarJogadorView;
+import View.MenuPrincipalView;
 import javax.swing.JOptionPane;
 
 public class EditarJogadorController {
 
-    private final EditarJogador view;
+    private final EditarJogadorView view;
 
-    public EditarJogadorController(EditarJogador view) {
+    public EditarJogadorController(EditarJogadorView view) {
         this.view = view;
     }
 

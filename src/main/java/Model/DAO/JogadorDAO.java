@@ -97,10 +97,10 @@ public class JogadorDAO {
             }
 
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
-
     public static Jogador buscarCpf(String cpf) {
 
         Connection conn = Conexao.getConnection();
@@ -144,9 +144,7 @@ public class JogadorDAO {
         } catch (Exception e) {
 
         }
-
     }
-
     public static List<Jogador> listaTodosJogadores() {
         List<Jogador> list = new ArrayList<>();
         try {
@@ -167,9 +165,7 @@ public class JogadorDAO {
             System.out.println(e.getMessage());
             return null;
         }
-
     }
-
     public static List<Jogador> consultarJogador(String posicao) {
 
         List<Jogador> lista = new ArrayList<>();
@@ -197,7 +193,6 @@ public class JogadorDAO {
         }
         return null;
     }
-
     public static Jogador encontrarPeloId(int id) {
 
         Connection conn = Conexao.getConnection();
@@ -215,7 +210,6 @@ public class JogadorDAO {
                         rs.getString("posicao"),
                         rs.getBoolean("situacao"));
             }
-
             return null;
 
         } catch (Exception e) {
@@ -223,5 +217,4 @@ public class JogadorDAO {
         }
         return null;
     }
-
 }

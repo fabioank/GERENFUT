@@ -5,7 +5,7 @@ import Model.DAO.TimeDAO;
 import Model.Jogador;
 import Model.JogadorComboboxModel;
 import Model.Time;
-import View.CriarPartida;
+import View.CriarPartidaView;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -13,9 +13,9 @@ import javax.swing.table.DefaultTableModel;
 
 public class CriarPartidaController {
 
-    private final CriarPartida view;
+    private final CriarPartidaView view;
 
-    public CriarPartidaController(CriarPartida view) {
+    public CriarPartidaController(CriarPartidaView view) {
         this.view = view;
     }
 

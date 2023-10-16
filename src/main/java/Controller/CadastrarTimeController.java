@@ -2,14 +2,14 @@ package Controller;
 
 import Model.DAO.TimeDAO;
 import Model.Time;
-import View.CadastrarTime;
+import View.CadastrarTimeView;
 import javax.swing.JOptionPane;
 
 public class CadastrarTimeController {
 
-    private final CadastrarTime view;
+    private final CadastrarTimeView view;
 
-    public CadastrarTimeController(CadastrarTime view) {
+    public CadastrarTimeController(CadastrarTimeView view) {
         this.view = view;
 
     }

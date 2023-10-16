@@ -1,6 +1,6 @@
 package programa;
 
-import View.Login;
+import View.LoginView;
 import db.Conexao;
 
 public class Aplicacao {
@@ -9,7 +9,7 @@ public class Aplicacao {
         
         Conexao.createDataBase();
         
-        Login login = new Login();
+        LoginView login = new LoginView();
         login.setVisible(true);
     }
 }

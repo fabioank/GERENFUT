@@ -1,14 +1,14 @@
 package Controller;
 
 import Model.DAO.JogadorDAO;
-import View.ExcluirJogador;
+import View.ExcluirJogadorView;
 import javax.swing.JOptionPane;
 
 public class ExcluirJogadorController {
 
-    private final ExcluirJogador view;
+    private final ExcluirJogadorView view;
 
-    public ExcluirJogadorController(ExcluirJogador view) {
+    public ExcluirJogadorController(ExcluirJogadorView view) {
         this.view = view;
     }
 

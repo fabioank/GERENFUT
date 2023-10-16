@@ -2,16 +2,16 @@ package Controller;
 
 import Model.DAO.JogadorDAO;
 import Model.Jogador;
-import View.CadastrarJogador;
-import View.Login;
+import View.CadastrarJogadorView;
+import View.LoginView;
 import com.sun.source.tree.TryTree;
 import javax.swing.JOptionPane;
 
 public class CadastrarJogadorController {
 
-    private final CadastrarJogador view;
+    private final CadastrarJogadorView view;
 
-    public CadastrarJogadorController(CadastrarJogador view) {
+    public CadastrarJogadorController(CadastrarJogadorView view) {
         this.view = view;
     }
 
@@ -62,7 +62,7 @@ public class CadastrarJogadorController {
             JogadorDAO.inserirJogador(jogador);
             JOptionPane.showMessageDialog(null, "Jogador cadastrado com sucesso!");
             view.dispose();
-            Login login = new Login();
+            LoginView login = new LoginView();
             login.setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar o jogador");

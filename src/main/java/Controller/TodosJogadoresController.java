@@ -2,16 +2,16 @@ package Controller;
 
 import Model.DAO.JogadorDAO;
 import Model.Jogador;
-import View.TodosJogadores;
+import View.TodosJogadoresView;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 public class TodosJogadoresController {
 
-    private final TodosJogadores view;
+    private final TodosJogadoresView view;
 
-    public TodosJogadoresController(TodosJogadores view) {
+    public TodosJogadoresController(TodosJogadoresView view) {
         this.view = view;
     }
 

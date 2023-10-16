@@ -1,12 +1,12 @@
 package Controller;
 
-import View.Ranking;
+import View.RankingView;
 
 public class RankingController {
     
-    private final Ranking view;
+    private final RankingView view;
 
-    public RankingController(Ranking view) {
+    public RankingController(RankingView view) {
         
         this.view = view;
     }

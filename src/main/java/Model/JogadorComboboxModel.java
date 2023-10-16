@@ -31,12 +31,10 @@ public class JogadorComboboxModel extends AbstractListModel implements ComboBoxM
         fireContentsChanged(this.listaJogador, 0, this.listaJogador.size());
         }
     }
-
     @Override
     public Object getSelectedItem() {
         return this.jogadorSelecionado;
     }
-    
     public void addJogador(Jogador jogador){
         this.listaJogador.add(jogador);
     }
@@ -47,15 +45,12 @@ public class JogadorComboboxModel extends AbstractListModel implements ComboBoxM
     public List<Jogador> getListaJogador() {
         return listaJogador;
     }
-
     public void setListaJogador(List<Jogador> listaJogador) {
         this.listaJogador = listaJogador;
     }
-
     public Jogador getJogadorSelecionado() {
         return jogadorSelecionado;
     }
-
     public void setJogadorSelecionado(Jogador jogadorSelecionado) {
         this.jogadorSelecionado = jogadorSelecionado;
     }

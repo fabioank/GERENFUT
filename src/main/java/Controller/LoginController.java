@@ -1,22 +1,22 @@
 package Controller;
 
 import Model.DAO.JogadorDAO;
-import View.CadastrarJogador;
-import View.Login;
-import View.MenuPrincipal;
+import View.CadastrarJogadorView;
+import View.LoginView;
+import View.MenuPrincipalView;
 import javax.swing.JOptionPane;
 
 public class LoginController {
 
-    private final Login view;
+    private final LoginView view;
 
-    public LoginController(Login view) {
+    public LoginController(LoginView view) {
         this.view = view;
     }
 
     public void irParaCadastro() {
 
-        CadastrarJogador cadastro = new CadastrarJogador();
+        CadastrarJogadorView cadastro = new CadastrarJogadorView();
         cadastro.setVisible(true);
         view.dispose();
     }
@@ -29,7 +29,7 @@ public class LoginController {
         boolean login = JogadorDAO.verificarJogador(cpf, senha);
 
         if (login == true) {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            MenuPrincipalView menuPrincipal = new MenuPrincipalView();
             menuPrincipal.setVisible(true);
             this.view.dispose();
         } else {
