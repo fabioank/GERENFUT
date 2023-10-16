@@ -3,8 +3,10 @@ package Controller;
 import Model.DAO.JogadorDAO;
 import Model.DAO.TimeDAO;
 import Model.Jogador;
+import Model.JogadorComboboxModel;
 import Model.Time;
 import View.CriarPartida;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,10 +23,14 @@ public class CriarPartidaController {
 
         List<Jogador> listaJogador = JogadorDAO.listaTodosJogadores();
 
+        JogadorComboboxModel jogadorComboboxModel = new JogadorComboboxModel();
+
         for (Jogador jogador : listaJogador) {
 
-            view.getCbJogadoresTime1().addItem(jogador.toString());
-            view.getCbJogadoresTime2().addItem(jogador.toString());
+            jogadorComboboxModel.addJogador(jogador);
+
+            view.getCbJogadoresTime1().setModel(jogadorComboboxModel);
+            view.getCbJogadoresTime2().setModel(jogadorComboboxModel);
         }
 
         List<Time> listaTime = TimeDAO.todosOsTimes();
@@ -36,43 +42,40 @@ public class CriarPartidaController {
     }
 
     public void adicionarJogadorTimeCasa() {
-
         DefaultTableModel tableModel1 = (DefaultTableModel) view.getTblJogadoresTime1().getModel();
+        Jogador jogadorSelecionado = (Jogador) view.getCbJogadoresTime1().getSelectedItem();
 
-        String jogadorSelecionado1 = view.getCbJogadoresTime1().getSelectedItem().toString();
+        if (jogadorSelecionado != null) {
+            int linhasTabela = tableModel1.getRowCount();
+            boolean jogadorJaAdicionado = false;
 
-        String[] idJogador1 = jogadorSelecionado1.split(",");
-        int id1 = Integer.parseInt(idJogador1[0]);
+            for (int i = 0; i < linhasTabela; i++) {
+                int idNaTabela = (int) tableModel1.getValueAt(i, 0);
+                if (idNaTabela == jogadorSelecionado.getId()) {
+                    jogadorJaAdicionado = true;
+                    break;
+                }
+            }
 
-        //Jogador jogadorSelecionado = (Jogador) view.getCbJogadoresTime1().getSelectedItem();
-        Jogador jogador1 = JogadorDAO.encontrarPeloId(id1);
-
-        //;(Jogador) combo.getItem();
-        if (jogador1 != null) {
-            Object[] jogadores1 = {jogador1.getNome(), jogador1.getNumero(), jogador1.getPosicao()};
-
-            //List<Jogador> jogs = new ArrayList<>();
-            tableModel1.addRow(jogadores1);
-
+            if (jogadorJaAdicionado) {
+                JOptionPane.showMessageDialog(null, "Esse jogador já foi adicionado, por favor adicione outro.","Jogador ja adicionado", JOptionPane.WARNING_MESSAGE);
+            } else {
+                Object[] jogadoresCasa = {jogadorSelecionado.getId(), jogadorSelecionado.getNome(), jogadorSelecionado.getNumero(), jogadorSelecionado.getPosicao()};
+                tableModel1.addRow(jogadoresCasa);
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Não foi possivel encontrar o jogador");
-            return;
+            JOptionPane.showMessageDialog(null, "Não foi possível encontrar o jogador");
         }
     }
 
     public void adicionarJogadorTimeVisitante() {
         DefaultTableModel tableModel2 = (DefaultTableModel) view.getTblJogadoresTime2().getModel();
-        String jogadorSelecionado2 = view.getCbJogadoresTime2().getSelectedItem().toString();
 
-        String[] idJogador2 = jogadorSelecionado2.split(",");
-        int id2 = Integer.parseInt(idJogador2[0]);
+        Jogador jogadorSelecionado = (Jogador) view.getCbJogadoresTime2().getSelectedItem();
 
-        Jogador jogador2 = JogadorDAO.encontrarPeloId(id2);
+        if (jogadorSelecionado != null) {
+            Object[] jogadores2 = {jogadorSelecionado.getId(), jogadorSelecionado.getNome(), jogadorSelecionado.getNumero(), jogadorSelecionado.getPosicao()};
 
-        if (jogador2 != null) {
-            Object[] jogadores2 = {jogador2.getNome(), jogador2.getNumero(), jogador2.getPosicao()};
-
-            //List<Jogador> jogs = new ArrayList<>();
             tableModel2.addRow(jogadores2);
 
         } else {
@@ -150,7 +153,7 @@ public class CriarPartidaController {
             );
             Time timeVisitante = new Time();
             
-            */
+             */
         } catch (Exception e) {
 
         }

@@ -106,7 +106,7 @@ public class Jogador {
     }
 
     public String toString() {
-        return id + ", " + numero + ", " + nome + " (" + posicao + ")";
+        return numero + " - " + nome + " (" + posicao + ")";
     }
 
 }
