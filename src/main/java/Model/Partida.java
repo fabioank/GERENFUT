@@ -7,6 +7,8 @@ public class Partida {
     
     private int id_partida;
     private Date data;
+    private byte golsTimeCasa;
+    private byte golsTimeVisitante;    
     private String melhor_jogador;
     private String melhor_gol;
     

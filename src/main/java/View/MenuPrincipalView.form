@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -109,10 +109,25 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,44,0,0,1,-112"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,71,0,0,1,-22"/>
   </AuxValues>
 
-  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-    <Property name="useNullLayout" type="boolean" value="true"/>
-  </Layout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/View//ImagemCampo.jpg&quot;))" type="code"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon icon = new ImageIcon(getClass().getResource(&quot;/View//ImagemCampo.jpg&quot;));&#xa;setExtendedState(JFrame.MAXIMIZED_BOTH);&#xa;// Obtenha as dimens&#xf5;es da tela&#xa;Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();&#xa;&#xa;// Obtenha as dimens&#xf5;es da imagem&#xa;int imageWidth = icon.getIconWidth();&#xa;int imageHeight = icon.getIconHeight();&#xa;&#xa;// Calcule as propor&#xe7;&#xf5;es de escala&#xa;double scaleX = (double) screenSize.width / imageWidth;&#xa;double scaleY = (double) screenSize.height / imageHeight;&#xa;&#xa;// Use a propor&#xe7;&#xe3;o de escala maior para preencher a tela&#xa;double scale = Math.max(scaleX, scaleY);&#xa;&#xa;// Redimensione a imagem para preencher a tela&#xa;Image scaledImage = icon.getImage().getScaledInstance((int) (scale * imageWidth), (int) (scale * imageHeight), Image.SCALE_DEFAULT);&#xa;&#xa;// Crie um novo ImageIcon com a imagem redimensionada&#xa;ImageIcon scaledIcon = new ImageIcon(scaledImage);&#xa;&#xa;// Defina o &#xed;cone na JLabel&#xa;jLabel3.setIcon(scaledIcon);"/>
+      </AuxValues>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Center"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+  </SubComponents>
 </Form>

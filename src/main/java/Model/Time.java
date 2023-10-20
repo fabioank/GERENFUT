@@ -65,4 +65,10 @@ public class Time {
     public void setJogador(List<Jogador> jogador) {
         this.jogador = jogador;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+    
 }

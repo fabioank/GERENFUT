@@ -6,6 +6,7 @@ package View;
 
 import Controller.CriarPartidaController;
 import Model.JogadorComboboxModel;
+import Model.TimeComboboxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 
@@ -16,6 +17,8 @@ import javax.swing.JTable;
 public class CriarPartidaView extends javax.swing.JFrame {
 
     public JogadorComboboxModel jogadorComboboxModel;
+    public TimeComboboxModel timeComboboxModel;
+    
     private final CriarPartidaController controller;
     
     public CriarPartidaView() {
@@ -26,6 +29,7 @@ public class CriarPartidaView extends javax.swing.JFrame {
         controller = new CriarPartidaController(this);
         controller.carregarDados();
         jogadorComboboxModel = new JogadorComboboxModel();
+        timeComboboxModel = new TimeComboboxModel();
     }
 
     /**
@@ -55,8 +59,6 @@ public class CriarPartidaView extends javax.swing.JFrame {
         tblJogadoresTime1 = new javax.swing.JTable();
         btnRemoveJogador1 = new javax.swing.JButton();
         btnRemoveJogador2 = new javax.swing.JButton();
-        lblData = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -143,12 +145,6 @@ public class CriarPartidaView extends javax.swing.JFrame {
             }
         });
 
-        lblData.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblData.setText("Data: ");
-
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField1.setText("dd/mm/aaaa");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,23 +162,6 @@ public class CriarPartidaView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblTime2)
                         .addGap(160, 160, 160))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(btnIniciarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(245, 245, 245)
-                        .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
-                        .addComponent(lblJogadoresTime1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(lblCriarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -203,17 +182,25 @@ public class CriarPartidaView extends javax.swing.JFrame {
                         .addComponent(btnRemoveJogador2))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(80, 80, 80))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(lblJogadoresTime1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(lblCriarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(283, 283, 283)
+                        .addComponent(btnIniciarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(lblCriarPartida)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblData)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTime1)
                     .addComponent(lblTime2))
@@ -235,9 +222,9 @@ public class CriarPartidaView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnIniciarPartida)
-                .addContainerGap())
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
@@ -314,12 +301,10 @@ public class CriarPartidaView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbJogadoresTime2;
     private javax.swing.JComboBox<String> cbTime1;
     private javax.swing.JComboBox<String> cbTime2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCriarPartida;
-    private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblJogadoresTime1;
     private javax.swing.JLabel lblTime1;
     private javax.swing.JLabel lblTime2;

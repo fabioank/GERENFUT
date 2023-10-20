@@ -18,7 +18,7 @@ public class JogadorDAO {
         ResultSet rs;
 
         try {
-            st = conn.prepareStatement("SELECT cpf FROM Jogadores WHERE cpf = ?");
+            st = conn.prepareStatement("SELECT cpf FROM Jogador WHERE cpf = ?");
             st.setString(1, jogador.getCpf());
             rs = st.executeQuery();
 
@@ -32,13 +32,11 @@ public class JogadorDAO {
         }
         return false;
     }
-
     public static void inserirJogador(Jogador jogador) {
         Connection conn = Conexao.getConnection();
 
         try {
-
-            PreparedStatement st = conn.prepareStatement("INSERT INTO Jogadores"
+            PreparedStatement st = conn.prepareStatement("INSERT INTO Jogador"
                     + "(nome, cpf, numero, posicao, senha, situacao)"
                     + "VALUES"
                     + "(?, ?, ?, ?, ?, ?)");
@@ -50,11 +48,11 @@ public class JogadorDAO {
             st.setBoolean(6, true);
 
             st.executeUpdate();
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
     public static boolean verificarJogador(String cpf, String senha) {
 
         Connection conn = Conexao.getConnection();
@@ -62,7 +60,7 @@ public class JogadorDAO {
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement("SELECT cpf, senha FROM Jogadores WHERE cpf = ? AND senha = ?");
+            st = conn.prepareStatement("SELECT cpf, senha FROM Jogador WHERE cpf = ? AND senha = ?");
             st.setString(1, cpf);
             st.setString(2, senha);
             rs = st.executeQuery();
@@ -84,7 +82,7 @@ public class JogadorDAO {
         PreparedStatement st = null;
 
         try {
-            st = conn.prepareStatement("DELETE FROM jogadores WHERE cpf = ? AND senha = ?");
+            st = conn.prepareStatement("DELETE FROM jogador WHERE cpf = ? AND senha = ?");
             st.setString(1, cpf);
             st.setString(2, senha);
 
@@ -108,7 +106,7 @@ public class JogadorDAO {
         ResultSet rs;
 
         try {
-            st = conn.prepareStatement("SELECT nome, numero, posicao, situacao FROM Jogadores WHERE cpf = ?");
+            st = conn.prepareStatement("SELECT nome, numero, posicao, situacao FROM Jogador WHERE cpf = ?");
             st.setString(1, cpf);
             rs = st.executeQuery();
 
@@ -132,7 +130,7 @@ public class JogadorDAO {
         PreparedStatement st;
 
         try {
-            st = conn.prepareStatement("UPDATE Jogadores SET nome = ?, numero = ?, posicao = ?, situacao = ? WHERE cpf = ?");
+            st = conn.prepareStatement("UPDATE Jogador SET nome = ?, numero = ?, posicao = ?, situacao = ? WHERE cpf = ?");
             st.setString(1, jogador.getNome());
             st.setInt(2, jogador.getNumero());
             st.setString(3, jogador.getPosicao());
@@ -151,7 +149,7 @@ public class JogadorDAO {
             Connection conn = Conexao.getConnection();
             Statement st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT id_jogador, nome, numero, posicao, situacao FROM Jogadores");
+            ResultSet rs = st.executeQuery("SELECT id_jogador, nome, numero, posicao, situacao FROM Jogador");
             while (rs.next()) {
                 list.add(new Jogador(rs.getInt("id_jogador"),
                         rs.getString("nome"),
@@ -175,7 +173,7 @@ public class JogadorDAO {
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement("SELECT id_jogador, nome, numero, posicao, situacao FROM Jogadores WHERE posicao = ?");
+            st = conn.prepareStatement("SELECT id_jogador, nome, numero, posicao, situacao FROM Jogador WHERE posicao = ?");
             st.setString(1, posicao);
             rs = st.executeQuery();
             while (rs.next()) {
@@ -200,7 +198,7 @@ public class JogadorDAO {
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement("SELECT * FROM Jogadores WHERE id_jogador = ?");
+            st = conn.prepareStatement("SELECT * FROM Jogador WHERE id_jogador = ?");
             st.setInt(1, id);
             rs = st.executeQuery();
             while (rs.next()) {

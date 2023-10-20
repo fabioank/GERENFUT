@@ -27,15 +27,15 @@ public class CadastrarTimeView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblCadastrarNovoTime = new javax.swing.JLabel();
         lblNomeTime = new javax.swing.JLabel();
         txtNomeTime = new javax.swing.JTextField();
         btnCadastrarTime = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Cadastrar novo time");
+        lblCadastrarNovoTime.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCadastrarNovoTime.setText("Cadastrar novo time");
 
         lblNomeTime.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNomeTime.setText("Digite o nome do time: ");
@@ -55,7 +55,7 @@ public class CadastrarTimeView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addComponent(jLabel1))
+                        .addComponent(lblCadastrarNovoTime))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(lblNomeTime)
@@ -70,7 +70,7 @@ public class CadastrarTimeView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel1)
+                .addComponent(lblCadastrarNovoTime)
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNomeTime)
@@ -124,7 +124,7 @@ public class CadastrarTimeView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarTime;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblCadastrarNovoTime;
     private javax.swing.JLabel lblNomeTime;
     private javax.swing.JTextField txtNomeTime;
     // End of variables declaration//GEN-END:variables

@@ -33,7 +33,7 @@ public class Conexao {
             statement.executeUpdate("USE gerenfut");
 
             statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS Jogadores (" +
+                    "CREATE TABLE IF NOT EXISTS Jogador (" +
                     "id_jogador INT AUTO_INCREMENT PRIMARY KEY," +
                     "nome VARCHAR(15),"+
                     "cpf VARCHAR (11)," +
@@ -46,6 +46,12 @@ public class Conexao {
                     "id_time INT AUTO_INCREMENT PRIMARY KEY," +
                     "nome VARCHAR(50),"+
                     "pontos INT)");
+            statement.executeUpdate(
+                    "CREATE TABLE IF NOT EXISTS Jogador_Time (" +
+                    "id_time INT," +
+                    "id_jogador INT," +
+                    "FOREIGN KEY(id_time) REFERENCES Time(id_time)," +
+                    "FOREIGN KEY(id_jogador) REFERENCES Jogador(id_jogador))");
             System.out.println("Tabela criada com sucesso.");
 
         } catch (java.sql.SQLException e) {

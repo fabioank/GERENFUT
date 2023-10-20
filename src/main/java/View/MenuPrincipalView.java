@@ -1,6 +1,15 @@
 package View;
 
 import Controller.MenuPrincipalController;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+import javax.swing.SwingConstants;
 
 public class MenuPrincipalView extends javax.swing.JFrame {
 
@@ -10,7 +19,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         initComponents();
         controller = new MenuPrincipalController(this);
         setExtendedState(MAXIMIZED_BOTH);
+        jLabel3.setLayout(new FlowLayout());
+        jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel3.setVerticalAlignment(SwingConstants.CENTER);
         setTitle("Menu principal");
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -18,6 +31,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuItemNovoJogador = new javax.swing.JMenu();
         menuItemEditarJogador = new javax.swing.JMenuItem();
@@ -33,7 +47,33 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View//ImagemCampo.jpg")));
+        getContentPane().add(jLabel3, java.awt.BorderLayout.CENTER);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/View//ImagemCampo.jpg"));
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        // Obtenha as dimensões da tela
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // Obtenha as dimensões da imagem
+        int imageWidth = icon.getIconWidth();
+        int imageHeight = icon.getIconHeight();
+
+        // Calcule as proporções de escala
+        double scaleX = (double) screenSize.width / imageWidth;
+        double scaleY = (double) screenSize.height / imageHeight;
+
+        // Use a proporção de escala maior para preencher a tela
+        double scale = Math.max(scaleX, scaleY);
+
+        // Redimensione a imagem para preencher a tela
+        Image scaledImage = icon.getImage().getScaledInstance((int) (scale * imageWidth), (int) (scale * imageHeight), Image.SCALE_DEFAULT);
+
+        // Crie um novo ImageIcon com a imagem redimensionada
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+        // Defina o ícone na JLabel
+        jLabel3.setIcon(scaledIcon);
 
         menuItemNovoJogador.setText("Jogador");
 
@@ -135,7 +175,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemCriarPartidaActionPerformed
 
     private void menuRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRankingActionPerformed
-        
+
     }//GEN-LAST:event_menuRankingActionPerformed
 
     private void menuItemVerRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVerRankingActionPerformed
@@ -178,6 +218,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
