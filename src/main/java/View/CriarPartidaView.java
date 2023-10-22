@@ -7,6 +7,7 @@ package View;
 import Controller.CriarPartidaController;
 import Model.JogadorComboboxModel;
 import Model.TimeComboboxModel;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 
@@ -18,9 +19,9 @@ public class CriarPartidaView extends javax.swing.JFrame {
 
     public JogadorComboboxModel jogadorComboboxModel;
     public TimeComboboxModel timeComboboxModel;
-    
+
     private final CriarPartidaController controller;
-    
+
     public CriarPartidaView() {
         initComponents();
         setTitle("Criar partida");
@@ -59,6 +60,8 @@ public class CriarPartidaView extends javax.swing.JFrame {
         tblJogadoresTime1 = new javax.swing.JTable();
         btnRemoveJogador1 = new javax.swing.JButton();
         btnRemoveJogador2 = new javax.swing.JButton();
+        chkTime1 = new javax.swing.JCheckBox();
+        chkTime2 = new javax.swing.JCheckBox();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -145,23 +148,24 @@ public class CriarPartidaView extends javax.swing.JFrame {
             }
         });
 
+        chkTime1.setText("Carregar jogadores");
+        chkTime1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkTime1ActionPerformed(evt);
+            }
+        });
+
+        chkTime2.setText("Carregar jogadores");
+        chkTime2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkTime2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTime1)
-                    .addComponent(cbTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(133, 133, 133))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTime2)
-                        .addGap(160, 160, 160))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -194,20 +198,48 @@ public class CriarPartidaView extends javax.swing.JFrame {
                         .addGap(283, 283, 283)
                         .addComponent(btnIniciarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTime1)
+                            .addComponent(cbTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(chkTime1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblTime2)
+                        .addGap(158, 158, 158))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(149, 149, 149))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(chkTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(lblCriarPartida)
-                .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTime1)
-                    .addComponent(lblTime2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTime1)
+                            .addComponent(lblTime2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chkTime2)
+                        .addGap(4, 4, 4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(chkTime1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblJogadoresTime1)
                 .addGap(21, 21, 21)
@@ -224,14 +256,14 @@ public class CriarPartidaView extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnIniciarPartida)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbJogadoresTime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJogadoresTime1ActionPerformed
-        
+
     }//GEN-LAST:event_cbJogadoresTime1ActionPerformed
 
     private void btnAddJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddJogador1ActionPerformed
@@ -256,7 +288,19 @@ public class CriarPartidaView extends javax.swing.JFrame {
 
     private void btnIniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPartidaActionPerformed
         controller.iniciarPartida();
+
+        TelaPartidaView telaPartidaView = new TelaPartidaView();
+        telaPartidaView.setVisible(true);
+
     }//GEN-LAST:event_btnIniciarPartidaActionPerformed
+
+    private void chkTime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTime1ActionPerformed
+        controller.carregarTimeCasa();
+    }//GEN-LAST:event_chkTime1ActionPerformed
+
+    private void chkTime2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTime2ActionPerformed
+        controller.carregarTimeVisitante();
+    }//GEN-LAST:event_chkTime2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -301,6 +345,8 @@ public class CriarPartidaView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbJogadoresTime2;
     private javax.swing.JComboBox<String> cbTime1;
     private javax.swing.JComboBox<String> cbTime2;
+    private javax.swing.JCheckBox chkTime1;
+    private javax.swing.JCheckBox chkTime2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -359,10 +405,22 @@ public class CriarPartidaView extends javax.swing.JFrame {
     public void setCbTime2(JComboBox<String> cbTime2) {
         this.cbTime2 = cbTime2;
     }
+
+    public JCheckBox getChkTime1() {
+        return chkTime1;
+    }
+
+    public void setChkTime1(JCheckBox chkTime1) {
+        this.chkTime1 = chkTime1;
+    }
+
+    public JCheckBox getChkTime2() {
+        return chkTime2;
+    }
+
+    public void setChkTime2(JCheckBox chkTime2) {
+        this.chkTime2 = chkTime2;
+    }
     
-    
-
-
-
 
 }

@@ -35,7 +35,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuItemNovoJogador = new javax.swing.JMenu();
         menuItemEditarJogador = new javax.swing.JMenuItem();
-        menuItemExcluirJogador = new javax.swing.JMenuItem();
         menuItemVerJogadores = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuItemCriarNovoTime = new javax.swing.JMenuItem();
@@ -43,6 +42,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         menuItemCriarPartida = new javax.swing.JMenuItem();
         menuRanking = new javax.swing.JMenu();
         menuItemVerRanking = new javax.swing.JMenuItem();
+        menuHistorico = new javax.swing.JMenu();
 
         jLabel1.setText("jLabel1");
 
@@ -84,14 +84,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
             }
         });
         menuItemNovoJogador.add(menuItemEditarJogador);
-
-        menuItemExcluirJogador.setText("Excluir jogador");
-        menuItemExcluirJogador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemExcluirJogadorActionPerformed(evt);
-            }
-        });
-        menuItemNovoJogador.add(menuItemExcluirJogador);
 
         menuItemVerJogadores.setText("Ver jogadores cadastrados");
         menuItemVerJogadores.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +136,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(menuRanking);
 
+        menuHistorico.setText("Històrico");
+        jMenuBar1.add(menuHistorico);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -153,11 +148,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         EditarJogadorView editarJogadorView = new EditarJogadorView();
         editarJogadorView.setVisible(true);
     }//GEN-LAST:event_menuItemEditarJogadorActionPerformed
-
-    private void menuItemExcluirJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExcluirJogadorActionPerformed
-        ExcluirJogadorView excluirJogador = new ExcluirJogadorView();
-        excluirJogador.setVisible(true);
-    }//GEN-LAST:event_menuItemExcluirJogadorActionPerformed
 
     private void menuItemVerJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVerJogadoresActionPerformed
         TodosJogadoresView todosJogadores = new TodosJogadoresView();
@@ -222,10 +212,10 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu menuHistorico;
     private javax.swing.JMenuItem menuItemCriarNovoTime;
     private javax.swing.JMenuItem menuItemCriarPartida;
     private javax.swing.JMenuItem menuItemEditarJogador;
-    private javax.swing.JMenuItem menuItemExcluirJogador;
     private javax.swing.JMenu menuItemNovoJogador;
     private javax.swing.JMenuItem menuItemVerJogadores;
     private javax.swing.JMenuItem menuItemVerRanking;

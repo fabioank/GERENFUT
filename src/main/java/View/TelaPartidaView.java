@@ -1,6 +1,10 @@
 package View;
 
 import Controller.TelaPartidaController;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
 public class TelaPartidaView extends javax.swing.JFrame {
 
@@ -9,6 +13,10 @@ public class TelaPartidaView extends javax.swing.JFrame {
     public TelaPartidaView() {
         initComponents();
         controller = new TelaPartidaController(this);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
+        controller.partida();
+
     }
 
 
@@ -16,17 +24,72 @@ public class TelaPartidaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblPartidaEmAndamento = new javax.swing.JLabel();
+        lblTimeCasa = new javax.swing.JLabel();
+        lblTimeVisitante = new javax.swing.JLabel();
+        lblDataJogo = new javax.swing.JLabel();
+        lblVersus = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jSpinner2 = new javax.swing.JSpinner();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblPartidaEmAndamento.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPartidaEmAndamento.setText("Partida em andamento");
+
+        lblTimeCasa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTimeCasa.setText("Time Casa");
+
+        lblTimeVisitante.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTimeVisitante.setText("Time Visitante");
+
+        lblDataJogo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDataJogo.setText("Data do jogo");
+
+        lblVersus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblVersus.setText("X");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(lblTimeCasa)
+                .addGap(18, 18, 18)
+                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addComponent(lblVersus)
+                .addGap(83, 83, 83)
+                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblTimeVisitante)
+                .addGap(75, 75, 75))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(lblPartidaEmAndamento))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(302, 302, 302)
+                        .addComponent(lblDataJogo)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(lblPartidaEmAndamento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblDataJogo)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTimeCasa)
+                    .addComponent(lblTimeVisitante)
+                    .addComponent(lblVersus)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
 
         pack();
@@ -69,5 +132,42 @@ public class TelaPartidaView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JLabel lblDataJogo;
+    private javax.swing.JLabel lblPartidaEmAndamento;
+    private javax.swing.JLabel lblTimeCasa;
+    private javax.swing.JLabel lblTimeVisitante;
+    private javax.swing.JLabel lblVersus;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getLblTimeCasa() {
+        return lblTimeCasa;
+    }
+
+    public void setLblTimeCasa(JLabel lblTimeCasa) {
+        this.lblTimeCasa = lblTimeCasa;
+    }
+
+    public JLabel getLblTimeVisitante() {
+        return lblTimeVisitante;
+    }
+
+    public void setLblTimeVisitante(JLabel lblTimeVisitante) {
+        this.lblTimeVisitante = lblTimeVisitante;
+    }
+
+    public JLabel getLblDataJogo() {
+        return lblDataJogo;
+    }
+
+    public void setLblDataJogo(JLabel lblDataJogo) {
+        this.lblDataJogo = lblDataJogo;
+    }
+    
+    
+
+    
+    
 }
+

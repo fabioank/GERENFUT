@@ -29,9 +29,9 @@ View\TodosJogadoresView$1.class
 View\EditarJogadorView$2.class
 View\MenuPrincipalView$1.class
 Controller\ExcluirJogadorController.class
-View\MenuPrincipalView$8.class
 View\CadastrarTimeView.class
 View\CadastrarJogadorView$1.class
+View\CriarPartidaView$10.class
 View\CadastrarJogadorView$2.class
 View\RankingView$1.class
 View\MenuPrincipalView$4.class
@@ -49,6 +49,7 @@ View\LoginView$4.class
 View\EditarJogadorView$1.class
 View\CadastrarJogadorView$3.class
 Controller\MenuPrincipalController.class
+View\CriarPartidaView$9.class
 View\RankingView.class
 View\TelaPartidaView.class
 View\TodosJogadoresView.class

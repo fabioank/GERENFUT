@@ -57,4 +57,21 @@ public class Partida {
     public void setMelhor_gol(String melhor_gol) {
         this.melhor_gol = melhor_gol;
     }
+
+    public Time getTimeCasa() {
+        return timeCasa;
+    }
+
+    public void setTimeCasa(Time timeCasa) {
+        this.timeCasa = timeCasa;
+    }
+
+    public Time getTimeVisitante() {
+        return timeVisitante;
+    }
+
+    public void setTimeVisitante(Time timeVisitante) {
+        this.timeVisitante = timeVisitante;
+    }
+    
 }

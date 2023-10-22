@@ -22,14 +22,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemEditarJogadorActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemExcluirJogador">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Excluir jogador"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemExcluirJogadorActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemVerJogadores">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver jogadores cadastrados"/>
@@ -87,6 +79,11 @@
               </Events>
             </MenuItem>
           </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuHistorico">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hist&#xf2;rico"/>
+          </Properties>
         </Menu>
       </SubComponents>
     </Menu>
