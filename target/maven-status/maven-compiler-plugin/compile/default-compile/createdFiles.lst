@@ -1,6 +1,8 @@
 Controller\RankingController.class
 View\EditarJogadorView.class
 View\TodosJogadoresView$2.class
+View\CadastrarJogadoresView$5.class
+Controller\CadastrarJogadoresController.class
 Controller\TodosJogadoresController.class
 Model\TimeComboboxModel.class
 View\LoginView$1.class
@@ -14,6 +16,7 @@ View\LoginView.class
 Model\Time.class
 Controller\CriarPartidaController.class
 Model\DAO\JogadorDAO.class
+View\CadastrarJogadoresView$2.class
 View\CadastrarJogadorView.class
 View\CriarPartidaView$2.class
 Model\Partida.class
@@ -25,12 +28,14 @@ View\LoginView$2.class
 View\CriarPartidaView$5.class
 Model\Jogador.class
 View\ExcluirJogadorView$4.class
+View\CadastrarJogadoresView.class
 View\TodosJogadoresView$1.class
 View\EditarJogadorView$2.class
 View\MenuPrincipalView$1.class
 Controller\ExcluirJogadorController.class
 View\CadastrarTimeView.class
 View\CadastrarJogadorView$1.class
+View\CadastrarJogadoresView$3.class
 View\CriarPartidaView$10.class
 View\CadastrarJogadorView$2.class
 View\RankingView$1.class
@@ -45,6 +50,7 @@ View\CriarPartidaView$4.class
 View\MenuPrincipalView$7.class
 View\LoginView$3.class
 Controller\CadastrarJogadorController.class
+View\CadastrarJogadoresView$4.class
 View\LoginView$4.class
 View\EditarJogadorView$1.class
 View\CadastrarJogadorView$3.class
@@ -53,6 +59,7 @@ View\CriarPartidaView$9.class
 View\RankingView.class
 View\TelaPartidaView.class
 View\TodosJogadoresView.class
+View\CadastrarJogadoresView$1.class
 View\MenuPrincipalView.class
 db\Conexao.class
 View\CriarPartidaView$3.class

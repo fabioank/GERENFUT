@@ -18,7 +18,8 @@ public class CadastrarTimeController {
 
         try {
             if (view.getTxtNomeTime().getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Por favor, digite um nome para o time.");
+                JOptionPane.showMessageDialog(null, "Por favor, digite um nome para o time.", 
+                        "Insira o nome do time", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             String nomeTime = view.getTxtNomeTime().getText();
@@ -31,7 +32,8 @@ public class CadastrarTimeController {
             return;
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar o time");
+            JOptionPane.showMessageDialog(null, "Não foi possivel cadastrar o time", "Erro",
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
     }

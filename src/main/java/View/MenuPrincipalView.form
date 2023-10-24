@@ -16,7 +16,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemEditarJogador">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Editar jogador"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar/Editar jogador"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemEditarJogadorActionPerformed"/>

@@ -4,7 +4,7 @@ import Model.DAO.JogadorDAO;
 import Model.Jogador;
 import View.TodosJogadoresView;
 import java.util.List;
-import java.util.Vector;
+
 import javax.swing.table.DefaultTableModel;
 
 public class TodosJogadoresController {

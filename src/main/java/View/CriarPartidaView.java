@@ -288,10 +288,10 @@ public class CriarPartidaView extends javax.swing.JFrame {
 
     private void btnIniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPartidaActionPerformed
         controller.iniciarPartida();
-
-        TelaPartidaView telaPartidaView = new TelaPartidaView();
-        telaPartidaView.setVisible(true);
-
+        if (CriarPartidaController.retornoPartida() != null) {
+            TelaPartidaView telaPartidaView = new TelaPartidaView();
+            telaPartidaView.setVisible(true);
+        }
     }//GEN-LAST:event_btnIniciarPartidaActionPerformed
 
     private void chkTime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTime1ActionPerformed
@@ -421,6 +421,5 @@ public class CriarPartidaView extends javax.swing.JFrame {
     public void setChkTime2(JCheckBox chkTime2) {
         this.chkTime2 = chkTime2;
     }
-    
 
 }

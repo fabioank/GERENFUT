@@ -3,6 +3,7 @@ package View;
 import Controller.LoginController;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class LoginView extends javax.swing.JFrame {
@@ -26,11 +27,11 @@ public class LoginView extends javax.swing.JFrame {
         lblCpf = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JTextField();
         lblMsg = new javax.swing.JLabel();
         btnCriarConta = new javax.swing.JButton();
         lblLogin = new javax.swing.JLabel();
         btnLogar = new javax.swing.JButton();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,11 +92,11 @@ public class LoginView extends javax.swing.JFrame {
                             .addComponent(lblCpf))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
                                 .addComponent(btnLogar))
-                            .addComponent(txtCpf)))
+                            .addComponent(txtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                            .addComponent(txtSenha)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(lblMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,7 +188,7 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtCpf;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 
     public void exibeMensagem(String mensagem) {
@@ -202,11 +203,12 @@ public class LoginView extends javax.swing.JFrame {
         this.txtCpf = txtCpf;
     }
 
-    public JTextField getTxtSenha() {
+    public JPasswordField getTxtSenha() {
         return txtSenha;
     }
 
-    public void setTxtSenha(JTextField txtSenha) {
+    public void setTxtSenha(JPasswordField txtSenha) {
         this.txtSenha = txtSenha;
     }
+
 }

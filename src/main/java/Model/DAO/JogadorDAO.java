@@ -29,9 +29,18 @@ public class JogadorDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
+
     public static void inserirJogador(Jogador jogador) {
         Connection conn = Conexao.getConnection();
 
@@ -48,11 +57,20 @@ public class JogadorDAO {
             st.setBoolean(6, true);
 
             st.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
+
     public static boolean verificarJogador(String cpf, String senha) {
 
         Connection conn = Conexao.getConnection();
@@ -73,6 +91,14 @@ public class JogadorDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -96,9 +122,18 @@ public class JogadorDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
+
     public static Jogador buscarCpf(String cpf) {
 
         Connection conn = Conexao.getConnection();
@@ -120,6 +155,14 @@ public class JogadorDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -140,15 +183,24 @@ public class JogadorDAO {
             st.executeUpdate();
 
         } catch (Exception e) {
-
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
+
     public static List<Jogador> listaTodosJogadores() {
         List<Jogador> list = new ArrayList<>();
-        try {
-            Connection conn = Conexao.getConnection();
-            Statement st = conn.createStatement();
+        Connection conn = Conexao.getConnection();
 
+        try {
+            Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT id_jogador, nome, numero, posicao, situacao FROM Jogador");
             while (rs.next()) {
                 list.add(new Jogador(rs.getInt("id_jogador"),
@@ -160,10 +212,19 @@ public class JogadorDAO {
             return list;
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             return null;
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
+
     public static List<Jogador> consultarJogador(String posicao) {
 
         List<Jogador> lista = new ArrayList<>();
@@ -188,9 +249,18 @@ public class JogadorDAO {
 
         } catch (Exception e) {
 
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
+
     public static Jogador encontrarPeloId(int id) {
 
         Connection conn = Conexao.getConnection();
@@ -212,7 +282,45 @@ public class JogadorDAO {
 
         } catch (Exception e) {
 
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
+    }
+
+    public static boolean numeroJaCadastrado(int numero) {
+
+        Connection conn = Conexao.getConnection();
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try {
+            st = conn.prepareStatement("SELECT numero FROM jogador WHERE numero = ?");
+            st.setInt(1, numero);
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 }

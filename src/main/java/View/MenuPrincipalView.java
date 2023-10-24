@@ -77,7 +77,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         menuItemNovoJogador.setText("Jogador");
 
-        menuItemEditarJogador.setText("Editar jogador");
+        menuItemEditarJogador.setText("Cadastrar/Editar jogador");
         menuItemEditarJogador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemEditarJogadorActionPerformed(evt);
@@ -145,8 +145,8 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemEditarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEditarJogadorActionPerformed
-        EditarJogadorView editarJogadorView = new EditarJogadorView();
-        editarJogadorView.setVisible(true);
+        CadastrarJogadoresView cadastrarJogadoresView = new CadastrarJogadoresView();
+        cadastrarJogadoresView.setVisible(true);
     }//GEN-LAST:event_menuItemEditarJogadorActionPerformed
 
     private void menuItemVerJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVerJogadoresActionPerformed

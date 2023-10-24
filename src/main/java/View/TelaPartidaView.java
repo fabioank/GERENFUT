@@ -29,8 +29,8 @@ public class TelaPartidaView extends javax.swing.JFrame {
         lblTimeVisitante = new javax.swing.JLabel();
         lblDataJogo = new javax.swing.JLabel();
         lblVersus = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
+        spinTimeVisitante = new javax.swing.JSpinner();
+        spinTimeCasa = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,11 +57,11 @@ public class TelaPartidaView extends javax.swing.JFrame {
                 .addGap(78, 78, 78)
                 .addComponent(lblTimeCasa)
                 .addGap(18, 18, 18)
-                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spinTimeCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(lblVersus)
                 .addGap(83, 83, 83)
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spinTimeVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblTimeVisitante)
                 .addGap(75, 75, 75))
@@ -87,8 +87,8 @@ public class TelaPartidaView extends javax.swing.JFrame {
                     .addComponent(lblTimeCasa)
                     .addComponent(lblTimeVisitante)
                     .addComponent(lblVersus)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spinTimeVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinTimeCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(324, Short.MAX_VALUE))
         );
 
@@ -132,13 +132,13 @@ public class TelaPartidaView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JLabel lblDataJogo;
     private javax.swing.JLabel lblPartidaEmAndamento;
     private javax.swing.JLabel lblTimeCasa;
     private javax.swing.JLabel lblTimeVisitante;
     private javax.swing.JLabel lblVersus;
+    private javax.swing.JSpinner spinTimeCasa;
+    private javax.swing.JSpinner spinTimeVisitante;
     // End of variables declaration//GEN-END:variables
 
     public JLabel getLblTimeCasa() {

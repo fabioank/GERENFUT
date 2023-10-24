@@ -2,6 +2,7 @@ package Controller;
 
 import Model.DAO.JogadorDAO;
 import View.CadastrarJogadorView;
+import View.CadastrarJogadoresView;
 import View.LoginView;
 import View.MenuPrincipalView;
 import javax.swing.JOptionPane;
@@ -16,9 +17,9 @@ public class LoginController {
 
     public void irParaCadastro() {
 
-        CadastrarJogadorView cadastro = new CadastrarJogadorView();
-        cadastro.setVisible(true);
-        view.dispose();
+        CadastrarJogadoresView cadastrarJogadoresView = new CadastrarJogadoresView();
+        cadastrarJogadoresView.setVisible(true);
+        //view.dispose();
     }
 
     public void entrarNoSistema() {

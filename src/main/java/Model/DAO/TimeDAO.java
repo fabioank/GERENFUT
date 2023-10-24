@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.Jogador;
 import Model.Time;
 import db.Conexao;
 import java.sql.Connection;
@@ -66,56 +67,69 @@ public class TimeDAO {
                     + "(?, ?)");
             st.setInt(1, id_time);
             st.setInt(2, id_jogador);
-            
+
             st.executeUpdate();
-            
+
         } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            };
         }
     }
-    public static List<Integer> carregarJogadores(Time time){
-        
+
+    public static List<Integer> carregarJogadores(Time time) {
+
         List<Integer> lista = new ArrayList<>();
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
         ResultSet rs = null;
-        
+
         try {
             st = conn.prepareStatement("SELECT id_jogador FROM Jogador_Time WHERE id_time = ? ");
             st.setInt(1, time.getId_time());
             rs = st.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 lista.add(rs.getInt("id_jogador"));
             }
-            
+
             return lista;
         } catch (Exception e) {
         }
         return null;
     }
-    public static boolean jaAssociado(Time time){
-        
+
+    public static boolean jaAssociado(Time time, Jogador jogador) {
+
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
         ResultSet rs = null;
-        
+
         try {
-            st = conn.prepareStatement("SELECT * FROM Jogador_Time WHERE id_time = ?");
+            st = conn.prepareStatement("SELECT id_jogador FROM Jogador_Time WHERE id_time = ? AND id_jogador = ?");
             st.setInt(1, time.getId_time());
-            
+            st.setInt(2, jogador.getId());
+
             rs = st.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         } catch (Exception e) {
         }
         return false;
     }
-    public static void deletarTime(int id_time){
-        
+
+    public static void deletarTime(int id_time) {
+
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
         try {

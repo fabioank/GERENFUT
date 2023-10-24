@@ -27,11 +27,11 @@
               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
               <Component id="lblTimeCasa" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jSpinner2" min="-2" max="-2" attributes="0"/>
+              <Component id="spinTimeCasa" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="87" max="32767" attributes="0"/>
               <Component id="lblVersus" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-              <Component id="jSpinner1" min="-2" max="-2" attributes="0"/>
+              <Component id="spinTimeVisitante" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblTimeVisitante" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
@@ -63,8 +63,8 @@
                   <Component id="lblTimeCasa" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTimeVisitante" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblVersus" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spinTimeVisitante" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spinTimeCasa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="324" max="32767" attributes="0"/>
           </Group>
@@ -112,9 +112,9 @@
         <Property name="text" type="java.lang.String" value="X"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSpinner" name="jSpinner1">
+    <Component class="javax.swing.JSpinner" name="spinTimeVisitante">
     </Component>
-    <Component class="javax.swing.JSpinner" name="jSpinner2">
+    <Component class="javax.swing.JSpinner" name="spinTimeCasa">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner()"/>
       </AuxValues>
