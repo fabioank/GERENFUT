@@ -27,11 +27,11 @@
               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
               <Component id="lblTimeCasa" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="spinTimeCasa" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="87" max="32767" attributes="0"/>
+              <Component id="spinTimeCasa" min="-2" pref="79" max="-2" attributes="0"/>
+              <EmptySpace pref="72" max="32767" attributes="0"/>
               <Component id="lblVersus" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-              <Component id="spinTimeVisitante" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+              <Component id="spinTimeVisitante" min="-2" pref="79" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblTimeVisitante" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
@@ -63,10 +63,10 @@
                   <Component id="lblTimeCasa" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTimeVisitante" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblVersus" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="spinTimeVisitante" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="spinTimeCasa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spinTimeVisitante" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="spinTimeCasa" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="324" max="32767" attributes="0"/>
+              <EmptySpace pref="309" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,9 +113,29 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="spinTimeVisitante">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor1 = spinTimeVisitante.getEditor();&#xa;        if (editor1 instanceof JSpinner.DefaultEditor) {&#xa;            JFormattedTextField textField1 = ((JSpinner.DefaultEditor) editor1).getTextField();&#xa;            textField1.setEditable(false);&#xa;        }"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JSpinner" name="spinTimeCasa">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+          <SpinnerModel initial="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+        </Property>
+        <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.JSpinner.NumberEditor(spinTimeCasa, &quot;&quot;)" type="code"/>
+        </Property>
+      </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor = spinTimeCasa.getEditor();&#xa;        if (editor instanceof JSpinner.DefaultEditor) {&#xa;            JFormattedTextField textField = ((JSpinner.DefaultEditor) editor).getTextField();&#xa;            textField.setEditable(false);&#xa;        }"/>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner()"/>
       </AuxValues>
     </Component>

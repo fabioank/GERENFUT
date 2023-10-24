@@ -2,9 +2,9 @@ package View;
 
 import Controller.TelaPartidaController;
 import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
 
 public class TelaPartidaView extends javax.swing.JFrame {
 
@@ -16,7 +16,6 @@ public class TelaPartidaView extends javax.swing.JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         controller.partida();
-
     }
 
 
@@ -49,6 +48,12 @@ public class TelaPartidaView extends javax.swing.JFrame {
         lblVersus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblVersus.setText("X");
 
+        spinTimeVisitante.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        spinTimeCasa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        spinTimeCasa.setModel(new javax.swing.SpinnerNumberModel());
+        spinTimeCasa.setEditor(new javax.swing.JSpinner.NumberEditor(spinTimeCasa, ""));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,11 +62,11 @@ public class TelaPartidaView extends javax.swing.JFrame {
                 .addGap(78, 78, 78)
                 .addComponent(lblTimeCasa)
                 .addGap(18, 18, 18)
-                .addComponent(spinTimeCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addComponent(spinTimeCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(lblVersus)
-                .addGap(83, 83, 83)
-                .addComponent(spinTimeVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addComponent(spinTimeVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblTimeVisitante)
                 .addGap(75, 75, 75))
@@ -87,10 +92,21 @@ public class TelaPartidaView extends javax.swing.JFrame {
                     .addComponent(lblTimeCasa)
                     .addComponent(lblTimeVisitante)
                     .addComponent(lblVersus)
-                    .addComponent(spinTimeVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spinTimeCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(324, Short.MAX_VALUE))
+                    .addComponent(spinTimeVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinTimeCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
+
+        JComponent editor1 = spinTimeVisitante.getEditor();
+        if (editor1 instanceof JSpinner.DefaultEditor) {
+            JFormattedTextField textField1 = ((JSpinner.DefaultEditor) editor1).getTextField();
+            textField1.setEditable(false);
+        }
+        JComponent editor = spinTimeCasa.getEditor();
+        if (editor instanceof JSpinner.DefaultEditor) {
+            JFormattedTextField textField = ((JSpinner.DefaultEditor) editor).getTextField();
+            textField.setEditable(false);
+        }
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

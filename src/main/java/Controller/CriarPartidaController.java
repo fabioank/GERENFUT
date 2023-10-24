@@ -8,6 +8,7 @@ import Model.Partida;
 import Model.Time;
 import Model.TimeComboboxModel;
 import View.CriarPartidaView;
+import View.TelaPartidaView;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,9 +19,11 @@ public class CriarPartidaController {
 
     private final CriarPartidaView view;
     public static Partida partida;
+
     public CriarPartidaController(CriarPartidaView view) {
         this.view = view;
     }
+
     public CriarPartidaController() {
         this.view = new CriarPartidaView();
     }
@@ -249,8 +252,13 @@ public class CriarPartidaController {
             }
             Time time2 = new Time(view.getCbTime2().getSelectedItem().toString(), jogadoresTime2);
 
-           partida = new Partida(0, new Date(), null, null, time1, time2);
+            partida = new Partida(0, new Date(), null, null, time1, time2);
 
+            if (partida != null) {
+                view.dispose();
+                TelaPartidaView partidaView = new TelaPartidaView();
+                partidaView.setVisible(true);               
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Houve algum problema com a criação da partida");
@@ -258,7 +266,8 @@ public class CriarPartidaController {
             return;
         }
     }
-    public static Partida retornoPartida(){
+
+    public static Partida retornoPartida() {
         return partida;
     }
 }

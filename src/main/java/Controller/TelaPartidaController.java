@@ -26,7 +26,8 @@ public class TelaPartidaController {
             view.getLblTimeVisitante().setText(timeVisitante);
             view.getLblDataJogo().setText(sdf.format(partida.getData()));
         }else{
-            JOptionPane.showMessageDialog(null, "BACALHAU");
+            JOptionPane.showMessageDialog(null, "Não foi possivel iniciar a partida");
+            return;
         }
     }
 }
