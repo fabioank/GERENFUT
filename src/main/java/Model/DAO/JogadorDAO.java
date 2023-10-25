@@ -51,7 +51,7 @@ public class JogadorDAO {
                     + "(?, ?, ?, ?, ?, ?)");
             st.setString(1, jogador.getNome());
             st.setString(2, jogador.getCpf());
-            st.setInt(3, jogador.getNumero());
+            st.setShort(3, (short) jogador.getNumero());
             st.setString(4, jogador.getPosicao());
             st.setString(5, jogador.getSenha());
             st.setBoolean(6, true);
@@ -139,19 +139,22 @@ public class JogadorDAO {
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
         ResultSet rs;
+        Jogador jogador = null;
 
         try {
-            st = conn.prepareStatement("SELECT nome, numero, posicao, situacao FROM Jogador WHERE cpf = ?");
+            st = conn.prepareStatement("SELECT id_jogador, nome, numero, posicao, situacao FROM Jogador WHERE cpf = ?");
             st.setString(1, cpf);
             rs = st.executeQuery();
 
             if (rs.next()) {
+                Long id = rs.getLong("id_jogador");
                 String nome = rs.getString("nome");
-                int numero = rs.getInt("numero");
+                short numero = rs.getShort("numero");
                 String posicao = rs.getString("posicao");
                 boolean situacao = rs.getBoolean("situacao");
-                return new Jogador(nome, numero, posicao, situacao);
+                jogador = new Jogador(id, nome, numero, posicao, situacao);
             }
+            return jogador;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -164,7 +167,7 @@ public class JogadorDAO {
                 e.printStackTrace();
             }
         }
-        return null;
+        return jogador;
     }
 
     public static void atualizarJogador(String cpf, Jogador jogador) {
@@ -175,7 +178,7 @@ public class JogadorDAO {
         try {
             st = conn.prepareStatement("UPDATE Jogador SET nome = ?, numero = ?, posicao = ?, situacao = ? WHERE cpf = ?");
             st.setString(1, jogador.getNome());
-            st.setInt(2, jogador.getNumero());
+            st.setShort(2, (short) jogador.getNumero());
             st.setString(3, jogador.getPosicao());
             st.setBoolean(4, jogador.isSituacao());
             st.setString(5, cpf);
@@ -203,9 +206,9 @@ public class JogadorDAO {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT id_jogador, nome, numero, posicao, situacao FROM Jogador");
             while (rs.next()) {
-                list.add(new Jogador(rs.getInt("id_jogador"),
+                list.add(new Jogador(rs.getLong("id_jogador"),
                         rs.getString("nome"),
-                        rs.getInt("numero"),
+                        rs.getShort("numero"),
                         rs.getString("posicao"),
                         rs.getBoolean("situacao")));
             }
@@ -225,7 +228,7 @@ public class JogadorDAO {
         }
     }
 
-    public static List<Jogador> consultarJogador(String posicao) {
+    public static List<Jogador> consultarPelaPosicao(String posicao) {
 
         List<Jogador> lista = new ArrayList<>();
 
@@ -238,47 +241,14 @@ public class JogadorDAO {
             st.setString(1, posicao);
             rs = st.executeQuery();
             while (rs.next()) {
-                lista.add(new Jogador(rs.getInt("id_jogador"),
+                lista.add(new Jogador(rs.getLong("id_jogador"),
                         rs.getString("nome"),
-                        rs.getInt("numero"),
+                        rs.getShort("numero"),
                         rs.getString("posicao"),
                         rs.getBoolean("situacao")));
             }
 
             return lista;
-
-        } catch (Exception e) {
-
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
-
-    public static Jogador encontrarPeloId(int id) {
-
-        Connection conn = Conexao.getConnection();
-        PreparedStatement st = null;
-        ResultSet rs = null;
-
-        try {
-            st = conn.prepareStatement("SELECT * FROM Jogador WHERE id_jogador = ?");
-            st.setInt(1, id);
-            rs = st.executeQuery();
-            while (rs.next()) {
-                return new Jogador(rs.getInt("id_jogador"),
-                        rs.getString("nome"),
-                        rs.getInt("numero"),
-                        rs.getString("posicao"),
-                        rs.getBoolean("situacao"));
-            }
-            return null;
 
         } catch (Exception e) {
 
@@ -322,5 +292,45 @@ public class JogadorDAO {
             }
         }
         return false;
+    }
+
+    public static Jogador encontrarPeloId(Long id) {
+        Connection conn = Conexao.getConnection();
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Jogador jogador = null;
+
+        try {
+            st = conn.prepareStatement("SELECT * FROM Jogador WHERE id_jogador = ?");
+            st.setLong(1, id);
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                jogador = new Jogador(rs.getLong("id_jogador"),
+                        rs.getString("nome"),
+                        rs.getString("cpf"),
+                        rs.getShort("numero"),
+                        rs.getString("posicao"),
+                        rs.getString("senha"),
+                        rs.getBoolean("situacao"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Registra o erro no console
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (st != null) {
+                    st.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return jogador;
     }
 }

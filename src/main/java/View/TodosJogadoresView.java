@@ -18,6 +18,7 @@ public class TodosJogadoresView extends javax.swing.JFrame {
         controller = new TodosJogadoresController(this);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        controller.todosJogadores();
     }
     
     @SuppressWarnings("unchecked")
@@ -29,6 +30,8 @@ public class TodosJogadoresView extends javax.swing.JFrame {
         btnTodosJogadores = new javax.swing.JButton();
         lblFiltro = new javax.swing.JLabel();
         cbFiltro = new javax.swing.JComboBox<>();
+        btnNovo = new javax.swing.JButton();
+        btlSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,7 +42,20 @@ public class TodosJogadoresView extends javax.swing.JFrame {
             new String [] {
                 "ID JOGADOR", "NOME", "NUMERO", "POSIÇÃO", "SITUAÇÃO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblJogadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblJogadoresMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblJogadores);
 
         btnTodosJogadores.setText("Carregar Jogadores");
@@ -54,19 +70,37 @@ public class TodosJogadoresView extends javax.swing.JFrame {
 
         cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos os jogadores", "Goleiro", "Lateral Esquerdo", "Lateral Direito ", "Zagueiro", "Volante", "Meio campo", "Atacante" }));
 
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+
+        btlSair.setText("Sair");
+        btlSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(139, 139, 139)
                 .addComponent(lblFiltro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTodosJogadores)
-                .addGap(232, 232, 232))
+                .addGap(137, 137, 137)
+                .addComponent(btnNovo)
+                .addGap(40, 40, 40)
+                .addComponent(btlSair)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,7 +110,9 @@ public class TodosJogadoresView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbFiltro)
                     .addComponent(btnTodosJogadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblFiltro))
+                    .addComponent(lblFiltro)
+                    .addComponent(btnNovo)
+                    .addComponent(btlSair))
                 .addContainerGap())
         );
 
@@ -86,6 +122,19 @@ public class TodosJogadoresView extends javax.swing.JFrame {
     private void btnTodosJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosJogadoresActionPerformed
         controller.todosJogadores();
     }//GEN-LAST:event_btnTodosJogadoresActionPerformed
+
+    private void tblJogadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJogadoresMouseClicked
+        controller.duploClick(evt);    
+    }//GEN-LAST:event_tblJogadoresMouseClicked
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        CadastrarJogadoresView cadastrarJogadoresView = new CadastrarJogadoresView(null);
+        cadastrarJogadoresView.setVisible(true);
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btlSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_btlSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,6 +173,8 @@ public class TodosJogadoresView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btlSair;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnTodosJogadores;
     private javax.swing.JComboBox<String> cbFiltro;
     private javax.swing.JScrollPane jScrollPane1;

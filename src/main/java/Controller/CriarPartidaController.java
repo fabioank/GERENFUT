@@ -36,9 +36,11 @@ public class CriarPartidaController {
         JogadorComboboxModel jogadorComboboxModel2 = new JogadorComboboxModel();
 
         for (Jogador jogador : listaJogador) {
-
-            jogadorComboboxModel1.addJogador(jogador);
-            jogadorComboboxModel2.addJogador(jogador);
+            if (jogador.isSituacao() == true) {
+                
+                jogadorComboboxModel1.addJogador(jogador);
+                jogadorComboboxModel2.addJogador(jogador);
+            }
 
             view.getCbJogadoresTime1().setModel(jogadorComboboxModel1);
             view.getCbJogadoresTime2().setModel(jogadorComboboxModel2);
@@ -68,7 +70,7 @@ public class CriarPartidaController {
             Time timeCasa = (Time) view.getCbTime1().getSelectedItem();
             timeCasa.getId_time();
 
-            List<Integer> lista = TimeDAO.carregarJogadores(timeCasa);
+            List<Long> lista = TimeDAO.carregarJogadores(timeCasa);
             List<Jogador> listaJogadores = new ArrayList<>();
 
             if (lista.isEmpty()) {
@@ -77,9 +79,11 @@ public class CriarPartidaController {
                 return;
             }
 
-            for (Integer i : lista) {
+            for (Long i : lista) {
                 Jogador jogador = JogadorDAO.encontrarPeloId(i);
-                listaJogadores.add(jogador);
+                if(jogador.isSituacao() == true){
+                    listaJogadores.add(jogador);
+                }                
             }
             for (Jogador j : listaJogadores) {
                 Object[] jogadoresCasa = {j.getId(), j.getNome(), j.getNumero(), j.getPosicao()};
@@ -96,7 +100,7 @@ public class CriarPartidaController {
             Time timeVisitante = (Time) view.getCbTime2().getSelectedItem();
             timeVisitante.getId_time();
 
-            List<Integer> lista = TimeDAO.carregarJogadores(timeVisitante);
+            List<Long> lista = TimeDAO.carregarJogadores(timeVisitante);
             List<Jogador> listaJogadores = new ArrayList<>();
 
             if (lista.isEmpty()) {
@@ -105,7 +109,7 @@ public class CriarPartidaController {
                 return;
             }
 
-            for (Integer i : lista) {
+            for (Long i : lista) {
                 Jogador jogador = JogadorDAO.encontrarPeloId(i);
                 listaJogadores.add(jogador);
             }
@@ -125,7 +129,7 @@ public class CriarPartidaController {
             boolean jogadorJaAdicionado = false;
 
             for (int i = 0; i < linhasTabela; i++) {
-                int idNaTabela = (int) tableModel1.getValueAt(i, 0);
+                Long idNaTabela = (Long) tableModel1.getValueAt(i, 0);
                 if (idNaTabela == jogadorSelecionado.getId()) {
                     jogadorJaAdicionado = true;
                     break;
@@ -152,7 +156,7 @@ public class CriarPartidaController {
             boolean jogadorJaAdicionado = false;
 
             for (int i = 0; i < linhasTabela; i++) {
-                int idNaTabela = (int) tableModel2.getValueAt(i, 0);
+                Long idNaTabela = (Long) tableModel2.getValueAt(i, 0);
                 if (idNaTabela == jogadorSelecionado.getId()) {
                     jogadorJaAdicionado = true;
                     break;
@@ -225,7 +229,6 @@ public class CriarPartidaController {
                 JOptionPane.showMessageDialog(null, "Ambos os times devem ter a mesma quantidade de jogadores");
                 return;
             }
-
             Time timeCasa = (Time) view.getCbTime1().getSelectedItem();
             Time timeVisitante = (Time) view.getCbTime2().getSelectedItem();
 
@@ -233,7 +236,7 @@ public class CriarPartidaController {
             List<Jogador> jogadoresTime2 = new ArrayList<>();
 
             for (int i = 0; i < tableModel1.getRowCount(); i++) {
-                Jogador jogador = JogadorDAO.encontrarPeloId((int) tableModel1.getValueAt(i, 0));
+                Jogador jogador = JogadorDAO.encontrarPeloId((Long) tableModel1.getValueAt(i, 0));
                 jogadoresTime1.add(jogador);
 
                 if (!TimeDAO.jaAssociado(timeCasa, jogador)) {
@@ -243,7 +246,7 @@ public class CriarPartidaController {
             Time time1 = new Time(view.getCbTime1().getSelectedItem().toString(), jogadoresTime1);
 
             for (int i = 0; i < tableModel2.getRowCount(); i++) {
-                Jogador jogador = JogadorDAO.encontrarPeloId((int) tableModel2.getValueAt(i, 0));
+                Jogador jogador = JogadorDAO.encontrarPeloId((Long) tableModel2.getValueAt(i, 0));
                 jogadoresTime2.add(jogador);
 
                 if (!TimeDAO.jaAssociado(timeVisitante, jogador)) {
@@ -257,7 +260,7 @@ public class CriarPartidaController {
             if (partida != null) {
                 view.dispose();
                 TelaPartidaView partidaView = new TelaPartidaView();
-                partidaView.setVisible(true);               
+                partidaView.setVisible(true);
             }
 
         } catch (Exception e) {

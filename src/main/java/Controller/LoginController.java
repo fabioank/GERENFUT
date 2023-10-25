@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.DAO.JogadorDAO;
-import View.CadastrarJogadorView;
 import View.CadastrarJogadoresView;
 import View.LoginView;
 import View.MenuPrincipalView;
@@ -17,7 +16,7 @@ public class LoginController {
 
     public void irParaCadastro() {
 
-        CadastrarJogadoresView cadastrarJogadoresView = new CadastrarJogadoresView();
+        CadastrarJogadoresView cadastrarJogadoresView = new CadastrarJogadoresView(null);
         cadastrarJogadoresView.setVisible(true);
         //view.dispose();
     }

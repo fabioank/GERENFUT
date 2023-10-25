@@ -2,44 +2,48 @@ package Model;
 
 public class Jogador {
 
-    private int id;
+    private Long id;
     private String nome;
     private String cpf;
-    private int numero;
+    private short numero;
     private String posicao;
     private String senha;
     private boolean situacao;
 
-    public Jogador() {
-    }
+    public Jogador() {}
 
     public Jogador(String cpf, String senha) {
         this.cpf = cpf;
         this.senha = senha;
     }
 
-    public Jogador(String name, int numero, String posicao) {
+    public Jogador(String name, short numero, String posicao) {
         this.nome = name;
         this.numero = numero;
         this.posicao = posicao;
     }
-
-    public Jogador(String name, int numero, String posicao, boolean situacao) {
+    public Jogador(String name, short numero, String posicao, boolean situacao) {
         this.nome = name;
         this.numero = numero;
         this.posicao = posicao;
         this.situacao = situacao;
     }
-
-    public Jogador(int id, String name, int numero, String posicao, boolean situacao) {
+    public Jogador(Long id, String name, short numero, String posicao, boolean situacao) {
         this.id = id;
         this.nome = name;
         this.numero = numero;
         this.posicao = posicao;
         this.situacao = situacao;
     }
-
-    public Jogador(int id, String name, String cpf, int numero, String posicao, String senha, boolean situacao) {
+    public Jogador(String name, String cpf, short numero, String posicao, String senha, boolean situacao) {
+        this.nome = name;
+        this.cpf = cpf;
+        this.numero = numero;
+        this.posicao = posicao;
+        this.senha = senha;
+        this.situacao = situacao;
+    }
+    public Jogador(Long id, String name, String cpf, short numero, String posicao, String senha, boolean situacao) {
         this.id = id;
         this.nome = name;
         this.cpf = cpf;
@@ -49,11 +53,11 @@ public class Jogador {
         this.situacao = situacao;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -77,7 +81,7 @@ public class Jogador {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(short numero) {
         this.numero = numero;
     }
 

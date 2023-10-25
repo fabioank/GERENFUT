@@ -121,7 +121,15 @@ public class CriarPartidaView extends javax.swing.JFrame {
             new String [] {
                 "ID", "Jogador", "Numero", "Posição"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblJogadoresTime2);
 
         tblJogadoresTime1.setModel(new javax.swing.table.DefaultTableModel(
@@ -131,7 +139,15 @@ public class CriarPartidaView extends javax.swing.JFrame {
             new String [] {
                 "ID", "Nome", "Numero", "Posição"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tblJogadoresTime1);
 
         btnRemoveJogador1.setText("-");

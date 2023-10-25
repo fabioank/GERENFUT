@@ -23,7 +23,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
         jLabel3.setVerticalAlignment(SwingConstants.CENTER);
         setTitle("Menu principal");
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -34,7 +34,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuItemNovoJogador = new javax.swing.JMenu();
-        menuItemEditarJogador = new javax.swing.JMenuItem();
         menuItemVerJogadores = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuItemCriarNovoTime = new javax.swing.JMenuItem();
@@ -48,9 +47,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View//ImagemCampo.jpg")));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View//Imagens/IMAGEMGRAMADO.jpg")));
         getContentPane().add(jLabel3, java.awt.BorderLayout.CENTER);
-        ImageIcon icon = new ImageIcon(getClass().getResource("/View//ImagemCampo.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/View//Imagens/IMAGEMGRAMADO.jpg"));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         // Obtenha as dimensões da tela
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -76,16 +75,13 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jLabel3.setIcon(scaledIcon);
 
         menuItemNovoJogador.setText("Jogador");
-
-        menuItemEditarJogador.setText("Cadastrar/Editar jogador");
-        menuItemEditarJogador.addActionListener(new java.awt.event.ActionListener() {
+        menuItemNovoJogador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemEditarJogadorActionPerformed(evt);
+                menuItemNovoJogadorActionPerformed(evt);
             }
         });
-        menuItemNovoJogador.add(menuItemEditarJogador);
 
-        menuItemVerJogadores.setText("Ver jogadores cadastrados");
+        menuItemVerJogadores.setText("Ver Jogadores");
         menuItemVerJogadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemVerJogadoresActionPerformed(evt);
@@ -144,21 +140,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuItemEditarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEditarJogadorActionPerformed
-        CadastrarJogadoresView cadastrarJogadoresView = new CadastrarJogadoresView();
-        cadastrarJogadoresView.setVisible(true);
-    }//GEN-LAST:event_menuItemEditarJogadorActionPerformed
-
-    private void menuItemVerJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVerJogadoresActionPerformed
-        TodosJogadoresView todosJogadores = new TodosJogadoresView();
-        todosJogadores.setVisible(true);
-    }//GEN-LAST:event_menuItemVerJogadoresActionPerformed
-
-    private void menuItemCriarNovoTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCriarNovoTimeActionPerformed
-        CadastrarTimeView cadastrarTime = new CadastrarTimeView();
-        cadastrarTime.setVisible(true);
-    }//GEN-LAST:event_menuItemCriarNovoTimeActionPerformed
-
     private void menuItemCriarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCriarPartidaActionPerformed
         CriarPartidaView criarPartida = new CriarPartidaView();
         criarPartida.setVisible(true);
@@ -172,6 +153,26 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         RankingView ranking = new RankingView();
         ranking.setVisible(true);
     }//GEN-LAST:event_menuItemVerRankingActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TodosJogadoresView todosJogadoresView = new TodosJogadoresView();
+        todosJogadoresView.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menuItemCriarNovoTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCriarNovoTimeActionPerformed
+        CadastrarTimeView cadastrarTime = new CadastrarTimeView();
+        cadastrarTime.setVisible(true);
+    }//GEN-LAST:event_menuItemCriarNovoTimeActionPerformed
+
+    private void menuItemNovoJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNovoJogadorActionPerformed
+
+    }//GEN-LAST:event_menuItemNovoJogadorActionPerformed
+
+    private void menuItemVerJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVerJogadoresActionPerformed
+        TodosJogadoresView todosJogadoresView = new TodosJogadoresView();
+        todosJogadoresView.setVisible(true);
+        
+    }//GEN-LAST:event_menuItemVerJogadoresActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -215,7 +216,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenu menuHistorico;
     private javax.swing.JMenuItem menuItemCriarNovoTime;
     private javax.swing.JMenuItem menuItemCriarPartida;
-    private javax.swing.JMenuItem menuItemEditarJogador;
     private javax.swing.JMenu menuItemNovoJogador;
     private javax.swing.JMenuItem menuItemVerJogadores;
     private javax.swing.JMenuItem menuItemVerRanking;

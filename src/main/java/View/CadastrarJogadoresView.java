@@ -5,11 +5,11 @@
 package View;
 
 import Controller.CadastrarJogadoresController;
+import Model.DAO.JogadorDAO;
+import Model.Jogador;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -19,17 +19,26 @@ import javax.swing.JTextField;
  */
 public class CadastrarJogadoresView extends javax.swing.JFrame {
 
+    Jogador jogador;
     private final CadastrarJogadoresController controller;
 
-    public CadastrarJogadoresView() {
+    public CadastrarJogadoresView(Jogador jogador) {
         initComponents();
         controller = new CadastrarJogadoresController(this);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Cadastro de jogadores");
         ButtonGroup group = new ButtonGroup();
-        group.add(chkEditarJogador);
-        group.add(chkNovoJogador);
+        this.jogador = jogador;
+
+        if (this.jogador != null && this.jogador.getId() != null) {
+            this.txtNome.setText(jogador.getNome());
+            this.txtNumero.setText(String.valueOf(jogador.getNumero()));
+            this.txtCpf.setText(jogador.getCpf());
+            this.cbPosicao.setSelectedItem(jogador.getPosicao());
+            this.getCbSituacao().setSelectedItem(jogador.isSituacao() ? "Ativo" : "Inativo");
+
+        }
     }
 
     /**
@@ -42,9 +51,6 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
     private void initComponents() {
 
         txtCadastrarJogadores = new javax.swing.JLabel();
-        lblOpcaoDesejada = new javax.swing.JLabel();
-        chkNovoJogador = new javax.swing.JCheckBox();
-        chkEditarJogador = new javax.swing.JCheckBox();
         lblSenha = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtNumero = new javax.swing.JTextField();
@@ -55,36 +61,16 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
         lblSituacao = new javax.swing.JLabel();
         lblPosicao = new javax.swing.JLabel();
         cbSituacao = new javax.swing.JComboBox<>();
-        btnSalvar = new javax.swing.JButton();
-        txtCpf = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         txtConfirmarSenha = new javax.swing.JPasswordField();
+        btnSalvar = new javax.swing.JButton();
+        txtCpf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtCadastrarJogadores.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtCadastrarJogadores.setText("GERENFUT");
-
-        lblOpcaoDesejada.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblOpcaoDesejada.setText("Selecione a opção desejada: ");
-
-        chkNovoJogador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkNovoJogador.setText("Novo Jogador");
-        chkNovoJogador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkNovoJogadorActionPerformed(evt);
-            }
-        });
-
-        chkEditarJogador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkEditarJogador.setText("Editar Jogador");
-        chkEditarJogador.setToolTipText("Por favor, informe o cpf do jogador para efetuar a edição");
-        chkEditarJogador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkEditarJogadorActionPerformed(evt);
-            }
-        });
 
         lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSenha.setText("Senha: ");
@@ -108,6 +94,9 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
 
         cbSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Confirmar senha: ");
+
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,68 +104,21 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
             }
         });
 
-        txtCpf.setToolTipText("Por favor, informe o cpf para buscar os dados para a edição.");
-        txtCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCpfActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Confirmar senha: ");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtCadastrarJogadores)
-                        .addGap(187, 187, 187))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblOpcaoDesejada)
-                        .addGap(130, 130, 130))))
+                .addGap(0, 204, Short.MAX_VALUE)
+                .addComponent(txtCadastrarJogadores)
+                .addGap(187, 187, 187))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
-                        .addComponent(lblPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(cbPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
                         .addComponent(lblSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(150, 150, 150)
-                                .addComponent(lblNome))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(170, 170, 170)
-                                .addComponent(lblCpf)))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                            .addComponent(txtCpf)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(chkNovoJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(140, 140, 140)
-                                .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(chkEditarJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -184,79 +126,82 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
                             .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSalvar)
                             .addComponent(txtSenha)
-                            .addComponent(txtConfirmarSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))))
-                .addContainerGap(89, Short.MAX_VALUE))
+                            .addComponent(txtConfirmarSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(170, 170, 170)
+                                .addComponent(lblCpf)
+                                .addGap(26, 26, 26))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblNumero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPosicao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .addComponent(cbPosicao, 0, 141, Short.MAX_VALUE)
+                            .addComponent(txtCpf)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(btnSalvar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(txtCadastrarJogadores)
-                .addGap(18, 18, 18)
-                .addComponent(lblOpcaoDesejada)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkNovoJogador)
-                    .addComponent(chkEditarJogador))
-                .addGap(40, 40, 40)
+                .addGap(83, 83, 83)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNome))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCpf)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNome)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtConfirmarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                    .addComponent(txtConfirmarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(btnSalvar)
-                .addGap(23, 23, 23))
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkNovoJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNovoJogadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkNovoJogadorActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if (getChkNovoJogador().isSelected()) {
-            controller.novoJogador();
-        } else if (getChkEditarJogador().isSelected()) {
+
+        boolean jaCadastrado = JogadorDAO.verificarJogador(getTxtCpf().getText(), getTxtSenha().getText());
+        
+        if (jaCadastrado){           
             controller.editarJogador();
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione a opção de criar ou editar primeiro");
+        }else{
+            controller.novoJogador();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void chkEditarJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkEditarJogadorActionPerformed
-        controller.buscarDados();
-    }//GEN-LAST:event_chkEditarJogadorActionPerformed
-
-    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCpfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,7 +233,7 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastrarJogadoresView().setVisible(true);
+                new CadastrarJogadoresView(null).setVisible(true);
             }
         });
     }
@@ -297,13 +242,10 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbPosicao;
     private javax.swing.JComboBox<String> cbSituacao;
-    private javax.swing.JCheckBox chkEditarJogador;
-    private javax.swing.JCheckBox chkNovoJogador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNumero;
-    private javax.swing.JLabel lblOpcaoDesejada;
     private javax.swing.JLabel lblPosicao;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblSituacao;
@@ -314,22 +256,6 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
     private javax.swing.JTextField txtNumero;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
-
-    public JCheckBox getChkEditarJogador() {
-        return chkEditarJogador;
-    }
-
-    public void setChkEditarJogador(JCheckBox chkEditarJogador) {
-        this.chkEditarJogador = chkEditarJogador;
-    }
-
-    public JCheckBox getChkNovoJogador() {
-        return chkNovoJogador;
-    }
-
-    public void setChkNovoJogador(JCheckBox chkNovoJogador) {
-        this.chkNovoJogador = chkNovoJogador;
-    }
 
     public JButton getBtnSalvar() {
         return btnSalvar;
@@ -378,12 +304,15 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
     public void setTxtNumero(JTextField txtNumero) {
         this.txtNumero = txtNumero;
     }
+
     public JPasswordField getTxtSenha() {
         return txtSenha;
     }
+
     public void setTxtSenha(JPasswordField txtSenha) {
         this.txtSenha = txtSenha;
     }
+
     public JTextField getTxtCpfBuscaDados() {
         return txtCpf;
     }
@@ -399,7 +328,4 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
     public void setTxtConfirmarSenha(JPasswordField txtConfirmarSenha) {
         this.txtConfirmarSenha = txtConfirmarSenha;
     }
-    
-    
-
 }

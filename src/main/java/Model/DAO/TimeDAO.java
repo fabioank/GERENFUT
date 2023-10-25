@@ -54,7 +54,7 @@ public class TimeDAO {
         return null;
     }
 
-    public static void associarJogador(int id_time, int id_jogador) {
+    public static void associarJogador(int id_time, Long id_jogador) {
 
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
@@ -66,7 +66,7 @@ public class TimeDAO {
                     + "VALUES"
                     + "(?, ?)");
             st.setInt(1, id_time);
-            st.setInt(2, id_jogador);
+            st.setLong(2, id_jogador);
 
             st.executeUpdate();
 
@@ -83,9 +83,9 @@ public class TimeDAO {
         }
     }
 
-    public static List<Integer> carregarJogadores(Time time) {
+    public static List<Long> carregarJogadores(Time time) {
 
-        List<Integer> lista = new ArrayList<>();
+        List<Long> lista = new ArrayList<>();
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
         ResultSet rs = null;
@@ -96,7 +96,7 @@ public class TimeDAO {
             rs = st.executeQuery();
 
             while (rs.next()) {
-                lista.add(rs.getInt("id_jogador"));
+                lista.add(rs.getLong("id_jogador"));
             }
 
             return lista;
@@ -114,7 +114,7 @@ public class TimeDAO {
         try {
             st = conn.prepareStatement("SELECT id_jogador FROM Jogador_Time WHERE id_time = ? AND id_jogador = ?");
             st.setInt(1, time.getId_time());
-            st.setInt(2, jogador.getId());
+            st.setLong(2, jogador.getId());
 
             rs = st.executeQuery();
 

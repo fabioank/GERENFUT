@@ -2,10 +2,13 @@ package Controller;
 
 import Model.DAO.JogadorDAO;
 import Model.Jogador;
+import View.CadastrarJogadoresView;
 import View.TodosJogadoresView;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class TodosJogadoresController {
 
@@ -21,10 +24,10 @@ public class TodosJogadoresController {
         tableModel.setRowCount(0);
         List<Jogador> lista;
         String filtro = view.getCbFiltro().getSelectedItem().toString();
-        if (filtro.equals("Todos os jogadores")){
+        if (filtro.equals("Todos os jogadores")) {
             lista = JogadorDAO.listaTodosJogadores();
-        }else{
-            lista = JogadorDAO.consultarJogador(filtro);
+        } else {
+            lista = JogadorDAO.consultarPelaPosicao(filtro);
         }
         for (Jogador jogador : lista) {
             Object[] jogadores = {
@@ -34,6 +37,23 @@ public class TodosJogadoresController {
                 jogador.getPosicao(),
                 jogador.isSituacao() ? "Ativo" : "Inativo"};
             tableModel.addRow(jogadores);
+        }
+    }
+    
+    public void duploClick(MouseEvent evt) {
+
+        if (evt.getClickCount() == 2) {
+            TableModel model = view.getTblJogadores().getModel();
+
+            Long id = (Long) model.getValueAt(view.getTblJogadores().getSelectedRow(), 0);
+            System.out.println(id);
+            Jogador jogador = new Jogador();
+
+            jogador = JogadorDAO.encontrarPeloId(id);
+
+            CadastrarJogadoresView form = new CadastrarJogadoresView(jogador);
+            form.setVisible(true);
+
         }
     }
 }
