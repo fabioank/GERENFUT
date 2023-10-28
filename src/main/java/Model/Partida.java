@@ -15,9 +15,11 @@ public class Partida {
     private Time timeCasa;
     private Time timeVisitante;
 
-    public Partida(int id_partida, Date data, String melhor_jogador, String melhor_gol, Time timeCasa, Time timeVisitante) {
+    public Partida(int id_partida, Date data, byte golsTimeCasa, byte golsTimeVisitante, String melhor_jogador, String melhor_gol, Time timeCasa, Time timeVisitante) {
         this.id_partida = id_partida;
         this.data = data;
+        this.golsTimeCasa = golsTimeCasa;
+        this.golsTimeVisitante = golsTimeVisitante;
         this.melhor_jogador = melhor_jogador;
         this.melhor_gol = melhor_gol;
         this.timeCasa = timeCasa;
@@ -73,5 +75,22 @@ public class Partida {
     public void setTimeVisitante(Time timeVisitante) {
         this.timeVisitante = timeVisitante;
     }
+
+    public byte getGolsTimeCasa() {
+        return golsTimeCasa;
+    }
+
+    public void setGolsTimeCasa(byte golsTimeCasa) {
+        this.golsTimeCasa = golsTimeCasa;
+    }
+
+    public byte getGolsTimeVisitante() {
+        return golsTimeVisitante;
+    }
+
+    public void setGolsTimeVisitante(byte golsTimeVisitante) {
+        this.golsTimeVisitante = golsTimeVisitante;
+    }
+    
     
 }

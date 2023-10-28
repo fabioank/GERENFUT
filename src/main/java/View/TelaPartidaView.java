@@ -7,30 +7,35 @@ import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 
 public class TelaPartidaView extends javax.swing.JFrame {
 
     private final TelaPartidaController controller;
-    
+
     public TelaPartidaView() {
         initComponents();
         controller = new TelaPartidaController(this);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         controller.partida();
-        controller.addJogadorTimeCasa();
-        controller.addJogadorTimeVisitante();
+        controller.comporTimeCasa();
+        controller.comporTimeVisitante();
         setSize(900, 700);
         setLocationRelativeTo(null);
-        
+
         setTitle("Tela da partida");
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         lblPartidaEmAndamento = new javax.swing.JLabel();
         lblTimeCasa = new javax.swing.JLabel();
         lblTimeVisitante = new javax.swing.JLabel();
@@ -46,7 +51,25 @@ public class TelaPartidaView extends javax.swing.JFrame {
         lblPlacarTimeCasa = new javax.swing.JLabel();
         lblPlacarTimeVisitante = new javax.swing.JLabel();
         btnAddMarcadorVisitante = new javax.swing.JButton();
-        btnFinalizarPartida = new javax.swing.JButton();
+        btnEncerrarPartida = new javax.swing.JButton();
+        btnRemoverMarcadorCasa = new javax.swing.JButton();
+        btnRemoverJogadorVisitante = new javax.swing.JButton();
+        lblMelhorJogador = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listaVotacaoGolMaisBonito = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listaVotacaoMelhorJogador = new javax.swing.JList<>();
+        btnSalvarPartida = new javax.swing.JButton();
+        btnContVotoMelhorJogador = new javax.swing.JButton();
+        btnContVotoMelhorGol = new javax.swing.JButton();
+        lblVotosRestantesCasa = new javax.swing.JLabel();
+        lblVotosCasa = new javax.swing.JLabel();
+        lblJogadorMelhorJogador = new javax.swing.JLabel();
+        lblJogadorMelhorGol = new javax.swing.JLabel();
+        lblVotosRestantesVisitantes = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -69,7 +92,7 @@ public class TelaPartidaView extends javax.swing.JFrame {
         lblDataJogo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDataJogo.setText("Data do jogo");
         getContentPane().add(lblDataJogo);
-        lblDataJogo.setBounds(402, 77, 85, 20);
+        lblDataJogo.setBounds(402, 77, 100, 20);
 
         lblVersus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblVersus.setText("X");
@@ -122,9 +145,102 @@ public class TelaPartidaView extends javax.swing.JFrame {
         getContentPane().add(btnAddMarcadorVisitante);
         btnAddMarcadorVisitante.setBounds(509, 167, 43, 23);
 
-        btnFinalizarPartida.setText("Finalizar partida");
-        getContentPane().add(btnFinalizarPartida);
-        btnFinalizarPartida.setBounds(381, 313, 116, 23);
+        btnEncerrarPartida.setText("Encerrar a partida");
+        btnEncerrarPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEncerrarPartidaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEncerrarPartida);
+        btnEncerrarPartida.setBounds(380, 310, 140, 23);
+
+        btnRemoverMarcadorCasa.setText("-");
+        btnRemoverMarcadorCasa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverMarcadorCasaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRemoverMarcadorCasa);
+        btnRemoverMarcadorCasa.setBounds(330, 200, 40, 23);
+
+        btnRemoverJogadorVisitante.setText("-");
+        getContentPane().add(btnRemoverJogadorVisitante);
+        btnRemoverJogadorVisitante.setBounds(510, 200, 40, 23);
+
+        lblMelhorJogador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMelhorJogador.setText("ELEGER O MELHOR JOGADOR DA PARTIDA");
+        getContentPane().add(lblMelhorJogador);
+        lblMelhorJogador.setBounds(510, 370, 360, 25);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("ELEGER O GOL MAIS BONITO DA PARTIDA");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 370, 350, 20);
+        getContentPane().add(jSeparator2);
+        jSeparator2.setBounds(430, 353, 0, 280);
+
+        jScrollPane3.setViewportView(listaVotacaoGolMaisBonito);
+
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(60, 400, 258, 120);
+
+        jScrollPane4.setViewportView(listaVotacaoMelhorJogador);
+
+        getContentPane().add(jScrollPane4);
+        jScrollPane4.setBounds(570, 400, 260, 120);
+
+        btnSalvarPartida.setText("Salvar partida");
+        btnSalvarPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarPartidaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalvarPartida);
+        btnSalvarPartida.setBounds(390, 590, 110, 23);
+
+        btnContVotoMelhorJogador.setText("Contabilizar Voto");
+        btnContVotoMelhorJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContVotoMelhorJogadorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnContVotoMelhorJogador);
+        btnContVotoMelhorJogador.setBounds(190, 530, 130, 20);
+
+        btnContVotoMelhorGol.setText("Contabilizar Voto");
+        btnContVotoMelhorGol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContVotoMelhorGolActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnContVotoMelhorGol);
+        btnContVotoMelhorGol.setBounds(700, 530, 130, 23);
+
+        lblVotosRestantesCasa.setText("0");
+        getContentPane().add(lblVotosRestantesCasa);
+        lblVotosRestantesCasa.setBounds(150, 530, 30, 20);
+
+        lblVotosCasa.setText("Votos restantes: ");
+        getContentPane().add(lblVotosCasa);
+        lblVotosCasa.setBounds(60, 530, 90, 20);
+
+        lblJogadorMelhorJogador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblJogadorMelhorJogador.setText("Jogador mais votado : ");
+        getContentPane().add(lblJogadorMelhorJogador);
+        lblJogadorMelhorJogador.setBounds(570, 560, 260, 20);
+
+        lblJogadorMelhorGol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblJogadorMelhorGol.setText("Jogador mais votado : ");
+        getContentPane().add(lblJogadorMelhorGol);
+        lblJogadorMelhorGol.setBounds(60, 560, 260, 20);
+
+        lblVotosRestantesVisitantes.setText("0");
+        getContentPane().add(lblVotosRestantesVisitantes);
+        lblVotosRestantesVisitantes.setBounds(660, 530, 30, 20);
+
+        jLabel2.setText("Votos restantes: ");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(570, 530, 90, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -136,6 +252,28 @@ public class TelaPartidaView extends javax.swing.JFrame {
     private void btnAddMarcadorVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMarcadorVisitanteActionPerformed
         controller.addMarcadorTimeVisitante();
     }//GEN-LAST:event_btnAddMarcadorVisitanteActionPerformed
+
+    private void btnRemoverMarcadorCasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverMarcadorCasaActionPerformed
+        //controller.removerMarcadorTimeCasa();
+    }//GEN-LAST:event_btnRemoverMarcadorCasaActionPerformed
+
+    private void btnEncerrarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarPartidaActionPerformed
+        controller.elegerGolMaisBonito();
+        controller.elegerMelhorJogador();
+
+    }//GEN-LAST:event_btnEncerrarPartidaActionPerformed
+
+    private void btnContVotoMelhorJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContVotoMelhorJogadorActionPerformed
+        controller.addVotoMelhorGol();
+    }//GEN-LAST:event_btnContVotoMelhorJogadorActionPerformed
+
+    private void btnContVotoMelhorGolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContVotoMelhorGolActionPerformed
+        controller.addVotoMelhorJogador();
+    }//GEN-LAST:event_btnContVotoMelhorGolActionPerformed
+
+    private void btnSalvarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPartidaActionPerformed
+        controller.salvarPartida();
+    }//GEN-LAST:event_btnSalvarPartidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,20 +314,43 @@ public class TelaPartidaView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddMarcadorCasa;
     private javax.swing.JButton btnAddMarcadorVisitante;
-    private javax.swing.JButton btnFinalizarPartida;
+    private javax.swing.JButton btnContVotoMelhorGol;
+    private javax.swing.JButton btnContVotoMelhorJogador;
+    private javax.swing.JButton btnEncerrarPartida;
+    private javax.swing.JButton btnRemoverJogadorVisitante;
+    private javax.swing.JButton btnRemoverMarcadorCasa;
+    private javax.swing.JButton btnSalvarPartida;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JComboBox<String> cbMarcadorTimeCasa;
     private javax.swing.JComboBox<String> cbMarcadorTimeVisitante;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblDataJogo;
+    private javax.swing.JLabel lblJogadorMelhorGol;
+    private javax.swing.JLabel lblJogadorMelhorJogador;
+    private javax.swing.JLabel lblMelhorJogador;
     private javax.swing.JLabel lblPartidaEmAndamento;
     private javax.swing.JLabel lblPlacarTimeCasa;
     private javax.swing.JLabel lblPlacarTimeVisitante;
     private javax.swing.JLabel lblTimeCasa;
     private javax.swing.JLabel lblTimeVisitante;
     private javax.swing.JLabel lblVersus;
+    private javax.swing.JLabel lblVotosCasa;
+    private javax.swing.JLabel lblVotosRestantesCasa;
+    private javax.swing.JLabel lblVotosRestantesVisitantes;
     private javax.swing.JList<Jogador> listMarcadoresTimeCasa;
     private javax.swing.JList<Jogador> listMarcadoresTimeVisitante;
+    private javax.swing.JList<Jogador> listaVotacaoGolMaisBonito;
+    private javax.swing.JList<Jogador> listaVotacaoMelhorJogador;
     // End of variables declaration//GEN-END:variables
 
     public JLabel getLblTimeCasa() {
@@ -247,6 +408,7 @@ public class TelaPartidaView extends javax.swing.JFrame {
     public void setListMarcadoresTimeVisitante(JList<Jogador> listMarcadoresTimeVisitante) {
         this.listMarcadoresTimeVisitante = listMarcadoresTimeVisitante;
     }
+
     public JLabel getLblPlacar() {
         return lblPlacarTimeVisitante;
     }
@@ -270,6 +432,62 @@ public class TelaPartidaView extends javax.swing.JFrame {
     public void setLblPlacarTimeVisitante(JLabel lblPlacarTimeVisitante) {
         this.lblPlacarTimeVisitante = lblPlacarTimeVisitante;
     }
+
+    public JList<Jogador> getListaVotacaoGolMaisBonito() {
+        return listaVotacaoGolMaisBonito;
+    }
+
+    public void setListaVotacaoGolMaisBonito(JList<Jogador> listaVotacaoGolMaisBonito) {
+        this.listaVotacaoGolMaisBonito = listaVotacaoGolMaisBonito;
+    }
+
+    public JList<Jogador> getListaVotacaoMelhorJogador() {
+        return listaVotacaoMelhorJogador;
+    }
+
+    public void setListaVotacaoMelhorJogador(JList<Jogador> listaVotacaoMelhorJogador) {
+        this.listaVotacaoMelhorJogador = listaVotacaoMelhorJogador;
+    }
+
+    public JLabel getLblVotosRestantesCasa() {
+        return lblVotosRestantesCasa;
+    }
+
+    public void setLblVotosRestantesCasa(JLabel lblVotosRestantesCasa) {
+        this.lblVotosRestantesCasa = lblVotosRestantesCasa;
+    }
+
+    public JLabel getLblVotosRestantesVisitante() {
+        return lblVotosRestantesVisitantes;
+    }
+
+    public void setLblVotosRestantesVisitante(JLabel lblVotosRestantesVisitante) {
+        this.lblVotosRestantesVisitantes = lblVotosRestantesVisitante;
+    }
+
+    public JLabel getLblJogadorMaisVotado() {
+        return lblJogadorMelhorJogador;
+    }
+
+    public void setLblJogadorMaisVotado(JLabel lblJogadorMaisVotado) {
+        this.lblJogadorMelhorJogador = lblJogadorMaisVotado;
+    }
+
+    public JLabel getLblJogadorMelhorGol() {
+        return lblJogadorMelhorGol;
+    }
+
+    public void setLblJogadorMelhorGol(JLabel lblJogadorMelhorGol) {
+        this.lblJogadorMelhorGol = lblJogadorMelhorGol;
+    }
+
+    public JLabel getLblVotosRestantesVisitantes() {
+        return lblVotosRestantesVisitantes;
+    }
+
+    public void setLblVotosRestantesVisitantes(JLabel lblVotosRestantesVisitantes) {
+        this.lblVotosRestantesVisitantes = lblVotosRestantesVisitantes;
+    }
+    
     
 }
-
