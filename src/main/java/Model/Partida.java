@@ -5,17 +5,16 @@ import java.util.Date;
 
 public class Partida {
     
-    private int id_partida;
+    private Long id_partida;
     private Date data;
     private byte golsTimeCasa;
     private byte golsTimeVisitante;    
     private String melhor_jogador;
-    private String melhor_gol;
-    
+    private String melhor_gol;    
     private Time timeCasa;
     private Time timeVisitante;
 
-    public Partida(int id_partida, Date data, byte golsTimeCasa, byte golsTimeVisitante, String melhor_jogador, String melhor_gol, Time timeCasa, Time timeVisitante) {
+    public Partida(Long id_partida, Date data, byte golsTimeCasa, byte golsTimeVisitante, String melhor_jogador, String melhor_gol, Time timeCasa, Time timeVisitante) {
         this.id_partida = id_partida;
         this.data = data;
         this.golsTimeCasa = golsTimeCasa;
@@ -26,13 +25,11 @@ public class Partida {
         this.timeVisitante = timeVisitante;
     }
 
-    
-
-    public int getId_partida() {
+    public Long getId_partida() {
         return id_partida;
     }
 
-    public void setId_partida(int id_partida) {
+    public void setId_partida(Long id_partida) {
         this.id_partida = id_partida;
     }
 

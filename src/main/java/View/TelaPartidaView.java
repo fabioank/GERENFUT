@@ -273,6 +273,7 @@ public class TelaPartidaView extends javax.swing.JFrame {
 
     private void btnSalvarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPartidaActionPerformed
         controller.salvarPartida();
+        dispose();
     }//GEN-LAST:event_btnSalvarPartidaActionPerformed
 
     /**

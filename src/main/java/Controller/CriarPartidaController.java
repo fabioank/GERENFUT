@@ -255,7 +255,7 @@ public class CriarPartidaController {
             }
             Time time2 = new Time(view.getCbTime2().getSelectedItem().toString(), jogadoresTime2);
 
-            partida = new Partida(0, new Date(),(byte)0, (byte) 0, null, null, time1, time2);
+            partida = new Partida(0L, new Date(),(byte)0, (byte) 0, null, null, time1, time2);
 
             if (partida != null) {
                 view.dispose();

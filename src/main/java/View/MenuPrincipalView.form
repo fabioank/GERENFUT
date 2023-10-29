@@ -79,6 +79,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Hist&#xf2;rico"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemHistorico">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver hist&#xf3;rico"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemHistoricoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

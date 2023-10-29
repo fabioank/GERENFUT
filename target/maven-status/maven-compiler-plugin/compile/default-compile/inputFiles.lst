@@ -3,6 +3,7 @@ C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\j
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\View\RankingView.java
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\Model\DAO\PartidaDAO.java
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\Controller\TodosJogadoresController.java
+C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\Controller\HistoricoPartidaController.java
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\Controller\MenuPrincipalController.java
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\View\CriarPartidaView.java
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\View\LoginView.java
@@ -12,6 +13,7 @@ C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\j
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\View\CadastrarJogadoresView.java
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\Model\DAO\TimeDAO.java
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\Controller\CadastrarJogadoresController.java
+C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\View\HistoricoPartidaView.java
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\Model\DAO\JogadorDAO.java
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\Model\Partida.java
 C:\Users\fabio\OneDrive\Documentos\NetBeansProjects\projetogerenfutpi\src\main\java\Controller\LoginController.java

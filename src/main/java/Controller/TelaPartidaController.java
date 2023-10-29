@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 
 public class TelaPartidaController {
 
@@ -243,7 +244,13 @@ public class TelaPartidaController {
         partida.setGolsTimeCasa(Byte.parseByte(view.getLblPlacarTimeCasa().getText()));
         partida.setGolsTimeVisitante(Byte.parseByte(view.getLblPlacarTimeVisitante().getText()));
         
-        PartidaDAO.adicionarPartida(partida);
+        int linhasAfetadas = PartidaDAO.adicionarPartida(partida);
+        if(linhasAfetadas == 1){
+            JOptionPane.showMessageDialog(null, "A partida foi salva com sucesso");
+        }else{
+            JOptionPane.showMessageDialog(null, "Houve um problema inesperado ao salvar a partida");
+            return;
+        }
         
     } 
 }

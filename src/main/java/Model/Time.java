@@ -11,6 +11,9 @@ public class Time {
 
     public Time() {
     }
+    public Time(String nome) {
+        this.nome = nome;
+    }
 
     public Time(String nome, int pontos){
         this.nome = nome;

@@ -42,6 +42,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         menuRanking = new javax.swing.JMenu();
         menuItemVerRanking = new javax.swing.JMenuItem();
         menuHistorico = new javax.swing.JMenu();
+        menuItemHistorico = new javax.swing.JMenuItem();
 
         jLabel1.setText("jLabel1");
 
@@ -133,6 +134,15 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuBar1.add(menuRanking);
 
         menuHistorico.setText("Històrico");
+
+        menuItemHistorico.setText("Ver histórico");
+        menuItemHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemHistoricoActionPerformed(evt);
+            }
+        });
+        menuHistorico.add(menuItemHistorico);
+
         jMenuBar1.add(menuHistorico);
 
         setJMenuBar(jMenuBar1);
@@ -173,6 +183,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         todosJogadoresView.setVisible(true);
         
     }//GEN-LAST:event_menuItemVerJogadoresActionPerformed
+
+    private void menuItemHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemHistoricoActionPerformed
+        HistoricoPartidaView historicoPartidaView = new HistoricoPartidaView();
+        historicoPartidaView.setVisible(true);
+    }//GEN-LAST:event_menuItemHistoricoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -216,6 +231,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenu menuHistorico;
     private javax.swing.JMenuItem menuItemCriarNovoTime;
     private javax.swing.JMenuItem menuItemCriarPartida;
+    private javax.swing.JMenuItem menuItemHistorico;
     private javax.swing.JMenu menuItemNovoJogador;
     private javax.swing.JMenuItem menuItemVerJogadores;
     private javax.swing.JMenuItem menuItemVerRanking;

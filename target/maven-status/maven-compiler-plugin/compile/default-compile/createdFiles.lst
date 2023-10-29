@@ -1,4 +1,6 @@
+View\HistoricoPartidaView.class
 Controller\RankingController.class
+View\HistoricoPartidaView$1.class
 View\TodosJogadoresView$2.class
 View\TelaPartidaView$4.class
 Controller\CadastrarJogadoresController.class
@@ -14,6 +16,7 @@ View\LoginView.class
 Model\Time.class
 View\TelaPartidaView$7.class
 Controller\CriarPartidaController.class
+Controller\HistoricoPartidaController.class
 Model\DAO\JogadorDAO.class
 View\CadastrarJogadoresView$2.class
 View\CriarPartidaView$12.class
@@ -32,6 +35,7 @@ View\CadastrarJogadoresView.class
 View\TodosJogadoresView$1.class
 View\MenuPrincipalView$1.class
 Controller\ExcluirJogadorController.class
+View\MenuPrincipalView$8.class
 View\CadastrarTimeView.class
 View\CriarPartidaView$11.class
 View\TodosJogadoresView$4.class
