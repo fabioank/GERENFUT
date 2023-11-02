@@ -66,128 +66,74 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
         txtConfirmarSenha = new javax.swing.JPasswordField();
         btnSalvar = new javax.swing.JButton();
         txtCpf = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtCadastrarJogadores.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtCadastrarJogadores.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        txtCadastrarJogadores.setForeground(new java.awt.Color(255, 255, 255));
         txtCadastrarJogadores.setText("GERENFUT");
+        getContentPane().add(txtCadastrarJogadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, -1, -1));
 
-        lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblSenha.setForeground(new java.awt.Color(255, 255, 255));
         lblSenha.setText("Senha: ");
+        getContentPane().add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 80, 40));
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 145, 141, -1));
+        getContentPane().add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 239, 141, -1));
 
-        lblCpf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCpf.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCpf.setForeground(new java.awt.Color(255, 255, 255));
         lblCpf.setText("CPF:");
+        getContentPane().add(lblCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 185, -1, 40));
 
         cbPosicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Goleiro", "Lateral Esquerdo", "Lateral Direito ", "Zagueiro", "Volante", "Meio campo", "Atacante" }));
+        getContentPane().add(cbPosicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 287, 141, -1));
 
-        lblNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
         lblNome.setText("Nome: ");
+        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
 
-        lblNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNumero.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNumero.setForeground(new java.awt.Color(255, 255, 255));
         lblNumero.setText("Numero: ");
+        getContentPane().add(lblNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 80, 20));
 
-        lblSituacao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSituacao.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblSituacao.setForeground(new java.awt.Color(255, 255, 255));
         lblSituacao.setText("Situação: ");
+        getContentPane().add(lblSituacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 100, 20));
 
-        lblPosicao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPosicao.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblPosicao.setForeground(new java.awt.Color(255, 255, 255));
         lblPosicao.setText("Posição:");
+        getContentPane().add(lblPosicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 80, 20));
 
         cbSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
+        getContentPane().add(cbSituacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 340, 141, -1));
+        getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 139, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Confirmar senha: ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
+        getContentPane().add(txtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 139, -1));
 
+        btnSalvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, -1, -1));
+        getContentPane().add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 196, 141, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 204, Short.MAX_VALUE)
-                .addComponent(txtCadastrarJogadores)
-                .addGap(187, 187, 187))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(lblSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtSenha)
-                            .addComponent(txtConfirmarSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(170, 170, 170)
-                                .addComponent(lblCpf)
-                                .addGap(26, 26, 26))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblNumero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblPosicao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                            .addComponent(cbPosicao, 0, 141, Short.MAX_VALUE)
-                            .addComponent(txtCpf)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(btnSalvar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(txtCadastrarJogadores)
-                .addGap(83, 83, 83)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNome))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCpf)
-                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtConfirmarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(btnSalvar)
-                .addGap(27, 27, 27))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\fabio\\Downloads\\WhatsApp Image 2023-10-29 at 19.15.21.jpeg")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -243,6 +189,7 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbPosicao;
     private javax.swing.JComboBox<String> cbSituacao;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNumero;

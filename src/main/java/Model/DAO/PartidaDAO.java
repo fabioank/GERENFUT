@@ -48,10 +48,10 @@ public class PartidaDAO {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM partida");
             while (rs.next()) {
-                
+
                 Time timeCasa = new Time(rs.getString("time_1"));
                 Time timeVisitante = new Time(rs.getString("time_2"));
-                
+
                 listaPartidas.add(new Partida(
                         rs.getLong("id_partida"),
                         rs.getDate("data"),
@@ -68,4 +68,27 @@ public class PartidaDAO {
         }
         return listaPartidas;
     }
+
+    public static void addRanking(Long id_jogador, short gols_marcados, short melhor_jogador, short melhor_gol) {
+
+        Connection conn = Conexao.getConnection();
+        PreparedStatement st = null;
+
+        try {
+            st = conn.prepareStatement("INSERT INTO ranking"
+                    + "(id_jogador, gols_marcados, melhor_jogador, melhor_gol)"
+                    + "VALUES"
+                    + "(?, ?, ?, ?)");
+
+            st.setLong(1, id_jogador);
+            st.setShort(2, gols_marcados);
+            st.setShort(3, melhor_jogador);
+            st.setShort(4, melhor_gol);
+
+            st.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
 }

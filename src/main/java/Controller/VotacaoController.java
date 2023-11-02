@@ -3,140 +3,55 @@ package Controller;
 import Model.DAO.JogadorDAO;
 import Model.DAO.PartidaDAO;
 import Model.Jogador;
-import Model.JogadorComboboxModel;
 import Model.Partida;
-import View.TelaPartidaView;
-import java.text.SimpleDateFormat;
+import View.VotacaoView;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-public class TelaPartidaController {
+public class VotacaoController {
 
+    private final VotacaoView view;
+    
+    TelaPartidaController telaPartidaController = new TelaPartidaController(null);
+    Partida partida = telaPartidaController.retornoPartida();
     List<Jogador> marcadores = new ArrayList<>();
-    private TelaPartidaView view = null;
-    Partida partida = CriarPartidaController.retornoPartida();
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    DefaultListModel<Jogador> listaCasa = new DefaultListModel<>();
-    DefaultListModel<Jogador> listaVisitante = new DefaultListModel<>();
     DefaultListModel<Jogador> listaGolMaisBonito = new DefaultListModel<>();
     DefaultListModel<Jogador> listaMelhorJogador = new DefaultListModel<>();
+    DefaultListModel<Jogador> listaCasa = new DefaultListModel<>();
+    DefaultListModel<Jogador> listaVisitante = new DefaultListModel<>();
 
-    public TelaPartidaController(TelaPartidaView view) {
+    public VotacaoController(VotacaoView view) {
         this.view = view;
     }
 
-    public void partida() {
-
-        if (partida != null) {
-            String timeCasa = partida.getTimeCasa().getNome();
-            String timeVisitante = partida.getTimeVisitante().getNome();
-
-            view.getLblTimeCasa().setText(timeCasa);
-            view.getLblTimeVisitante().setText(timeVisitante);
-            view.getLblDataJogo().setText(sdf.format(partida.getData()));
-        } else {
-            JOptionPane.showMessageDialog(null, "Não foi possivel iniciar a partida");
-            return;
-        }
-    }
-
-    public void comporTimeCasa() {
-
-        try {
-            JogadorComboboxModel jogadorComboboxModel = new JogadorComboboxModel();
-
-            for (Jogador jogador : partida.getTimeCasa().getJogador()) {
-                jogadorComboboxModel.addJogador(jogador);
-            }
-            view.getCbMarcadorTimeCasa().setModel(jogadorComboboxModel);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possivel iniciar a partida");
-            return;
-        }
-    }
-
-    public void comporTimeVisitante() {
-
-        try {
-            JogadorComboboxModel jogadorComboboxModel = new JogadorComboboxModel();
-
-            for (Jogador jogador : partida.getTimeVisitante().getJogador()) {
-                jogadorComboboxModel.addJogador(jogador);
-            }
-            view.getCbMarcadorTimeVisitante().setModel(jogadorComboboxModel);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possivel iniciar a partida");
-        }
-    }
-
-    public void addMarcadorTimeCasa() {
-
-        Jogador jogadorSelecionado = (Jogador) view.getCbMarcadorTimeCasa().getSelectedItem();
-
-        if (jogadorSelecionado != null) {
-            view.getListMarcadoresTimeCasa().setModel(listaCasa);
-            listaCasa.addElement(jogadorSelecionado);
-            jogadorSelecionado.setGolsMarcados((short) (jogadorSelecionado.getGolsMarcados() + 1));
-
-            Integer placar = Integer.parseInt(view.getLblPlacarTimeCasa().getText());
-            int placar1 = placar + 1;
-            view.getLblPlacarTimeCasa().setText(String.valueOf(placar1));
-
-            if (!marcadores.contains(jogadorSelecionado)) {
-                marcadores.add(jogadorSelecionado);
-
-            }
-        }
-    }
-
-    public void addMarcadorTimeVisitante() {
-
-        Jogador jogadorSelecionado = (Jogador) view.getCbMarcadorTimeVisitante().getSelectedItem();
-
-        if (jogadorSelecionado != null) {
-            view.getListMarcadoresTimeVisitante().setModel(listaVisitante);
-            listaVisitante.addElement(jogadorSelecionado);
-            jogadorSelecionado.setGolsMarcados((short) (jogadorSelecionado.getGolsMarcados() + 1));
-
-            Integer placar = Integer.parseInt(view.getLblPlacarTimeVisitante().getText());
-            int placar1 = placar + 1;
-            view.getLblPlacarTimeVisitante().setText(String.valueOf(placar1));
-
-            if (!marcadores.contains(jogadorSelecionado)) {
-                marcadores.add(jogadorSelecionado);
-
-            }
-        }
-    }
-    public void finalPartida(){
-        partida.setGolsTimeCasa(Byte.parseByte(view.getLblPlacarTimeCasa().getText()));
-        partida.setGolsTimeVisitante(Byte.parseByte(view.getLblPlacarTimeVisitante().getText()));
-    }
-    public Partida retornoPartida(){
-        return partida;
-    }
-    public List<Jogador> marcadoresPartida(){
-        return marcadores;      
-    }
-    public void elegerGolMaisBonito() {
-
-        List<Jogador> jogadoresGolMaisBonito = new ArrayList<>();
-
-        for (int i = 0; i < listaCasa.size(); i++) {
-            jogadoresGolMaisBonito.add(listaCasa.getElementAt(i));
-        }
-        for (int i = 0; i < listaVisitante.size(); i++) {
-            jogadoresGolMaisBonito.add(listaVisitante.getElementAt(i));
-        }
-        for (Jogador jogador : jogadoresGolMaisBonito) {
-            listaGolMaisBonito.addElement(jogador);
+    public void carregarDados(){
+        for(Jogador jogador : telaPartidaController.jogadoresGols){
+            marcadores.add(jogador);
         }
         view.getListaVotacaoGolMaisBonito().setModel(listaGolMaisBonito);
+        for(Jogador jogador : marcadores){
+            listaGolMaisBonito.addElement(jogador);
+        }
+        
+        view.getListaVotacaoMelhorJogador().setModel(listaMelhorJogador);
+    }
+    
+    
+    public void elegerGolMaisBonito() {
 
-        Integer totalJogadores = view.getCbMarcadorTimeCasa().getItemCount();
-        totalJogadores += view.getCbMarcadorTimeVisitante().getItemCount();
+        List<Jogador> marcadoresPartida = telaPartidaController.marcadoresPartida();
+
+        for (Jogador jogador : marcadoresPartida) {
+            listaGolMaisBonito.addElement(jogador);
+        }
+        
+        view.getListaVotacaoGolMaisBonito().setModel(listaGolMaisBonito);
+
+        Integer totalJogadores = partida.getTimeCasa().getJogador().size();
+        totalJogadores += partida.getTimeVisitante().getJogador().size();
+        
         view.getLblVotosRestantesCasa().setText(String.valueOf(totalJogadores));
         view.getLblVotosRestantesVisitante().setText(String.valueOf(totalJogadores));
 
@@ -250,8 +165,6 @@ public class TelaPartidaController {
 
         partida.setMelhor_gol(jogadorMaisVotadoGols.getNome());
         partida.setMelhor_jogador(jogadorMaisVotado.getNome());
-        partida.setGolsTimeCasa(Byte.parseByte(view.getLblPlacarTimeCasa().getText()));
-        partida.setGolsTimeVisitante(Byte.parseByte(view.getLblPlacarTimeVisitante().getText()));
 
         for (Jogador jogador : marcadores) {
             JogadorDAO.atualizarGols(jogador);

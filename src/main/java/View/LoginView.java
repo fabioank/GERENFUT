@@ -23,6 +23,7 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         lblCpf = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
@@ -32,101 +33,68 @@ public class LoginView extends javax.swing.JFrame {
         lblLogin = new javax.swing.JLabel();
         btnLogar = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setFont(new java.awt.Font("Cooper Black", 0, 36)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("GERENFUT");
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 220, -1));
 
-        lblCpf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCpf.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCpf.setForeground(new java.awt.Color(255, 255, 255));
         lblCpf.setText("CPF: ");
+        getContentPane().add(lblCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
-        lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblSenha.setForeground(new java.awt.Color(255, 255, 255));
         lblSenha.setText("Senha: ");
+        getContentPane().add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 70, 30));
 
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfActionPerformed(evt);
             }
         });
+        getContentPane().add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 144, -1));
 
+        lblMsg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblMsg.setForeground(new java.awt.Color(255, 255, 255));
         lblMsg.setText("Ainda não possui uma conta?");
+        getContentPane().add(lblMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 426, 172, 30));
 
+        btnCriarConta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCriarConta.setText("Criar conta");
         btnCriarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCriarContaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCriarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, 30));
 
-        lblLogin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblLogin.setBackground(new java.awt.Color(255, 255, 255));
+        lblLogin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblLogin.setForeground(new java.awt.Color(255, 255, 255));
         lblLogin.setText("Login");
+        getContentPane().add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 60, -1));
 
-        btnLogar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLogar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLogar.setText("Logar");
         btnLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
+        getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 144, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTitulo)
-                        .addGap(142, 142, 142))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(180, 180, 180))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblSenha)
-                            .addComponent(lblCpf))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(btnLogar))
-                            .addComponent(txtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                            .addComponent(txtSenha)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(lblMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCriarConta)))
-                .addContainerGap(80, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblLogin)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCpf)
-                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnLogar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMsg)
-                    .addComponent(btnCriarConta))
-                .addGap(15, 15, 15))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\fabio\\Downloads\\WhatsApp Image 2023-10-29 at 19.15.21.jpeg")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -60, 790, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,6 +150,8 @@ public class LoginView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriarConta;
     private javax.swing.JButton btnLogar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblMsg;

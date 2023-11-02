@@ -48,7 +48,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View//Imagens/IMAGEMGRAMADO.jpg")));
+        jLabel3.setIcon(null);
         getContentPane().add(jLabel3, java.awt.BorderLayout.CENTER);
         ImageIcon icon = new ImageIcon(getClass().getResource("/View//Imagens/IMAGEMGRAMADO.jpg"));
         setExtendedState(JFrame.MAXIMIZED_BOTH);

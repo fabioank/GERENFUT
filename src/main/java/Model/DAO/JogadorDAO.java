@@ -333,4 +333,49 @@ public class JogadorDAO {
         }
         return jogador;
     }
+
+    public static void atualizarGols(Jogador jogador) {
+        Connection conn = Conexao.getConnection();
+        PreparedStatement st = null;
+
+        try {
+            st = conn.prepareStatement("UPDATE jogador SET gols = gols + ? WHERE id_jogador = ?");
+            st.setShort(1, jogador.getGolsMarcados());
+            st.setLong(2, jogador.getId());
+
+            st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void addMelhorJogador(Jogador jogador) {
+        Connection conn = Conexao.getConnection();
+        PreparedStatement st = null;
+
+        try {
+            st = conn.prepareStatement("UPDATE jogador SET titulos_melhor_jogador = titulos_melhor_jogador + 1 WHERE id_jogador = ?");
+            st.setLong(1, jogador.getId());
+
+            st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+        public static void addMelhorGol(Jogador jogador) {
+        Connection conn = Conexao.getConnection();
+        PreparedStatement st = null;
+
+        try {
+            st = conn.prepareStatement("UPDATE jogador SET titulos_melhor_gol = titulos_melhor_gol + 1 WHERE id_jogador = ?");
+            st.setLong(1, jogador.getId());
+
+            st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }

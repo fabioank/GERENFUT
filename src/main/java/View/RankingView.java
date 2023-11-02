@@ -1,6 +1,7 @@
 package View;
 
 import Controller.RankingController;
+import javax.swing.JTable;
 
 public class RankingView extends javax.swing.JFrame {
 
@@ -12,6 +13,7 @@ public class RankingView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Ranking");
+        controller.addJogadoresRanking();
     }
 
   
@@ -20,32 +22,33 @@ public class RankingView extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblJogadores = new javax.swing.JTable();
+        tblRankingJogadores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tblJogadores.setModel(new javax.swing.table.DefaultTableModel(
+        tblRankingJogadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nome ", "Partidas Jogadas", "SG", "Pontos"
+                "Nome ", "Gols Marcados", "Melhor Jogador", "Gol Mais Bonito"
             }
         ));
-        jScrollPane1.setViewportView(tblJogadores);
+        jScrollPane1.setViewportView(tblRankingJogadores);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -89,6 +92,16 @@ public class RankingView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblJogadores;
+    private javax.swing.JTable tblRankingJogadores;
     // End of variables declaration//GEN-END:variables
+
+    public JTable getTblRankingJogadores() {
+        return tblRankingJogadores;
+    }
+
+    public void setTblRankingJogadores(JTable tblRankingJogadores) {
+        this.tblRankingJogadores = tblRankingJogadores;
+    }
+
+   
 }

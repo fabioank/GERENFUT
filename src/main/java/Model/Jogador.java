@@ -9,8 +9,26 @@ public class Jogador {
     private String posicao;
     private String senha;
     private boolean situacao;
+    private short golsMarcados;
+    private short titulosMelhorJogador;
+    private short titulosMelhorGol;
+
+    
+    public Jogador(Long id, String nome, short golsMarcados, short titulosMelhorJogador, short titulosMelhorGol) {
+        this.id = id;
+        this.nome = nome;
+        this.golsMarcados = golsMarcados;
+        this.titulosMelhorJogador = titulosMelhorJogador;
+        this.titulosMelhorGol = titulosMelhorGol;
+    }
 
     public Jogador() {}
+
+    public Jogador(Long id, String nome, short golsMarcados) {
+        this.id = id;
+        this.nome = nome;
+        this.golsMarcados = golsMarcados;
+    }
 
     public Jogador(String cpf, String senha) {
         this.cpf = cpf;
@@ -112,5 +130,30 @@ public class Jogador {
     public String toString() {
         return numero + " - " + nome + " (" + posicao + ")";
     }
+
+    public short getGolsMarcados() {
+        return golsMarcados;
+    }
+
+    public void setGolsMarcados(short golsMarcados) {
+        this.golsMarcados = golsMarcados;
+    }
+
+    public short getTitulosMelhorJogador() {
+        return titulosMelhorJogador;
+    }
+
+    public void setTitulosMelhorJogador(short titulosMelhorJogador) {
+        this.titulosMelhorJogador = titulosMelhorJogador;
+    }
+
+    public short getTitulosMelhorGol() {
+        return titulosMelhorGol;
+    }
+
+    public void setTitulosMelhorGol(short titulosMelhorGol) {
+        this.titulosMelhorGol = titulosMelhorGol;
+    }
+    
 
 }
