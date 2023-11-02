@@ -6,25 +6,33 @@ import Model.Jogador;
 import Model.JogadorComboboxModel;
 import Model.Partida;
 import View.TelaPartidaView;
+import View.VotacaoView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 public class TelaPartidaController {
 
+    
+    
     List<Jogador> marcadores = new ArrayList<>();
-    private TelaPartidaView view = null;
+    private TelaPartidaView view;
+    private VotacaoView viewVotacao;
     Partida partida = CriarPartidaController.retornoPartida();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     DefaultListModel<Jogador> listaCasa = new DefaultListModel<>();
     DefaultListModel<Jogador> listaVisitante = new DefaultListModel<>();
     DefaultListModel<Jogador> listaGolMaisBonito = new DefaultListModel<>();
     DefaultListModel<Jogador> listaMelhorJogador = new DefaultListModel<>();
-
     public TelaPartidaController(TelaPartidaView view) {
         this.view = view;
+    }
+    public TelaPartidaController(VotacaoView viewVotacao){
+        this.viewVotacao = viewVotacao;
     }
 
     public void partida() {
@@ -123,13 +131,10 @@ public class TelaPartidaController {
     public void elegerGolMaisBonito() {
 
         List<Jogador> jogadoresGolMaisBonito = new ArrayList<>();
+        for(Jogador jogador : marcadores){
+            jogadoresGolMaisBonito.add(jogador);
+        }
 
-        for (int i = 0; i < listaCasa.size(); i++) {
-            jogadoresGolMaisBonito.add(listaCasa.getElementAt(i));
-        }
-        for (int i = 0; i < listaVisitante.size(); i++) {
-            jogadoresGolMaisBonito.add(listaVisitante.getElementAt(i));
-        }
         for (Jogador jogador : jogadoresGolMaisBonito) {
             listaGolMaisBonito.addElement(jogador);
         }
@@ -152,6 +157,13 @@ public class TelaPartidaController {
         for (Jogador jogador : partida.getTimeVisitante().getJogador()) {
             jogadores.add(jogador);
         }
+            Collections.sort(jogadores, new Comparator<Jogador>() {
+            @Override
+            public int compare(Jogador jogador1, Jogador jogador2) {
+                return jogador1.getNome().compareTo(jogador2.getNome());
+            }
+        });
+        
         for (Jogador jogador : jogadores) {
             listaMelhorJogador.addElement(jogador);
         }

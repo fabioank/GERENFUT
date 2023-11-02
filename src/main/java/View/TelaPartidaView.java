@@ -258,13 +258,10 @@ public class TelaPartidaView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRemoverMarcadorCasaActionPerformed
 
     private void btnEncerrarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarPartidaActionPerformed
-        controller.finalPartida();
-        VotacaoView votacaoView = new VotacaoView();
-        votacaoView.setVisible(true);
-        
+
+        //new VotacaoView().setVisible(true);
         controller.elegerGolMaisBonito();
         controller.elegerMelhorJogador();
-
     }//GEN-LAST:event_btnEncerrarPartidaActionPerformed
 
     private void btnContVotoMelhorJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContVotoMelhorJogadorActionPerformed
@@ -493,6 +490,5 @@ public class TelaPartidaView extends javax.swing.JFrame {
     public void setLblVotosRestantesVisitantes(JLabel lblVotosRestantesVisitantes) {
         this.lblVotosRestantesVisitantes = lblVotosRestantesVisitantes;
     }
-    
-    
+
 }

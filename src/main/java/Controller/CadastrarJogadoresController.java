@@ -127,7 +127,7 @@ public class CadastrarJogadoresController {
                 String posicao = view.getCbPosicao().getSelectedItem().toString();
                 String senha = view.getTxtSenha().getText();
 
-                Jogador jogador = new Jogador(0L, nome, cpf, numero, posicao, senha, true);
+                Jogador jogador = new Jogador(0L, nome, cpf, numero, posicao, senha, true,(short) 0,(short) 0,(short) 0);
 
                 boolean jaCadastrado = JogadorDAO.verificaCadastro(jogador);
 

@@ -14,10 +14,12 @@ public class VotacaoView extends javax.swing.JFrame {
     public VotacaoView() {
         initComponents();
         controller = new VotacaoController(this);
+        controller.carregarDados();
+
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(900, 700);
         setLocationRelativeTo(null);
-        controller.carregarDados();
+   
 
         setTitle("Tela da partida");
     }
@@ -177,7 +179,7 @@ public class VotacaoView extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
+   
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

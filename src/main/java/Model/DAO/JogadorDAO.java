@@ -204,13 +204,18 @@ public class JogadorDAO {
 
         try {
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT id_jogador, nome, numero, posicao, situacao FROM Jogador");
+            ResultSet rs = st.executeQuery("SELECT * FROM Jogador");
             while (rs.next()) {
                 list.add(new Jogador(rs.getLong("id_jogador"),
                         rs.getString("nome"),
+                        null,
                         rs.getShort("numero"),
                         rs.getString("posicao"),
-                        rs.getBoolean("situacao")));
+                        null,
+                        rs.getBoolean("situacao"),
+                        rs.getShort("gols"),
+                        rs.getShort("titulos_melhor_jogador"),
+                        rs.getShort("titulos_melhor_gol")));
             }
             return list;
 
@@ -315,7 +320,7 @@ public class JogadorDAO {
                         rs.getBoolean("situacao"));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Registra o erro no console
+            e.printStackTrace();
         } finally {
             try {
                 if (rs != null) {

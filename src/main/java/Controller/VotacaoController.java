@@ -11,11 +11,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 public class VotacaoController {
-
+    Partida partida;
     private final VotacaoView view;
-    
-    TelaPartidaController telaPartidaController = new TelaPartidaController(null);
-    Partida partida = telaPartidaController.retornoPartida();
     List<Jogador> marcadores = new ArrayList<>();
     DefaultListModel<Jogador> listaGolMaisBonito = new DefaultListModel<>();
     DefaultListModel<Jogador> listaMelhorJogador = new DefaultListModel<>();
@@ -26,32 +23,31 @@ public class VotacaoController {
         this.view = view;
     }
 
-    public void carregarDados(){
-        for(Jogador jogador : telaPartidaController.jogadoresGols){
-            marcadores.add(jogador);
-        }
+    public void carregarDados() {
+        //for (Jogador jogador : partida) {
+            //marcadores.add(jogador);
+        //}
         view.getListaVotacaoGolMaisBonito().setModel(listaGolMaisBonito);
-        for(Jogador jogador : marcadores){
+        for (Jogador jogador : marcadores) {
             listaGolMaisBonito.addElement(jogador);
         }
-        
+
         view.getListaVotacaoMelhorJogador().setModel(listaMelhorJogador);
     }
-    
-    
+
     public void elegerGolMaisBonito() {
 
-        List<Jogador> marcadoresPartida = telaPartidaController.marcadoresPartida();
+        //List<Jogador> marcadoresPartida = tpc.marcadoresPartida();
 
-        for (Jogador jogador : marcadoresPartida) {
-            listaGolMaisBonito.addElement(jogador);
-        }
-        
+        //for (Jogador jogador : marcadoresPartida) {
+            //listaGolMaisBonito.addElement(jogador);
+        //}
+
         view.getListaVotacaoGolMaisBonito().setModel(listaGolMaisBonito);
 
         Integer totalJogadores = partida.getTimeCasa().getJogador().size();
         totalJogadores += partida.getTimeVisitante().getJogador().size();
-        
+
         view.getLblVotosRestantesCasa().setText(String.valueOf(totalJogadores));
         view.getLblVotosRestantesVisitante().setText(String.valueOf(totalJogadores));
 

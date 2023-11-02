@@ -5,6 +5,7 @@ Model\TimeComboboxModel.class
 View\ExcluirJogadorView$3.class
 View\ExcluirJogadorView.class
 View\LoginView.class
+Controller\TelaPartidaController$1.class
 Controller\HistoricoPartidaController.class
 Model\DAO\JogadorDAO.class
 View\CadastrarJogadoresView$2.class
@@ -49,6 +50,7 @@ View\MenuPrincipalView$2.class
 Model\Time.class
 View\TelaPartidaView$7.class
 Controller\CriarPartidaController.class
+View\RankingView$2.class
 Model\Partida.class
 Controller\CadastrarTimeController.class
 View\MenuPrincipalView$5.class
