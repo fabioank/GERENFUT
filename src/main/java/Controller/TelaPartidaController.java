@@ -177,6 +177,7 @@ public class TelaPartidaController {
 
     public void addVotoMelhorGol() {
 
+        
         if (view.getLblVotosRestantesCasa().getText().equals("0")) {
             JOptionPane.showMessageDialog(null, "Todos os votos ja foram efetuados!");
             return;
@@ -256,7 +257,7 @@ public class TelaPartidaController {
     public void salvarPartida() {
 
         if (!view.getLblVotosRestantesCasa().getText().equals("0") || !view.getLblVotosRestantesVisitante().getText().equals("0")) {
-            JOptionPane.showMessageDialog(null, "Ainda exixtem votos a serem realizados, por favor finalize a "
+            JOptionPane.showMessageDialog(null, "Ainda existem votos a serem realizados, por favor finalize a "
                     + "votação para salvar os dados da partida", "Votação não encerrada", JOptionPane.WARNING_MESSAGE);
         }
 
