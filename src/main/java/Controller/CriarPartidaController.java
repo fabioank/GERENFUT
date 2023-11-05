@@ -243,7 +243,7 @@ public class CriarPartidaController {
                     TimeDAO.associarJogador(timeCasa.getId_time(), jogador.getId());
                 }
             }
-            Time time1 = new Time(view.getCbTime1().getSelectedItem().toString(), jogadoresTime1);
+            Time time1 = new Time(timeCasa.getId_time(),view.getCbTime1().getSelectedItem().toString(), jogadoresTime1);
 
             for (int i = 0; i < tableModel2.getRowCount(); i++) {
                 Jogador jogador = JogadorDAO.encontrarPeloId((Long) tableModel2.getValueAt(i, 0));
@@ -253,7 +253,8 @@ public class CriarPartidaController {
                     TimeDAO.associarJogador(timeVisitante.getId_time(), jogador.getId());
                 }
             }
-            Time time2 = new Time(view.getCbTime2().getSelectedItem().toString(), jogadoresTime2);
+            Time time2 = new Time(timeVisitante.getId_time(),view.getCbTime2().getSelectedItem().toString(), jogadoresTime2);
+            
 
             partida = new Partida(0L, new Date(),(byte)0, (byte) 0, null, null, time1, time2);
 

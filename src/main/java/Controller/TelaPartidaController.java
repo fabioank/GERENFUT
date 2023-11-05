@@ -256,7 +256,8 @@ public class TelaPartidaController {
 
     public void salvarPartida() {
 
-        if (!view.getLblVotosRestantesCasa().getText().equals("0") || !view.getLblVotosRestantesVisitante().getText().equals("0")) {
+        try {
+            if (!view.getLblVotosRestantesCasa().getText().equals("0") || !view.getLblVotosRestantesVisitante().getText().equals("0")) {
             JOptionPane.showMessageDialog(null, "Ainda existem votos a serem realizados, por favor finalize a "
                     + "votação para salvar os dados da partida", "Votação não encerrada", JOptionPane.WARNING_MESSAGE);
         }
@@ -272,12 +273,13 @@ public class TelaPartidaController {
         JogadorDAO.addMelhorJogador(jogadorMaisVotado);
         JogadorDAO.addMelhorGol(jogadorMaisVotadoGols);
 
-        int linhasAfetadas = PartidaDAO.adicionarPartida(partida);
-        if (linhasAfetadas == 1) {
-            JOptionPane.showMessageDialog(null, "A partida foi salva com sucesso");
-        } else {
-            JOptionPane.showMessageDialog(null, "Houve um problema inesperado ao salvar a partida");
-            return;
+        int id_partida = PartidaDAO.adicionarPartida(partida);
+            System.out.println(id_partida);
+            System.out.println(partida.getTimeCasa().getId_time());
+        PartidaDAO.associarTimePartida(id_partida, partida.getTimeCasa().getId_time(), partida.getGolsTimeCasa());
+        PartidaDAO.associarTimePartida(id_partida, partida.getTimeVisitante().getId_time(), partida.getGolsTimeVisitante());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

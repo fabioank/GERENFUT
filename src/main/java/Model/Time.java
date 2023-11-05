@@ -30,10 +30,9 @@ public class Time {
         this.pontos = pontos;
         this.id_time = id_time;
     }
-    public Time(int id_time, String nome, int pontos, List<Jogador> jogador) {
+    public Time(int id_time, String nome, List<Jogador> jogador) {
         this.id_time = id_time;
         this.nome = nome;
-        this.pontos = pontos;
         this.jogador = jogador;
     }
 
