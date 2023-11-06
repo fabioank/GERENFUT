@@ -274,8 +274,7 @@ public class TelaPartidaController {
         JogadorDAO.addMelhorGol(jogadorMaisVotadoGols);
 
         int id_partida = PartidaDAO.adicionarPartida(partida);
-            System.out.println(id_partida);
-            System.out.println(partida.getTimeCasa().getId_time());
+
         PartidaDAO.associarTimePartida(id_partida, partida.getTimeCasa().getId_time(), partida.getGolsTimeCasa());
         PartidaDAO.associarTimePartida(id_partida, partida.getTimeVisitante().getId_time(), partida.getGolsTimeVisitante());
         } catch (Exception e) {

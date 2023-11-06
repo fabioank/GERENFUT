@@ -25,6 +25,9 @@ public class Partida {
         this.timeVisitante = timeVisitante;
     }
 
+    public Partida() {
+    }
+
     public Long getId_partida() {
         return id_partida;
     }

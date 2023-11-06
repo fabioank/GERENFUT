@@ -36,6 +36,10 @@ public class Time {
         this.jogador = jogador;
     }
 
+    public Time(int id_time) {
+        this.id_time = id_time;
+    }
+
     public int getId_time() {
         return id_time;
     }

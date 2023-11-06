@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PartidaDAO {
 
@@ -19,6 +21,7 @@ public class PartidaDAO {
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
         ResultSet chaveGerada = null;
+        int id_partida = 0;
 
         try {
             st = conn.prepareStatement("INSERT INTO partida"
@@ -30,18 +33,21 @@ public class PartidaDAO {
             st.setString(3, partida.getMelhor_gol());
 
             st.executeUpdate();
-            
+
             chaveGerada = st.getGeneratedKeys();
+
             if (chaveGerada.next()) {
-                int id_partida = chaveGerada.getInt(1);
-                return id_partida;
+                id_partida = chaveGerada.getInt(1);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
+        return id_partida;
     }
-    public static void associarTimePartida(int id_partida,int id_time,int gols) {
+
+    public static int associarTimePartida(int id_partida, int id_time, int gols) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
         ResultSet chaveGerada = null;
@@ -54,63 +60,62 @@ public class PartidaDAO {
             st.setInt(1, id_partida);
             st.setInt(2, id_time);
             st.setInt(3, gols);
-            
+
             st.executeUpdate();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     public static List<Partida> todasAsPartidas() {
-        List<Partida> listaPartidas = new ArrayList<>();
-        Connection conn = Conexao.getConnection();
+    List<Partida> listaPartidas = new ArrayList<>();
+    Connection conn = Conexao.getConnection();
 
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM partida");
-            while (rs.next()) {
+    try {
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("SELECT p.id_partida, p.data, p.melhor_jogador, p.melhor_gol, pt.id_time, pt.gols, t.nome "
+                + "FROM partida p "
+                + "INNER JOIN partida_time pt ON p.id_partida = pt.id_partida "
+                + "INNER JOIN time t ON pt.id_time = t.id_time");
 
-                Time timeCasa = new Time(rs.getString("time_1"));
-                Time timeVisitante = new Time(rs.getString("time_2"));
+        Partida partidaExistente = null;
 
-                listaPartidas.add(new Partida(
-                        rs.getLong("id_partida"),
-                        rs.getDate("data"),
-                        rs.getByte("gols_time_1"),
-                        rs.getByte("gols_time_2"),
-                        rs.getString("melhor_jogador"),
-                        rs.getString("melhor_gol"),
-                        timeCasa,
-                        timeVisitante));
+        while (rs.next()) {
+            long idPartida = rs.getLong("id_partida");
+
+            if (partidaExistente == null || partidaExistente.getId_partida() != idPartida) {
+                partidaExistente = new Partida();
+                partidaExistente.setId_partida(idPartida);
+                partidaExistente.setData(rs.getDate("data"));
+                partidaExistente.setMelhor_jogador(rs.getString("melhor_jogador"));
+                partidaExistente.setMelhor_gol(rs.getString("melhor_gol"));
+                listaPartidas.add(partidaExistente);
             }
-            conn.close(); // Não esqueça de fechar a conexão quando não for mais utilizada.
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            int gols = rs.getInt("gols");
+            int idTime = rs.getInt("id_time");
+            String nomeTime = rs.getString("nome");
+
+            Time time = new Time();
+            time.setId_time(idTime);
+            time.setNome(nomeTime);
+
+            if (partidaExistente.getTimeCasa() == null) {
+                partidaExistente.setTimeCasa(time);
+                partidaExistente.setGolsTimeCasa((byte) gols);
+            } else {
+                partidaExistente.setTimeVisitante(time);
+                partidaExistente.setGolsTimeVisitante((byte) gols);
+            }
         }
-        return listaPartidas;
+
+        conn.close();
+    } catch (Exception e) {
+        e.printStackTrace();
     }
 
-    public static void addRanking(Long id_jogador, short gols_marcados, short melhor_jogador, short melhor_gol) {
-
-        Connection conn = Conexao.getConnection();
-        PreparedStatement st = null;
-
-        try {
-            st = conn.prepareStatement("INSERT INTO ranking"
-                    + "(id_jogador, gols_marcados, melhor_jogador, melhor_gol)"
-                    + "VALUES"
-                    + "(?, ?, ?, ?)");
-
-            st.setLong(1, id_jogador);
-            st.setShort(2, gols_marcados);
-            st.setShort(3, melhor_jogador);
-            st.setShort(4, melhor_gol);
-
-            st.executeUpdate();
-
-        } catch (Exception e) {
-        }
-    }
-
+    return listaPartidas;
+}
 }

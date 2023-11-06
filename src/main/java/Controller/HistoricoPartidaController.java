@@ -25,6 +25,9 @@ public class HistoricoPartidaController {
 
         listaPartida = PartidaDAO.todasAsPartidas();
 
+        listaPartida.sort((lista1, lista2) -> Long.compare(lista1.getId_partida(), lista2.getId_partida()));
+
+        
         for (Partida partida : listaPartida) {
             Object[] partidas = {
                 partida.getId_partida(),
