@@ -17,10 +17,12 @@ public class CadastrarTimeView extends javax.swing.JFrame {
     
     public CadastrarTimeView() {
         initComponents();
+        setSize(790, 610);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         controller = new CadastrarTimeController(this);
         setTitle("Cadastrar time");
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -31,54 +33,39 @@ public class CadastrarTimeView extends javax.swing.JFrame {
         lblNomeTime = new javax.swing.JLabel();
         txtNomeTime = new javax.swing.JTextField();
         btnCadastrarTime = new javax.swing.JButton();
+        lblImagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        lblCadastrarNovoTime.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCadastrarNovoTime.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblCadastrarNovoTime.setForeground(new java.awt.Color(255, 255, 255));
         lblCadastrarNovoTime.setText("Cadastrar novo time");
+        getContentPane().add(lblCadastrarNovoTime);
+        lblCadastrarNovoTime.setBounds(230, 40, 340, 48);
 
-        lblNomeTime.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNomeTime.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblNomeTime.setForeground(new java.awt.Color(255, 255, 255));
         lblNomeTime.setText("Digite o nome do time: ");
+        getContentPane().add(lblNomeTime);
+        lblNomeTime.setBounds(140, 260, 260, 32);
+        getContentPane().add(txtNomeTime);
+        txtNomeTime.setBounds(410, 262, 220, 30);
 
+        btnCadastrarTime.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrarTime.setText("Cadastrar");
         btnCadastrarTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarTimeActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCadastrarTime);
+        btnCadastrarTime.setBounds(360, 480, 80, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(lblCadastrarNovoTime))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(lblNomeTime)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNomeTime, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(btnCadastrarTime)))
-                .addContainerGap(67, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(lblCadastrarNovoTime)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNomeTime)
-                    .addComponent(txtNomeTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(btnCadastrarTime)
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
+        lblImagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\fabio\\Downloads\\imgCampo.jpg")); // NOI18N
+        lblImagem.setText("jLabel1");
+        getContentPane().add(lblImagem);
+        lblImagem.setBounds(-3, -4, 790, 610);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -125,6 +112,7 @@ public class CadastrarTimeView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarTime;
     private javax.swing.JLabel lblCadastrarNovoTime;
+    private javax.swing.JLabel lblImagem;
     private javax.swing.JLabel lblNomeTime;
     private javax.swing.JTextField txtNomeTime;
     // End of variables declaration//GEN-END:variables

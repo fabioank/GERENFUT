@@ -19,7 +19,7 @@ public class VotacaoView extends javax.swing.JFrame {
         controller.carregarDados();
         
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(900, 700);
+        setSize(790, 610);
         setLocationRelativeTo(null);
    
 
@@ -52,32 +52,36 @@ public class VotacaoView extends javax.swing.JFrame {
         lblVotosRestantesVisitantes = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblEleicao = new javax.swing.JLabel();
+        lblImagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         lblMelhorJogador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblMelhorJogador.setText("ELEGER O MELHOR JOGADOR DA PARTIDA");
+        lblMelhorJogador.setForeground(new java.awt.Color(255, 255, 255));
+        lblMelhorJogador.setText("MELHOR JOGADOR DA PARTIDA");
         getContentPane().add(lblMelhorJogador);
-        lblMelhorJogador.setBounds(490, 150, 360, 25);
+        lblMelhorJogador.setBounds(480, 120, 270, 25);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("ELEGER O GOL MAIS BONITO DA PARTIDA");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("GOL MAIS BONITO DA PARTIDA");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 150, 350, 20);
+        jLabel1.setBounds(50, 120, 270, 20);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(430, 353, 0, 280);
 
         jScrollPane3.setViewportView(listaVotacaoGolMaisBonito);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(60, 190, 258, 320);
+        jScrollPane3.setBounds(38, 150, 290, 320);
 
         jScrollPane4.setViewportView(listaVotacaoMelhorJogador);
 
         getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(560, 190, 260, 320);
+        jScrollPane4.setBounds(470, 150, 290, 320);
 
+        btnSalvarPartida.setForeground(new java.awt.Color(0, 0, 0));
         btnSalvarPartida.setText("Salvar partida");
         btnSalvarPartida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,8 +89,9 @@ public class VotacaoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvarPartida);
-        btnSalvarPartida.setBounds(390, 590, 110, 23);
+        btnSalvarPartida.setBounds(330, 540, 130, 23);
 
+        btnContVotoMelhorJogador.setForeground(new java.awt.Color(0, 0, 0));
         btnContVotoMelhorJogador.setText("Contabilizar Voto");
         btnContVotoMelhorJogador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,8 +99,9 @@ public class VotacaoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnContVotoMelhorJogador);
-        btnContVotoMelhorJogador.setBounds(190, 530, 130, 20);
+        btnContVotoMelhorJogador.setBounds(170, 480, 140, 20);
 
+        btnContVotoMelhorGol.setForeground(new java.awt.Color(0, 0, 0));
         btnContVotoMelhorGol.setText("Contabilizar Voto");
         btnContVotoMelhorGol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,38 +109,50 @@ public class VotacaoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnContVotoMelhorGol);
-        btnContVotoMelhorGol.setBounds(700, 530, 130, 23);
+        btnContVotoMelhorGol.setBounds(590, 480, 150, 23);
 
+        lblVotosRestantesCasa.setForeground(new java.awt.Color(255, 255, 255));
         lblVotosRestantesCasa.setText("0");
         getContentPane().add(lblVotosRestantesCasa);
-        lblVotosRestantesCasa.setBounds(150, 530, 30, 20);
+        lblVotosRestantesCasa.setBounds(140, 480, 30, 20);
 
+        lblVotosCasa.setForeground(new java.awt.Color(255, 255, 255));
         lblVotosCasa.setText("Votos restantes: ");
         getContentPane().add(lblVotosCasa);
-        lblVotosCasa.setBounds(60, 530, 90, 20);
+        lblVotosCasa.setBounds(40, 480, 90, 20);
 
         lblJogadorMelhorJogador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblJogadorMelhorJogador.setForeground(new java.awt.Color(255, 255, 255));
         lblJogadorMelhorJogador.setText("Jogador mais votado : ");
         getContentPane().add(lblJogadorMelhorJogador);
-        lblJogadorMelhorJogador.setBounds(570, 560, 260, 20);
+        lblJogadorMelhorJogador.setBounds(480, 510, 260, 20);
 
         lblJogadorMelhorGol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblJogadorMelhorGol.setForeground(new java.awt.Color(255, 255, 255));
         lblJogadorMelhorGol.setText("Jogador mais votado : ");
         getContentPane().add(lblJogadorMelhorGol);
-        lblJogadorMelhorGol.setBounds(60, 560, 260, 20);
+        lblJogadorMelhorGol.setBounds(50, 510, 260, 20);
 
+        lblVotosRestantesVisitantes.setForeground(new java.awt.Color(255, 255, 255));
         lblVotosRestantesVisitantes.setText("0");
         getContentPane().add(lblVotosRestantesVisitantes);
-        lblVotosRestantesVisitantes.setBounds(660, 530, 30, 20);
+        lblVotosRestantesVisitantes.setBounds(570, 480, 30, 20);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Votos restantes: ");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(570, 530, 90, 16);
+        jLabel2.setBounds(460, 480, 100, 16);
 
-        lblEleicao.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblEleicao.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblEleicao.setForeground(new java.awt.Color(255, 255, 255));
         lblEleicao.setText("Votação de jogadoes");
         getContentPane().add(lblEleicao);
-        lblEleicao.setBounds(300, 50, 270, 32);
+        lblEleicao.setBounds(220, 20, 360, 50);
+
+        lblImagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\fabio\\Downloads\\imgCampo.jpg")); // NOI18N
+        lblImagem.setText("jLabel3");
+        getContentPane().add(lblImagem);
+        lblImagem.setBounds(1, -4, 790, 610);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +223,7 @@ public class VotacaoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblEleicao;
+    private javax.swing.JLabel lblImagem;
     private javax.swing.JLabel lblJogadorMelhorGol;
     private javax.swing.JLabel lblJogadorMelhorJogador;
     private javax.swing.JLabel lblMelhorJogador;

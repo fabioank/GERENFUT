@@ -22,6 +22,7 @@ public class CriarPartidaController {
 
     public CriarPartidaController(CriarPartidaView view) {
         this.view = view;
+        partida = null;
     }
 
     public CriarPartidaController() {
@@ -203,7 +204,11 @@ public class CriarPartidaController {
             return;
         }
     }
-
+    
+    public static void atualizarPartida(Partida novaPartida){
+        partida = novaPartida;
+    }
+    
     public void iniciarPartida() {
 
         try {
@@ -256,8 +261,10 @@ public class CriarPartidaController {
             Time time2 = new Time(timeVisitante.getId_time(),view.getCbTime2().getSelectedItem().toString(), jogadoresTime2);
             
 
-            partida = new Partida(0L, new Date(),(byte)0, (byte) 0, null, null, time1, time2);
+            Partida novaPartida = new Partida(0L, new Date(),(byte)0, (byte) 0, null, null, time1, time2);
 
+            atualizarPartida(novaPartida);
+            
             if (partida != null) {
                 view.dispose();
                 TelaPartidaView partidaView = new TelaPartidaView();
@@ -270,7 +277,6 @@ public class CriarPartidaController {
             return;
         }
     }
-
     public static Partida retornoPartida() {
         return partida;
     }

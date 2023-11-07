@@ -24,6 +24,7 @@ public class CriarPartidaView extends javax.swing.JFrame {
 
     public CriarPartidaView() {
         initComponents();
+        setSize(790, 610);
         setTitle("Criar partida");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -62,30 +63,49 @@ public class CriarPartidaView extends javax.swing.JFrame {
         btnRemoveJogador2 = new javax.swing.JButton();
         chkTime1 = new javax.swing.JCheckBox();
         chkTime2 = new javax.swing.JCheckBox();
+        lblImagem = new javax.swing.JLabel();
+        lblImg = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         lblCriarPartida.setBackground(new java.awt.Color(0, 0, 0));
-        lblCriarPartida.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        lblCriarPartida.setForeground(new java.awt.Color(0, 0, 0));
-        lblCriarPartida.setText("Criar Nova Partida");
+        lblCriarPartida.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        lblCriarPartida.setForeground(new java.awt.Color(255, 255, 255));
+        lblCriarPartida.setText("Nova partida");
+        getContentPane().add(lblCriarPartida);
+        lblCriarPartida.setBounds(280, 30, 230, 42);
 
         lblTime2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTime2.setForeground(new java.awt.Color(255, 255, 255));
         lblTime2.setText("TIME 2");
+        getContentPane().add(lblTime2);
+        lblTime2.setBounds(590, 70, 70, 25);
 
         lblTime1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTime1.setForeground(new java.awt.Color(255, 255, 255));
         lblTime1.setText("TIME 1");
+        getContentPane().add(lblTime1);
+        lblTime1.setBounds(80, 70, 80, 25);
 
         cbTime1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTime1ActionPerformed(evt);
             }
         });
+        getContentPane().add(cbTime1);
+        cbTime1.setBounds(50, 110, 130, 22);
 
-        lblJogadoresTime1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        getContentPane().add(cbTime2);
+        cbTime2.setBounds(550, 110, 130, 22);
+
+        lblJogadoresTime1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblJogadoresTime1.setForeground(new java.awt.Color(255, 255, 255));
         lblJogadoresTime1.setText("Selecionar jogadores");
+        getContentPane().add(lblJogadoresTime1);
+        lblJogadoresTime1.setBounds(260, 180, 239, 32);
 
         btnIniciarPartida.setText("Iniciar Partida");
         btnIniciarPartida.addActionListener(new java.awt.event.ActionListener() {
@@ -93,12 +113,19 @@ public class CriarPartidaView extends javax.swing.JFrame {
                 btnIniciarPartidaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnIniciarPartida);
+        btnIniciarPartida.setBounds(320, 540, 114, 23);
+
+        getContentPane().add(cbJogadoresTime2);
+        cbJogadoresTime2.setBounds(453, 250, 230, 22);
 
         cbJogadoresTime1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbJogadoresTime1ActionPerformed(evt);
             }
         });
+        getContentPane().add(cbJogadoresTime1);
+        cbJogadoresTime1.setBounds(30, 250, 210, 22);
 
         btnAddJogador1.setText("+");
         btnAddJogador1.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +133,8 @@ public class CriarPartidaView extends javax.swing.JFrame {
                 btnAddJogador1ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddJogador1);
+        btnAddJogador1.setBounds(250, 250, 30, 23);
 
         btnAddJogador2.setText("+");
         btnAddJogador2.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +142,8 @@ public class CriarPartidaView extends javax.swing.JFrame {
                 btnAddJogador2ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddJogador2);
+        btnAddJogador2.setBounds(690, 250, 30, 23);
 
         tblJogadoresTime2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,6 +163,9 @@ public class CriarPartidaView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblJogadoresTime2);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(450, 300, 289, 210);
+
         tblJogadoresTime1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -150,12 +184,17 @@ public class CriarPartidaView extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblJogadoresTime1);
 
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(30, 300, 280, 210);
+
         btnRemoveJogador1.setText("-");
         btnRemoveJogador1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveJogador1ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRemoveJogador1);
+        btnRemoveJogador1.setBounds(290, 250, 30, 23);
 
         btnRemoveJogador2.setText("-");
         btnRemoveJogador2.addActionListener(new java.awt.event.ActionListener() {
@@ -163,121 +202,36 @@ public class CriarPartidaView extends javax.swing.JFrame {
                 btnRemoveJogador2ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRemoveJogador2);
+        btnRemoveJogador2.setBounds(730, 250, 30, 23);
 
+        chkTime1.setBackground(new java.awt.Color(51, 51, 51));
+        chkTime1.setForeground(new java.awt.Color(255, 255, 255));
         chkTime1.setText("Carregar jogadores");
         chkTime1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkTime1ActionPerformed(evt);
             }
         });
+        getContentPane().add(chkTime1);
+        chkTime1.setBounds(50, 150, 135, 20);
 
+        chkTime2.setBackground(new java.awt.Color(51, 51, 51));
+        chkTime2.setForeground(new java.awt.Color(255, 255, 255));
         chkTime2.setText("Carregar jogadores");
         chkTime2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkTime2ActionPerformed(evt);
             }
         });
+        getContentPane().add(chkTime2);
+        chkTime2.setBounds(550, 150, 133, 20);
+        getContentPane().add(lblImagem);
+        lblImagem.setBounds(733, 99, 37, 0);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTime1)
-                            .addComponent(cbTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(chkTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTime2)
-                    .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(141, 141, 141))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(cbJogadoresTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAddJogador1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemoveJogador1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(chkTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbJogadoresTime2, 0, 155, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAddJogador2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemoveJogador2)
-                        .addGap(80, 80, 80))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(lblJogadoresTime1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(btnIniciarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(lblCriarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lblCriarPartida)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTime1)
-                            .addComponent(lblTime2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chkTime2)
-                        .addGap(4, 4, 4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(chkTime1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblJogadoresTime1)
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddJogador1)
-                    .addComponent(cbJogadoresTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddJogador2)
-                    .addComponent(cbJogadoresTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRemoveJogador1)
-                    .addComponent(btnRemoveJogador2))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnIniciarPartida)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        lblImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\fabio\\Downloads\\imgCampo.jpg")); // NOI18N
+        getContentPane().add(lblImg);
+        lblImg.setBounds(0, 0, 780, 610);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -367,6 +321,8 @@ public class CriarPartidaView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCriarPartida;
+    private javax.swing.JLabel lblImagem;
+    private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblJogadoresTime1;
     private javax.swing.JLabel lblTime1;
     private javax.swing.JLabel lblTime2;

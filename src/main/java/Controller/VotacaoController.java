@@ -1,7 +1,7 @@
 package Controller;
 
-import static Controller.TelaPartidaController.marcadores;
-import static Controller.TelaPartidaController.partida;
+
+
 import Model.DAO.JogadorDAO;
 import Model.DAO.PartidaDAO;
 import Model.Jogador;
@@ -13,8 +13,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 public class VotacaoController {
-    Partida partida = TelaPartidaController.retornoPartida();
-    List<Jogador> marcadores = TelaPartidaController.getMarcadores();
+    Partida partida = null;
+    List<Jogador> marcadores = null;
     private TelaPartidaController controller;
     private VotacaoView view;
     
@@ -25,6 +25,8 @@ public class VotacaoController {
 
     public VotacaoController(VotacaoView view) {
         this.view = view;
+        partida = TelaPartidaController.retornoPartida();
+        marcadores = TelaPartidaController.getMarcadores();
     }
 
     public void carregarDados() {
@@ -47,6 +49,10 @@ public class VotacaoController {
         view.getLblVotosRestantesCasa().setText((String.valueOf(todosJogadores.size())));
         view.getLblVotosRestantesVisitante().setText((String.valueOf(todosJogadores.size())));
         
+        if(partida.getGolsTimeCasa() == 0 && partida.getGolsTimeVisitante() == 0){
+            view.getLblVotosRestantesCasa().setText(String.valueOf(0));
+            partida.setMelhor_gol("----");
+        }
     }
 
     int maiorQuantidadeCasa = 0;
@@ -139,14 +145,16 @@ public class VotacaoController {
                         + "votação para salvar os dados da partida", "Votação não encerrada", JOptionPane.WARNING_MESSAGE);
             }
 
-            partida.setMelhor_gol(jogadorMaisVotadoGols.getNome());
+            if(partida.getMelhor_gol() == null){
+                partida.setMelhor_gol(jogadorMaisVotadoGols.getNome());
+                JogadorDAO.addMelhorGol(jogadorMaisVotadoGols);
+            }           
             partida.setMelhor_jogador(jogadorMaisVotado.getNome());
-
+            JogadorDAO.addMelhorJogador(jogadorMaisVotado);
+            
             for (Jogador jogador : marcadores) {
                 JogadorDAO.atualizarGols(jogador);
             }
-            JogadorDAO.addMelhorJogador(jogadorMaisVotado);
-            JogadorDAO.addMelhorGol(jogadorMaisVotadoGols);
 
             int id_partida = PartidaDAO.adicionarPartida(partida);
 
