@@ -13,7 +13,6 @@ import javax.swing.table.TableRowSorter;
 public class RankingController {
 
     private final RankingView view;
-    
 
     public RankingController(RankingView view) {
 
@@ -29,7 +28,7 @@ public class RankingController {
         jogadores.sort((jogador1, jogador2) -> Integer.compare(jogador2.getGolsMarcados(), jogador1.getGolsMarcados()));
 
         for (Jogador jogador : jogadores) {
-            if (jogador.isSituacao() == true) {
+            if (jogador.isSituacao() == true && jogador.getGolsMarcados() != 0 ) {
                 Object[] jog = {
                     defaultTableModel.getRowCount() + 1 + "°",
                     jogador.getNome(),
@@ -50,7 +49,7 @@ public class RankingController {
         jogadores.sort((jogador1, jogador2) -> Integer.compare(jogador2.getTitulosMelhorJogador(), jogador1.getTitulosMelhorJogador()));
 
         for (Jogador jogador : jogadores) {
-            if (jogador.isSituacao() == true) {
+            if (jogador.isSituacao() == true && jogador.getTitulosMelhorJogador() != 0) {
                 Object[] jog = {
                     defaultTableModel.getRowCount() + 1 + "°",
                     jogador.getNome(),
@@ -61,9 +60,9 @@ public class RankingController {
             }
         }
     }
+
     public void rankingMelhorGol() {
-        
-    
+
         DefaultTableModel defaultTableModel = (DefaultTableModel) view.getTblRankingJogadores().getModel();
         List<Jogador> jogadores = new ArrayList<>();
         defaultTableModel.setRowCount(0);
@@ -72,7 +71,7 @@ public class RankingController {
         jogadores.sort((jogador1, jogador2) -> Integer.compare(jogador2.getTitulosMelhorGol(), jogador1.getTitulosMelhorGol()));
 
         for (Jogador jogador : jogadores) {
-            if (jogador.isSituacao() == true) {
+            if (jogador.isSituacao() == true && jogador.getTitulosMelhorGol() != 0 ) {
                 Object[] jog = {
                     defaultTableModel.getRowCount() + 1 + "°",
                     jogador.getNome(),

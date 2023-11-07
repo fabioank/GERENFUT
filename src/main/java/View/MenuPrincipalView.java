@@ -19,9 +19,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         initComponents();
         controller = new MenuPrincipalController(this);
         setExtendedState(MAXIMIZED_BOTH);
-        jLabel3.setLayout(new FlowLayout());
-        jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel3.setVerticalAlignment(SwingConstants.CENTER);
+        lblImagem.setLayout(new FlowLayout());
+        lblImagem.setHorizontalAlignment(SwingConstants.CENTER);
+        lblImagem.setVerticalAlignment(SwingConstants.CENTER);
         setTitle("Menu principal");
 
     }
@@ -31,13 +31,13 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblImagem = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuItemNovoJogador = new javax.swing.JMenu();
         menuItemVerJogadores = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuTime = new javax.swing.JMenu();
         menuItemCriarNovoTime = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        menuPartida = new javax.swing.JMenu();
         menuItemCriarPartida = new javax.swing.JMenuItem();
         menuRanking = new javax.swing.JMenu();
         menuItemVerRanking = new javax.swing.JMenuItem();
@@ -47,9 +47,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel3.setIcon(null);
-        getContentPane().add(jLabel3, java.awt.BorderLayout.CENTER);
+        getContentPane().add(lblImagem, java.awt.BorderLayout.CENTER);
         ImageIcon icon = new ImageIcon(getClass().getResource("/View//Imagens/IMAGEMGRAMADO.jpg"));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         // Obtenha as dimensões da tela
@@ -73,7 +71,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
         // Defina o ícone na JLabel
-        jLabel3.setIcon(scaledIcon);
+        lblImagem.setIcon(scaledIcon);
 
         menuItemNovoJogador.setText("Jogador");
         menuItemNovoJogador.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +90,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(menuItemNovoJogador);
 
-        jMenu2.setText("Time");
+        menuTime.setText("Time");
 
         menuItemCriarNovoTime.setText("Cadastrar novo time");
         menuItemCriarNovoTime.addActionListener(new java.awt.event.ActionListener() {
@@ -100,11 +98,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
                 menuItemCriarNovoTimeActionPerformed(evt);
             }
         });
-        jMenu2.add(menuItemCriarNovoTime);
+        menuTime.add(menuItemCriarNovoTime);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuTime);
 
-        jMenu3.setText("Partida");
+        menuPartida.setText("Partida");
 
         menuItemCriarPartida.setText("Criar partida");
         menuItemCriarPartida.addActionListener(new java.awt.event.ActionListener() {
@@ -112,9 +110,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
                 menuItemCriarPartidaActionPerformed(evt);
             }
         });
-        jMenu3.add(menuItemCriarPartida);
+        menuPartida.add(menuItemCriarPartida);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuPartida);
 
         menuRanking.setText("Ranking");
         menuRanking.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +131,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(menuRanking);
 
-        menuHistorico.setText("Històrico");
+        menuHistorico.setText("Histórico");
 
         menuItemHistorico.setText("Ver histórico");
         menuItemHistorico.addActionListener(new java.awt.event.ActionListener() {
@@ -224,10 +222,8 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel lblImagem;
     private javax.swing.JMenu menuHistorico;
     private javax.swing.JMenuItem menuItemCriarNovoTime;
     private javax.swing.JMenuItem menuItemCriarPartida;
@@ -235,7 +231,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenu menuItemNovoJogador;
     private javax.swing.JMenuItem menuItemVerJogadores;
     private javax.swing.JMenuItem menuItemVerRanking;
+    private javax.swing.JMenu menuPartida;
     private javax.swing.JMenu menuRanking;
+    private javax.swing.JMenu menuTime;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -9,13 +9,15 @@ import javax.swing.JList;
 
 public class VotacaoView extends javax.swing.JFrame {
 
-    private final VotacaoController controller;
+    
+    VotacaoController controller;
 
     public VotacaoView() {
         initComponents();
+        
         controller = new VotacaoController(this);
         controller.carregarDados();
-
+        
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(900, 700);
         setLocationRelativeTo(null);

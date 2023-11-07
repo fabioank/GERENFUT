@@ -236,8 +236,10 @@ public class TelaPartidaView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddMarcadorVisitanteActionPerformed
 
     private void btnEncerrarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarPartidaActionPerformed
-
-        //new VotacaoView().setVisible(true);
+        controller.encerrarPartida();
+        VotacaoView votacaoView = new VotacaoView();
+        votacaoView.setVisible(true);
+        
         controller.elegerGolMaisBonito();
         controller.elegerMelhorJogador();
     }//GEN-LAST:event_btnEncerrarPartidaActionPerformed

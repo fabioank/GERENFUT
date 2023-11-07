@@ -70,7 +70,9 @@ public class PartidaDAO {
     }
 
     public static List<Partida> todasAsPartidas() {
+        
     List<Partida> listaPartidas = new ArrayList<>();
+    
     Connection conn = Conexao.getConnection();
 
     try {
@@ -83,6 +85,7 @@ public class PartidaDAO {
         Partida partidaExistente = null;
 
         while (rs.next()) {
+            
             long idPartida = rs.getLong("id_partida");
 
             if (partidaExistente == null || partidaExistente.getId_partida() != idPartida) {

@@ -13,26 +13,24 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 public class TelaPartidaController {
 
-    
-    
-    List<Jogador> marcadores = new ArrayList<>();
+    public static List<Jogador> marcadores = new ArrayList<>();
+
     private TelaPartidaView view;
-    private VotacaoView viewVotacao;
-    Partida partida = CriarPartidaController.retornoPartida();
+
+    public static Partida partida = CriarPartidaController.retornoPartida();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     DefaultListModel<Jogador> listaCasa = new DefaultListModel<>();
     DefaultListModel<Jogador> listaVisitante = new DefaultListModel<>();
     DefaultListModel<Jogador> listaGolMaisBonito = new DefaultListModel<>();
     DefaultListModel<Jogador> listaMelhorJogador = new DefaultListModel<>();
+
     public TelaPartidaController(TelaPartidaView view) {
         this.view = view;
-    }
-    public TelaPartidaController(VotacaoView viewVotacao){
-        this.viewVotacao = viewVotacao;
     }
 
     public void partida() {
@@ -118,30 +116,39 @@ public class TelaPartidaController {
             }
         }
     }
-    public void finalPartida(){
+
+    public void finalPartida() {
         partida.setGolsTimeCasa(Byte.parseByte(view.getLblPlacarTimeCasa().getText()));
         partida.setGolsTimeVisitante(Byte.parseByte(view.getLblPlacarTimeVisitante().getText()));
     }
-    public Partida retornoPartida(){
+
+    public List<Jogador> marcadoresPartida() {
+        return marcadores;
+    }
+
+    public void encerrarPartida() {
+        partida.setGolsTimeCasa(Byte.parseByte(view.getLblPlacarTimeCasa().getText()));
+        partida.setGolsTimeVisitante(Byte.parseByte(view.getLblPlacarTimeVisitante().getText()));
+    }
+    public static Partida retornoPartida(){
         return partida;
     }
-    public List<Jogador> marcadoresPartida(){
-        return marcadores;      
+    public static List<Jogador> getMarcadores(){
+        return marcadores;
     }
+
     public void elegerGolMaisBonito() {
 
         List<Jogador> jogadoresGolMaisBonito = new ArrayList<>();
-        for(Jogador jogador : marcadores){
-            jogadoresGolMaisBonito.add(jogador);
-        }
 
-        for (Jogador jogador : jogadoresGolMaisBonito) {
+        for (Jogador jogador : marcadores) {
             listaGolMaisBonito.addElement(jogador);
         }
         view.getListaVotacaoGolMaisBonito().setModel(listaGolMaisBonito);
 
         Integer totalJogadores = view.getCbMarcadorTimeCasa().getItemCount();
         totalJogadores += view.getCbMarcadorTimeVisitante().getItemCount();
+
         view.getLblVotosRestantesCasa().setText(String.valueOf(totalJogadores));
         view.getLblVotosRestantesVisitante().setText(String.valueOf(totalJogadores));
 
@@ -157,13 +164,13 @@ public class TelaPartidaController {
         for (Jogador jogador : partida.getTimeVisitante().getJogador()) {
             jogadores.add(jogador);
         }
-            Collections.sort(jogadores, new Comparator<Jogador>() {
+        Collections.sort(jogadores, new Comparator<Jogador>() {
             @Override
             public int compare(Jogador jogador1, Jogador jogador2) {
                 return jogador1.getNome().compareTo(jogador2.getNome());
             }
         });
-        
+
         for (Jogador jogador : jogadores) {
             listaMelhorJogador.addElement(jogador);
         }
@@ -177,7 +184,6 @@ public class TelaPartidaController {
 
     public void addVotoMelhorGol() {
 
-        
         if (view.getLblVotosRestantesCasa().getText().equals("0")) {
             JOptionPane.showMessageDialog(null, "Todos os votos ja foram efetuados!");
             return;
@@ -258,28 +264,28 @@ public class TelaPartidaController {
 
         try {
             if (!view.getLblVotosRestantesCasa().getText().equals("0") || !view.getLblVotosRestantesVisitante().getText().equals("0")) {
-            JOptionPane.showMessageDialog(null, "Ainda existem votos a serem realizados, por favor finalize a "
-                    + "votação para salvar os dados da partida", "Votação não encerrada", JOptionPane.WARNING_MESSAGE);
-        }
+                JOptionPane.showMessageDialog(null, "Ainda existem votos a serem realizados, por favor finalize a "
+                        + "votação para salvar os dados da partida", "Votação não encerrada", JOptionPane.WARNING_MESSAGE);
+            }
 
-        partida.setMelhor_gol(jogadorMaisVotadoGols.getNome());
-        partida.setMelhor_jogador(jogadorMaisVotado.getNome());
-        partida.setGolsTimeCasa(Byte.parseByte(view.getLblPlacarTimeCasa().getText()));
-        partida.setGolsTimeVisitante(Byte.parseByte(view.getLblPlacarTimeVisitante().getText()));
+            partida.setMelhor_gol(jogadorMaisVotadoGols.getNome());
+            partida.setMelhor_jogador(jogadorMaisVotado.getNome());
+            partida.setGolsTimeCasa(Byte.parseByte(view.getLblPlacarTimeCasa().getText()));
+            partida.setGolsTimeVisitante(Byte.parseByte(view.getLblPlacarTimeVisitante().getText()));
 
-        for (Jogador jogador : marcadores) {
-            JogadorDAO.atualizarGols(jogador);
-        }
-        JogadorDAO.addMelhorJogador(jogadorMaisVotado);
-        JogadorDAO.addMelhorGol(jogadorMaisVotadoGols);
+            for (Jogador jogador : marcadores) {
+                JogadorDAO.atualizarGols(jogador);
+            }
+            JogadorDAO.addMelhorJogador(jogadorMaisVotado);
+            JogadorDAO.addMelhorGol(jogadorMaisVotadoGols);
 
-        int id_partida = PartidaDAO.adicionarPartida(partida);
+            int id_partida = PartidaDAO.adicionarPartida(partida);
 
-        PartidaDAO.associarTimePartida(id_partida, partida.getTimeCasa().getId_time(), partida.getGolsTimeCasa());
-        PartidaDAO.associarTimePartida(id_partida, partida.getTimeVisitante().getId_time(), partida.getGolsTimeVisitante());
+            PartidaDAO.associarTimePartida(id_partida, partida.getTimeCasa().getId_time(), partida.getGolsTimeCasa());
+            PartidaDAO.associarTimePartida(id_partida, partida.getTimeVisitante().getId_time(), partida.getGolsTimeVisitante());
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Infelizmente não foi possivel salvar a partida", "Partida não salva", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-
     }
 }

@@ -27,7 +27,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="menuTime">
           <Properties>
             <Property name="text" type="java.lang.String" value="Time"/>
           </Properties>
@@ -42,7 +42,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
+        <Menu class="javax.swing.JMenu" name="menuPartida">
           <Properties>
             <Property name="text" type="java.lang.String" value="Partida"/>
           </Properties>
@@ -77,7 +77,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuHistorico">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hist&#xf2;rico"/>
+            <Property name="text" type="java.lang.String" value="Hist&#xf3;rico"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemHistorico">
@@ -116,14 +116,9 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="0" name="null"/>
-        </Property>
-      </Properties>
+    <Component class="javax.swing.JLabel" name="lblImagem">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon icon = new ImageIcon(getClass().getResource(&quot;/View//Imagens/IMAGEMGRAMADO.jpg&quot;));&#xa;setExtendedState(JFrame.MAXIMIZED_BOTH);&#xa;// Obtenha as dimens&#xf5;es da tela&#xa;Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();&#xa;&#xa;// Obtenha as dimens&#xf5;es da imagem&#xa;int imageWidth = icon.getIconWidth();&#xa;int imageHeight = icon.getIconHeight();&#xa;&#xa;// Calcule as propor&#xe7;&#xf5;es de escala&#xa;double scaleX = (double) screenSize.width / imageWidth;&#xa;double scaleY = (double) screenSize.height / imageHeight;&#xa;&#xa;// Use a propor&#xe7;&#xe3;o de escala maior para preencher a tela&#xa;double scale = Math.max(scaleX, scaleY);&#xa;&#xa;// Redimensione a imagem para preencher a tela&#xa;Image scaledImage = icon.getImage().getScaledInstance((int) (scale * imageWidth), (int) (scale * imageHeight), Image.SCALE_DEFAULT);&#xa;&#xa;// Crie um novo ImageIcon com a imagem redimensionada&#xa;ImageIcon scaledIcon = new ImageIcon(scaledImage);&#xa;&#xa;// Defina o &#xed;cone na JLabel&#xa;jLabel3.setIcon(scaledIcon);"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon icon = new ImageIcon(getClass().getResource(&quot;/View//Imagens/IMAGEMGRAMADO.jpg&quot;));&#xa;setExtendedState(JFrame.MAXIMIZED_BOTH);&#xa;// Obtenha as dimens&#xf5;es da tela&#xa;Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();&#xa;&#xa;// Obtenha as dimens&#xf5;es da imagem&#xa;int imageWidth = icon.getIconWidth();&#xa;int imageHeight = icon.getIconHeight();&#xa;&#xa;// Calcule as propor&#xe7;&#xf5;es de escala&#xa;double scaleX = (double) screenSize.width / imageWidth;&#xa;double scaleY = (double) screenSize.height / imageHeight;&#xa;&#xa;// Use a propor&#xe7;&#xe3;o de escala maior para preencher a tela&#xa;double scale = Math.max(scaleX, scaleY);&#xa;&#xa;// Redimensione a imagem para preencher a tela&#xa;Image scaledImage = icon.getImage().getScaledInstance((int) (scale * imageWidth), (int) (scale * imageHeight), Image.SCALE_DEFAULT);&#xa;&#xa;// Crie um novo ImageIcon com a imagem redimensionada&#xa;ImageIcon scaledIcon = new ImageIcon(scaledImage);&#xa;&#xa;// Defina o &#xed;cone na JLabel&#xa;lblImagem.setIcon(scaledIcon);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
