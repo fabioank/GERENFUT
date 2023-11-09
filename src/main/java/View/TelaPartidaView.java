@@ -53,7 +53,6 @@ public class TelaPartidaView extends javax.swing.JFrame {
         lblImagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(790, 610));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -142,7 +141,7 @@ public class TelaPartidaView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEncerrarPartida);
-        btnEncerrarPartida.setBounds(340, 460, 150, 23);
+        btnEncerrarPartida.setBounds(320, 460, 150, 23);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(430, 353, 0, 280);
 

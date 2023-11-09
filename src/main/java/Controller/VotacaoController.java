@@ -3,6 +3,7 @@ package Controller;
 
 
 import Model.DAO.JogadorDAO;
+import Model.DAO.JogadorPartidaDAO;
 import Model.DAO.PartidaDAO;
 import Model.Jogador;
 import Model.Partida;
@@ -144,16 +145,15 @@ public class VotacaoController {
                 JOptionPane.showMessageDialog(null, "Ainda existem votos a serem realizados, por favor finalize a "
                         + "votação para salvar os dados da partida", "Votação não encerrada", JOptionPane.WARNING_MESSAGE);
             }
-
             if(partida.getMelhor_gol() == null){
                 partida.setMelhor_gol(jogadorMaisVotadoGols.getNome());
-                JogadorDAO.addMelhorGol(jogadorMaisVotadoGols);
+                JogadorPartidaDAO.addMelhorGol(jogadorMaisVotadoGols);
             }           
             partida.setMelhor_jogador(jogadorMaisVotado.getNome());
-            JogadorDAO.addMelhorJogador(jogadorMaisVotado);
+            JogadorPartidaDAO.addMelhorJogador(jogadorMaisVotado);
             
             for (Jogador jogador : marcadores) {
-                JogadorDAO.atualizarGols(jogador);
+                JogadorPartidaDAO.atualizarGols(jogador);
             }
 
             int id_partida = PartidaDAO.adicionarPartida(partida);

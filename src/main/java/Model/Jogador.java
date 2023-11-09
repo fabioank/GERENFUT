@@ -24,10 +24,9 @@ public class Jogador {
 
     public Jogador() {}
 
-    public Jogador(Long id, String nome, short golsMarcados) {
+    public Jogador(Long id, String nome ) {
         this.id = id;
         this.nome = nome;
-        this.golsMarcados = golsMarcados;
     }
 
     public Jogador(String cpf, String senha) {

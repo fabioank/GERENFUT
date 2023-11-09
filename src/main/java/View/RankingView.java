@@ -40,9 +40,6 @@ public class RankingView extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tblRankingJogadores);
-        if (tblRankingJogadores.getColumnModel().getColumnCount() > 0) {
-            tblRankingJogadores.getColumnModel().getColumn(0).setResizable(false);
-        }
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) tblRankingJogadores.getTableHeader().getDefaultRenderer();

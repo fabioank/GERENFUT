@@ -41,14 +41,15 @@ public class JogadorDAO {
         return false;
     }
 
-    public static void inserirJogador(Jogador jogador) {
+    public static Long inserirJogador(Jogador jogador) {
         Connection conn = Conexao.getConnection();
+        Long idGerado = -1L;
 
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO Jogador"
                     + "(nome, cpf, numero, posicao, senha, situacao)"
                     + "VALUES"
-                    + "(?, ?, ?, ?, ?, ?)");
+                    + "(?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             st.setString(1, jogador.getNome());
             st.setString(2, jogador.getCpf());
             st.setShort(3, (short) jogador.getNumero());
@@ -56,8 +57,15 @@ public class JogadorDAO {
             st.setString(5, jogador.getSenha());
             st.setBoolean(6, true);
 
-            st.executeUpdate();
+            int linhasAfetadas = st.executeUpdate();
 
+            if (linhasAfetadas > 0) {
+                ResultSet rs = st.getGeneratedKeys();
+
+                if (rs.next()) {
+                    idGerado = rs.getLong(1);
+                }
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -69,6 +77,8 @@ public class JogadorDAO {
                 e.printStackTrace();
             }
         }
+
+        return idGerado;
     }
 
     public static boolean verificarJogador(String cpf, String senha) {
@@ -212,10 +222,7 @@ public class JogadorDAO {
                         rs.getShort("numero"),
                         rs.getString("posicao"),
                         null,
-                        rs.getBoolean("situacao"),
-                        rs.getShort("gols"),
-                        rs.getShort("titulos_melhor_jogador"),
-                        rs.getShort("titulos_melhor_gol")));
+                        rs.getBoolean("situacao")));
             }
             return list;
 
@@ -369,7 +376,8 @@ public class JogadorDAO {
         }
 
     }
-        public static void addMelhorGol(Jogador jogador) {
+
+    public static void addMelhorGol(Jogador jogador) {
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
 
@@ -383,4 +391,5 @@ public class JogadorDAO {
         }
 
     }
+
 }

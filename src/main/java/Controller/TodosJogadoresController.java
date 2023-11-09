@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.DAO.JogadorDAO;
+import Model.DAO.JogadorPartidaDAO;
 import Model.Jogador;
 import View.CadastrarJogadoresView;
 import View.TodosJogadoresView;

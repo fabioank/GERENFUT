@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.DAO.JogadorDAO;
+import Model.DAO.JogadorPartidaDAO;
 import Model.Jogador;
 import View.CadastrarJogadoresView;
 import View.LoginView;
@@ -47,14 +48,35 @@ public class CadastrarJogadoresController {
 
     public void editarJogador() {
 
+        for (char caractere : view.getTxtNome().getText().toCharArray()) {
+            if (Character.isDigit(caractere)) {
+                JOptionPane.showMessageDialog(null, "Por favor, o nome do jogador deve conter apenas letras");
+                return;
+            }
+        }
         if (view.getTxtNome().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Por favor, insira um nome!");
+            JOptionPane.showMessageDialog(null, "Por favor, informe o nome!");
+            return;
+        } else if (view.getTxtCpf().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Por favor, informe o CPF!");
+            return;
+        } else if (view.getTxtCpf().getText().matches(".*[a-zA-Z].*")) {
+            JOptionPane.showMessageDialog(null, "O CPF deve conter apenas numeros");
+            return;
+        } else if (view.getTxtCpf().getText().length() != 11) {
+            JOptionPane.showMessageDialog(null, "O CPF precisa conter 11 digitos, sendo apenas numeros");
             return;
         } else if (view.getTxtNumero().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Por favor, insira um numero!");
+            JOptionPane.showMessageDialog(null, "Por favor, informe o numero do jogador!");
+            return;
+        } else if (!view.getTxtNumero().getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(null, "Por favor, o numero da camisa do jogador deve conter apenas numeros");
+            return;
+        } else if (JogadorDAO.numeroJaCadastrado(Integer.parseInt(view.getTxtNumero().getText()))) {
+            JOptionPane.showMessageDialog(null, "Um jogador com esse numero ja foi cadastrado");
             return;
         } else if (view.getTxtSenha().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Por favor, insira uma senha!");
+            JOptionPane.showMessageDialog(null, "Por favor, informe a senha!");
             return;
         }
 
@@ -87,11 +109,14 @@ public class CadastrarJogadoresController {
     public void novoJogador() {
         try {
 
+            for (char caractere : view.getTxtNome().getText().toCharArray()) {
+                if (Character.isDigit(caractere)) {
+                    JOptionPane.showMessageDialog(null, "Por favor, o nome do jogador deve conter apenas letras");
+                    return;
+                }
+            }
             if (view.getTxtNome().getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Por favor, informe o nome!");
-                return;
-            }else if (!view.getTxtNome().getText().matches(".*[a-zA-Z].*")) {
-                JOptionPane.showMessageDialog(null, "Por favor, o nome do jogador deve conter apenas letras");
                 return;
             } else if (view.getTxtCpf().getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Por favor, informe o CPF!");
@@ -104,6 +129,9 @@ public class CadastrarJogadoresController {
                 return;
             } else if (view.getTxtNumero().getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Por favor, informe o numero do jogador!");
+                return;
+            } else if (!view.getTxtNumero().getText().matches("[0-9]+")) {
+                JOptionPane.showMessageDialog(null, "Por favor, o numero da camisa do jogador deve conter apenas numeros");
                 return;
             } else if (JogadorDAO.numeroJaCadastrado(Integer.parseInt(view.getTxtNumero().getText()))) {
                 JOptionPane.showMessageDialog(null, "Um jogador com esse numero ja foi cadastrado");
@@ -130,7 +158,7 @@ public class CadastrarJogadoresController {
             String posicao = view.getCbPosicao().getSelectedItem().toString();
             String senha = view.getTxtSenha().getText();
 
-            Jogador jogador = new Jogador(0L, nome, cpf, numero, posicao, senha, true, (short) 0, (short) 0, (short) 0);
+            Jogador jogador = new Jogador(0L, nome, cpf, numero, posicao, senha, true);
 
             boolean jaCadastrado = JogadorDAO.verificaCadastro(jogador);
 
@@ -139,12 +167,13 @@ public class CadastrarJogadoresController {
                 return;
             }
 
-            JogadorDAO.inserirJogador(jogador);
+            Long chaveGerada = JogadorDAO.inserirJogador(jogador);
+            JogadorPartidaDAO.criarRegistro(chaveGerada);
             JOptionPane.showMessageDialog(null, "Jogador cadastrado com sucesso!");
             view.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Algum dado foi digitado incorretamente");
+            JOptionPane.showMessageDialog(null, "Não foi possivel salvar os dados");
+            return;
         }
-
     }
 }

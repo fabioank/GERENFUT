@@ -1,14 +1,13 @@
 package Controller;
 
 import Model.DAO.JogadorDAO;
+import Model.DAO.JogadorPartidaDAO;
 import Model.Jogador;
+import Model.JogadorPartida;
 import View.RankingView;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 public class RankingController {
 
@@ -20,21 +19,23 @@ public class RankingController {
     }
 
     public void rankingArtilheiro() {
+        
         DefaultTableModel defaultTableModel = (DefaultTableModel) view.getTblRankingJogadores().getModel();
-        List<Jogador> jogadores = new ArrayList<>();
+        List<JogadorPartida> jogadores = new ArrayList<>();
         defaultTableModel.setRowCount(0);
-        jogadores = JogadorDAO.listaTodosJogadores();
+        jogadores = JogadorPartidaDAO.todosOsRegistros();
 
         jogadores.sort((jogador1, jogador2) -> Integer.compare(jogador2.getGolsMarcados(), jogador1.getGolsMarcados()));
 
-        for (Jogador jogador : jogadores) {
-            if (jogador.isSituacao() == true && jogador.getGolsMarcados() != 0 ) {
+        for (JogadorPartida jogador : jogadores) {
+            if (jogador.getGolsMarcados() != 0 ) {
                 Object[] jog = {
                     defaultTableModel.getRowCount() + 1 + "°",
-                    jogador.getNome(),
+                    jogador.getJogador().getNome(),
                     jogador.getGolsMarcados(),
-                    jogador.getTitulosMelhorJogador(),
-                    jogador.getTitulosMelhorGol()};
+                    jogador.getTitulos_melhor_Jogador(),
+                    jogador.getTitulos_melhor_gol()
+                };
                 defaultTableModel.addRow(jog);
             }
         }
@@ -42,20 +43,20 @@ public class RankingController {
 
     public void rankingMelhorJogador() {
         DefaultTableModel defaultTableModel = (DefaultTableModel) view.getTblRankingJogadores().getModel();
-        List<Jogador> jogadores = new ArrayList<>();
+        List<JogadorPartida> jogadores = new ArrayList<>();
         defaultTableModel.setRowCount(0);
-        jogadores = JogadorDAO.listaTodosJogadores();
+        jogadores = JogadorPartidaDAO.todosOsRegistros();
 
-        jogadores.sort((jogador1, jogador2) -> Integer.compare(jogador2.getTitulosMelhorJogador(), jogador1.getTitulosMelhorJogador()));
+        jogadores.sort((jogador1, jogador2) -> Integer.compare(jogador2.getTitulos_melhor_Jogador(), jogador1.getTitulos_melhor_Jogador()));
 
-        for (Jogador jogador : jogadores) {
-            if (jogador.isSituacao() == true && jogador.getTitulosMelhorJogador() != 0) {
+        for (JogadorPartida jogador : jogadores) {
+            if (jogador.getTitulos_melhor_Jogador() != 0) {
                 Object[] jog = {
                     defaultTableModel.getRowCount() + 1 + "°",
-                    jogador.getNome(),
+                    jogador.getJogador().getNome(),
                     jogador.getGolsMarcados(),
-                    jogador.getTitulosMelhorJogador(),
-                    jogador.getTitulosMelhorGol()};
+                    jogador.getTitulos_melhor_Jogador(),
+                    jogador.getTitulos_melhor_Jogador()};
                 defaultTableModel.addRow(jog);
             }
         }
@@ -64,20 +65,20 @@ public class RankingController {
     public void rankingMelhorGol() {
 
         DefaultTableModel defaultTableModel = (DefaultTableModel) view.getTblRankingJogadores().getModel();
-        List<Jogador> jogadores = new ArrayList<>();
+        List<JogadorPartida> jogadores = new ArrayList<>();
         defaultTableModel.setRowCount(0);
-        jogadores = JogadorDAO.listaTodosJogadores();
+        jogadores = JogadorPartidaDAO.todosOsRegistros();
 
-        jogadores.sort((jogador1, jogador2) -> Integer.compare(jogador2.getTitulosMelhorGol(), jogador1.getTitulosMelhorGol()));
+        jogadores.sort((jogador1, jogador2) -> Integer.compare(jogador2.getTitulos_melhor_gol(), jogador1.getTitulos_melhor_gol()));
 
-        for (Jogador jogador : jogadores) {
-            if (jogador.isSituacao() == true && jogador.getTitulosMelhorGol() != 0 ) {
+        for (JogadorPartida jogador : jogadores) {
+            if (jogador.getTitulos_melhor_gol() != 0 ) {
                 Object[] jog = {
                     defaultTableModel.getRowCount() + 1 + "°",
-                    jogador.getNome(),
+                    jogador.getJogador().getNome(),
                     jogador.getGolsMarcados(),
-                    jogador.getTitulosMelhorJogador(),
-                    jogador.getTitulosMelhorGol()};
+                    jogador.getTitulos_melhor_gol(),
+                    jogador.getTitulos_melhor_gol()};
                 defaultTableModel.addRow(jog);
             }
         }
