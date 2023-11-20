@@ -391,5 +391,36 @@ public class JogadorDAO {
         }
 
     }
+    public static Jogador obterJogadorPorNumero(short numero) {
+
+        Connection conn = Conexao.getConnection();
+        PreparedStatement st = null;
+        ResultSet resultSet = null;
+
+        try {
+            st = conn.prepareStatement("SELECT * FROM jogador WHERE numero = ?");
+            
+           
+            st.setLong(1, numero);
+
+            resultSet = st.executeQuery();
+
+            if (resultSet.next()) {
+                Long id = resultSet.getLong("id_jogador");
+                String nome = resultSet.getString("nome");
+                String cpf = resultSet.getString("cpf");
+                String posicao = resultSet.getString("posicao");
+                boolean situacao = resultSet.getBoolean("situacao");
+
+                return new Jogador(id, nome, numero, cpf, posicao, situacao);
+            }
+        } catch (SQLException e) {
+           
+            e.printStackTrace();
+        } finally {
+        }
+
+        return null;
+    }
 
 }

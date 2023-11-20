@@ -35,6 +35,7 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
             this.txtNome.setText(jogador.getNome());
             this.txtNumero.setText(String.valueOf(jogador.getNumero()));
             this.txtCpf.setText(jogador.getCpf());
+            this.txtCpf.setEditable(false);
             this.cbPosicao.setSelectedItem(jogador.getPosicao());
             this.getCbSituacao().setSelectedItem(jogador.isSituacao() ? "Ativo" : "Inativo");
 

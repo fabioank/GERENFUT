@@ -2,6 +2,7 @@ package View;
 
 import Controller.TelaPartidaController;
 import Model.Jogador;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -20,7 +21,6 @@ public class TelaPartidaView extends javax.swing.JFrame {
         controller.comporTimeVisitante();
         setSize(790, 610);
         setLocationRelativeTo(null);
-
         setTitle("Tela da partida");
     }
 
@@ -33,6 +33,7 @@ public class TelaPartidaView extends javax.swing.JFrame {
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jButton1 = new javax.swing.JButton();
         lblPartidaEmAndamento = new javax.swing.JLabel();
         lblTimeCasa = new javax.swing.JLabel();
         lblTimeVisitante = new javax.swing.JLabel();
@@ -50,17 +51,22 @@ public class TelaPartidaView extends javax.swing.JFrame {
         btnAddMarcadorVisitante = new javax.swing.JButton();
         btnEncerrarPartida = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        lblImagem = new javax.swing.JLabel();
+        btnAddMarcadorCasa1 = new javax.swing.JButton();
+        btnRemoveCasa = new javax.swing.JButton();
+        btnRemoveVisitante = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        lblPartidaEmAndamento.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPartidaEmAndamento.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblPartidaEmAndamento.setForeground(new java.awt.Color(255, 255, 255));
         lblPartidaEmAndamento.setText("Partida em andamento");
         getContentPane().add(lblPartidaEmAndamento);
-        lblPartidaEmAndamento.setBounds(290, 30, 243, 32);
+        lblPartidaEmAndamento.setBounds(220, 40, 380, 32);
 
         lblTimeCasa.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblTimeCasa.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,7 +84,7 @@ public class TelaPartidaView extends javax.swing.JFrame {
         lblDataJogo.setForeground(new java.awt.Color(255, 255, 255));
         lblDataJogo.setText("Data do jogo");
         getContentPane().add(lblDataJogo);
-        lblDataJogo.setBounds(370, 80, 100, 20);
+        lblDataJogo.setBounds(360, 80, 100, 20);
 
         lblVersus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblVersus.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,10 +151,37 @@ public class TelaPartidaView extends javax.swing.JFrame {
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(430, 353, 0, 280);
 
-        lblImagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\fabio\\Downloads\\imgCampo.jpg")); // NOI18N
-        lblImagem.setText("jLabel1");
-        getContentPane().add(lblImagem);
-        lblImagem.setBounds(0, 0, 790, 610);
+        btnAddMarcadorCasa1.setText("+");
+        btnAddMarcadorCasa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddMarcadorCasa1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAddMarcadorCasa1);
+        btnAddMarcadorCasa1.setBounds(300, 270, 44, 23);
+
+        btnRemoveCasa.setText("-");
+        btnRemoveCasa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveCasaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRemoveCasa);
+        btnRemoveCasa.setBounds(300, 300, 40, 23);
+
+        btnRemoveVisitante.setText("-");
+        btnRemoveVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveVisitanteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRemoveVisitante);
+        btnRemoveVisitante.setBounds(450, 300, 40, 23);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\fabio\\Downloads\\imgCampo.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 790, 610);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -167,6 +200,18 @@ public class TelaPartidaView extends javax.swing.JFrame {
         VotacaoView votacaoView = new VotacaoView();
         votacaoView.setVisible(true);
     }//GEN-LAST:event_btnEncerrarPartidaActionPerformed
+
+    private void btnAddMarcadorCasa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMarcadorCasa1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddMarcadorCasa1ActionPerformed
+
+    private void btnRemoveCasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveCasaActionPerformed
+        controller.removerJogadorTimeCasa();
+    }//GEN-LAST:event_btnRemoveCasaActionPerformed
+
+    private void btnRemoveVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveVisitanteActionPerformed
+        controller.removerJogadorTimeVisitante();
+    }//GEN-LAST:event_btnRemoveVisitanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,20 +251,24 @@ public class TelaPartidaView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddMarcadorCasa;
+    private javax.swing.JButton btnAddMarcadorCasa1;
     private javax.swing.JButton btnAddMarcadorVisitante;
     private javax.swing.JButton btnEncerrarPartida;
+    private javax.swing.JButton btnRemoveCasa;
+    private javax.swing.JButton btnRemoveVisitante;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JComboBox<String> cbMarcadorTimeCasa;
     private javax.swing.JComboBox<String> cbMarcadorTimeVisitante;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblDataJogo;
-    private javax.swing.JLabel lblImagem;
     private javax.swing.JLabel lblPartidaEmAndamento;
     private javax.swing.JLabel lblPlacarTimeCasa;
     private javax.swing.JLabel lblPlacarTimeVisitante;
@@ -309,4 +358,21 @@ public class TelaPartidaView extends javax.swing.JFrame {
     public void setLblPlacarTimeVisitante(JLabel lblPlacarTimeVisitante) {
         this.lblPlacarTimeVisitante = lblPlacarTimeVisitante;
     }
+
+    public JButton getBtnRemoveCasa() {
+        return btnRemoveCasa;
+    }
+
+    public void setBtnRemoveCasa(JButton btnRemoveCasa) {
+        this.btnRemoveCasa = btnRemoveCasa;
+    }
+
+    public JButton getBtnRemoveVisitante() {
+        return btnRemoveVisitante;
+    }
+
+    public void setBtnRemoveVisitante(JButton btnRemoveVisitante) {
+        this.btnRemoveVisitante = btnRemoveVisitante;
+    }
+    
 }

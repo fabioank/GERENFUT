@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class TelaPartidaController {
 
@@ -102,6 +103,38 @@ public class TelaPartidaController {
         }
     }
 
+    public void removerJogadorTimeCasa() {
+
+        int jogadorSelecionado = view.getListMarcadoresTimeCasa().getSelectedIndex();
+
+        if (jogadorSelecionado != -1) {
+            listaCasa.remove(jogadorSelecionado);
+            Integer placar = Integer.parseInt(view.getLblPlacarTimeCasa().getText());
+        int placar1 = placar - 1;
+        view.getLblPlacarTimeCasa().setText(String.valueOf(placar1));
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, primeiramente selecione um jogador na lista antes de tentar remove-lo");
+            return;
+        }
+        
+
+    }
+    
+    public void removerJogadorTimeVisitante() {
+
+        int jogadorSelecionado = view.getListMarcadoresTimeVisitante().getSelectedIndex();
+
+        if (jogadorSelecionado != -1) {
+            listaVisitante.remove(jogadorSelecionado);
+            Integer placar = Integer.parseInt(view.getLblPlacarTimeVisitante().getText());
+            int placar1 = placar - 1;
+            view.getLblPlacarTimeVisitante().setText(String.valueOf(placar1));
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, primeiramente selecione um jogador na lista antes de tentar remove-lo");
+            return;
+        }
+    }
+
     public void addMarcadorTimeVisitante() {
 
         Jogador jogadorSelecionado = (Jogador) view.getCbMarcadorTimeVisitante().getSelectedItem();
@@ -135,10 +168,12 @@ public class TelaPartidaController {
         partida.setGolsTimeCasa(Byte.parseByte(view.getLblPlacarTimeCasa().getText()));
         partida.setGolsTimeVisitante(Byte.parseByte(view.getLblPlacarTimeVisitante().getText()));
     }
-    public static Partida retornoPartida(){
+
+    public static Partida retornoPartida() {
         return partida;
     }
-    public static List<Jogador> getMarcadores(){
+
+    public static List<Jogador> getMarcadores() {
         return marcadores;
     }
 }

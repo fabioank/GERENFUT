@@ -22,6 +22,16 @@ public class Jogador {
         this.titulosMelhorGol = titulosMelhorGol;
     }
 
+    public Jogador(Long id, String nome, short numero, String cpf, String posicao, boolean situacao) {
+        this.id = id;
+        this.nome = nome;
+        this.numero = numero;
+        this.cpf = cpf;
+        this.posicao = posicao;
+        this.situacao = situacao;
+    }
+    
+
     public Jogador() {}
 
     public Jogador(Long id, String nome ) {
@@ -82,6 +92,7 @@ public class Jogador {
         this.titulosMelhorJogador = titulosMelhorJogador;
         this.titulosMelhorGol = titulosMelhorGol;
     }
+    
 
     public Long getId() {
         return id;

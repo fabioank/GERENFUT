@@ -2,6 +2,8 @@ package View;
 
 import Controller.HistoricoPartidaController;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class HistoricoPartidaView extends javax.swing.JFrame {
 
@@ -15,6 +17,7 @@ public class HistoricoPartidaView extends javax.swing.JFrame {
         controller.addPartidasHistorico();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
     }
 
     /**
@@ -40,6 +43,11 @@ public class HistoricoPartidaView extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tblHistoricoPartidas);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) tblHistoricoPartidas.getTableHeader().getDefaultRenderer();
+        headerRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        tblHistoricoPartidas.setDefaultRenderer(Object.class, centerRenderer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

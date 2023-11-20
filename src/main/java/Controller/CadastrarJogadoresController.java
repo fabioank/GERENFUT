@@ -72,8 +72,9 @@ public class CadastrarJogadoresController {
         } else if (!view.getTxtNumero().getText().matches("[0-9]+")) {
             JOptionPane.showMessageDialog(null, "Por favor, o numero da camisa do jogador deve conter apenas numeros");
             return;
-        } else if (JogadorDAO.numeroJaCadastrado(Integer.parseInt(view.getTxtNumero().getText()))) {
-            JOptionPane.showMessageDialog(null, "Um jogador com esse numero ja foi cadastrado");
+        } else if (JogadorDAO.numeroJaCadastrado(Integer.parseInt(view.getTxtNumero().getText()))
+                && !JogadorDAO.obterJogadorPorNumero(Short.parseShort(view.getTxtNumero().getText())).getCpf().equals(view.getTxtCpf().getText())) {
+            JOptionPane.showMessageDialog(null, "Um jogador com esse numero já foi cadastrado ");
             return;
         } else if (view.getTxtSenha().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Por favor, informe a senha!");

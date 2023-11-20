@@ -19,12 +19,14 @@ Controller\VotacaoController.class
 View\MenuPrincipalView$1.class
 Controller\ExcluirJogadorController.class
 Model\DAO\JogadorPartidaDAO.class
+View\TelaPartidaView$6.class
 View\MenuPrincipalView$4.class
 Model\JogadorComboboxModel.class
 View\CriarPartidaView$1.class
 Controller\TelaPartidaController.class
 View\CadastrarTimeView$2.class
 View\VotacaoView$3.class
+View\TelaPartidaView$5.class
 Model\DAO\PartidaDAO.class
 View\TodosJogadoresView$3.class
 View\TodosJogadoresView.class
@@ -46,6 +48,7 @@ View\TodosJogadoresView$6.class
 Model\DAO\TimeDAO.class
 View\MenuPrincipalView$2.class
 Model\Time.class
+View\TelaPartidaView$7.class
 Controller\CriarPartidaController.class
 View\RankingView$2.class
 Model\Partida.class
