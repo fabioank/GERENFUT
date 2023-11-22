@@ -60,7 +60,7 @@ public class CadastrarTimeView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCadastrarTime);
-        btnCadastrarTime.setBounds(360, 480, 80, 23);
+        btnCadastrarTime.setBounds(340, 480, 110, 23);
 
         lblImagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\fabio\\Downloads\\imgCampo.jpg")); // NOI18N
         lblImagem.setText("jLabel1");

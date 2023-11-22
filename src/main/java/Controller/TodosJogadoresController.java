@@ -47,14 +47,12 @@ public class TodosJogadoresController {
             TableModel model = view.getTblJogadores().getModel();
 
             Long id = (Long) model.getValueAt(view.getTblJogadores().getSelectedRow(), 0);
-            System.out.println(id);
             Jogador jogador = new Jogador();
 
             jogador = JogadorDAO.encontrarPeloId(id);
 
             CadastrarJogadoresView form = new CadastrarJogadoresView(jogador);
             form.setVisible(true);
-
         }
     }
 }

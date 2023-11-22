@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -13,13 +14,9 @@ import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-/**
- *
- * @author fabio
- */
 public class CadastrarJogadoresView extends javax.swing.JFrame {
 
-    Jogador jogador;
+    Jogador jogador = new Jogador();
     private final CadastrarJogadoresController controller;
 
     public CadastrarJogadoresView(Jogador jogador) {
@@ -31,7 +28,7 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
         ButtonGroup group = new ButtonGroup();
         this.jogador = jogador;
 
-        if (this.jogador != null && this.jogador.getId() != null) {
+        if (this.jogador != null) {
             this.txtNome.setText(jogador.getNome());
             this.txtNumero.setText(String.valueOf(jogador.getNumero()));
             this.txtCpf.setText(jogador.getCpf());
@@ -141,7 +138,7 @@ public class CadastrarJogadoresView extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
-        boolean jaCadastrado = JogadorDAO.verificarJogador(getTxtCpf().getText(), getTxtSenha().getText());
+        boolean jaCadastrado = JogadorDAO.jogadorExistente(getTxtCpf().getText());
         
         if (jaCadastrado){           
             controller.editarJogador();

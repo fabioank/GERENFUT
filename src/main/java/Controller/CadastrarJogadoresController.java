@@ -74,7 +74,7 @@ public class CadastrarJogadoresController {
             return;
         } else if (JogadorDAO.numeroJaCadastrado(Integer.parseInt(view.getTxtNumero().getText()))
                 && !JogadorDAO.obterJogadorPorNumero(Short.parseShort(view.getTxtNumero().getText())).getCpf().equals(view.getTxtCpf().getText())) {
-            JOptionPane.showMessageDialog(null, "Um jogador com esse numero já foi cadastrado ");
+            JOptionPane.showMessageDialog(null, "Um jogador com esse numero já foi cadastrado");
             return;
         } else if (view.getTxtSenha().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Por favor, informe a senha!");

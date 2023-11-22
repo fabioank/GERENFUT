@@ -4,6 +4,7 @@ import Model.DAO.JogadorDAO;
 import Model.DAO.PartidaDAO;
 import Model.Jogador;
 import Model.JogadorComboboxModel;
+import Model.JogadorPartida;
 import Model.Partida;
 import View.TelaPartidaView;
 import View.VotacaoView;
@@ -89,7 +90,9 @@ public class TelaPartidaController {
 
         if (jogadorSelecionado != null) {
             view.getListMarcadoresTimeCasa().setModel(listaCasa);
-            listaCasa.addElement(jogadorSelecionado);
+            if (!marcadores.contains(jogadorSelecionado)) {
+                listaCasa.addElement(jogadorSelecionado);
+            }
             jogadorSelecionado.setGolsMarcados((short) (jogadorSelecionado.getGolsMarcados() + 1));
 
             Integer placar = Integer.parseInt(view.getLblPlacarTimeCasa().getText());
@@ -105,27 +108,26 @@ public class TelaPartidaController {
 
     public void removerJogadorTimeCasa() {
 
-        int jogadorSelecionado = view.getListMarcadoresTimeCasa().getSelectedIndex();
+        Jogador jogador = view.getListMarcadoresTimeCasa().getSelectedValue();
 
-        if (jogadorSelecionado != -1) {
-            listaCasa.remove(jogadorSelecionado);
+        if (jogador != null) {
+            listaCasa.removeElement(jogador);
             Integer placar = Integer.parseInt(view.getLblPlacarTimeCasa().getText());
-        int placar1 = placar - 1;
-        view.getLblPlacarTimeCasa().setText(String.valueOf(placar1));
+            int placar1 = placar - 1;
+            view.getLblPlacarTimeCasa().setText(String.valueOf(placar1));
+            marcadores.remove(jogador);
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, primeiramente selecione um jogador na lista antes de tentar remove-lo");
             return;
         }
-        
-
     }
-    
+
     public void removerJogadorTimeVisitante() {
+        Jogador jogador = view.getListMarcadoresTimeVisitante().getSelectedValue();
 
-        int jogadorSelecionado = view.getListMarcadoresTimeVisitante().getSelectedIndex();
-
-        if (jogadorSelecionado != -1) {
-            listaVisitante.remove(jogadorSelecionado);
+        if (jogador != null) {
+            listaVisitante.removeElement(jogador);
+            marcadores.remove(jogador);
             Integer placar = Integer.parseInt(view.getLblPlacarTimeVisitante().getText());
             int placar1 = placar - 1;
             view.getLblPlacarTimeVisitante().setText(String.valueOf(placar1));
@@ -141,16 +143,17 @@ public class TelaPartidaController {
 
         if (jogadorSelecionado != null) {
             view.getListMarcadoresTimeVisitante().setModel(listaVisitante);
-            listaVisitante.addElement(jogadorSelecionado);
+            if (!marcadores.contains(jogadorSelecionado)) {
+                listaVisitante.addElement(jogadorSelecionado);
+            }
             jogadorSelecionado.setGolsMarcados((short) (jogadorSelecionado.getGolsMarcados() + 1));
-
+            
             Integer placar = Integer.parseInt(view.getLblPlacarTimeVisitante().getText());
             int placar1 = placar + 1;
             view.getLblPlacarTimeVisitante().setText(String.valueOf(placar1));
 
             if (!marcadores.contains(jogadorSelecionado)) {
                 marcadores.add(jogadorSelecionado);
-
             }
         }
     }

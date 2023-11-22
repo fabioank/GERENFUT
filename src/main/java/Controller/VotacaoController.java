@@ -168,6 +168,12 @@ public class VotacaoController {
 
             PartidaDAO.associarTimePartida(id_partida, partida.getTimeCasa().getId_time(), partida.getGolsTimeCasa());
             PartidaDAO.associarTimePartida(id_partida, partida.getTimeVisitante().getId_time(), partida.getGolsTimeVisitante());
+            
+            if(id_partida != -1){
+                JOptionPane.showMessageDialog(null, "A votação foi realizada com sucesso");
+                return;
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Infelizmente não foi possivel salvar a partida", "Partida não salva", JOptionPane.ERROR_MESSAGE);
             return;

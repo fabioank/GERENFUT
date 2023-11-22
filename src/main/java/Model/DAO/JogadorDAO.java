@@ -112,6 +112,36 @@ public class JogadorDAO {
         }
         return false;
     }
+    public static boolean jogadorExistente(String cpf) {
+
+        Connection conn = Conexao.getConnection();
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try {
+            st = conn.prepareStatement("SELECT cpf, senha FROM Jogador WHERE cpf = ?");
+            st.setString(1, cpf);
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
 
     public static boolean excluirJogador(String cpf, String senha) {
         Connection conn = Conexao.getConnection();
