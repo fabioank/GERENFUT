@@ -9,18 +9,6 @@ public class Jogador {
     private String posicao;
     private String senha;
     private boolean situacao;
-    private short golsMarcados;
-    private short titulosMelhorJogador;
-    private short titulosMelhorGol;
-
-    
-    public Jogador(Long id, String nome, short golsMarcados, short titulosMelhorJogador, short titulosMelhorGol) {
-        this.id = id;
-        this.nome = nome;
-        this.golsMarcados = golsMarcados;
-        this.titulosMelhorJogador = titulosMelhorJogador;
-        this.titulosMelhorGol = titulosMelhorGol;
-    }
 
     public Jogador(Long id, String nome, short numero, String cpf, String posicao, boolean situacao) {
         this.id = id;
@@ -79,20 +67,6 @@ public class Jogador {
         this.senha = senha;
         this.situacao = situacao;
     }
-
-    public Jogador(Long id, String nome, String cpf, short numero, String posicao, String senha, boolean situacao, short golsMarcados, short titulosMelhorJogador, short titulosMelhorGol) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.numero = numero;
-        this.posicao = posicao;
-        this.senha = senha;
-        this.situacao = situacao;
-        this.golsMarcados = golsMarcados;
-        this.titulosMelhorJogador = titulosMelhorJogador;
-        this.titulosMelhorGol = titulosMelhorGol;
-    }
-    
 
     public Long getId() {
         return id;
@@ -153,30 +127,4 @@ public class Jogador {
     public String toString() {
         return numero + " - " + nome + " (" + posicao + ")";
     }
-
-    public short getGolsMarcados() {
-        return golsMarcados;
-    }
-
-    public void setGolsMarcados(short golsMarcados) {
-        this.golsMarcados = golsMarcados;
-    }
-
-    public short getTitulosMelhorJogador() {
-        return titulosMelhorJogador;
-    }
-
-    public void setTitulosMelhorJogador(short titulosMelhorJogador) {
-        this.titulosMelhorJogador = titulosMelhorJogador;
-    }
-
-    public short getTitulosMelhorGol() {
-        return titulosMelhorGol;
-    }
-
-    public void setTitulosMelhorGol(short titulosMelhorGol) {
-        this.titulosMelhorGol = titulosMelhorGol;
-    }
-    
-
 }

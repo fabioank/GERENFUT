@@ -4,6 +4,7 @@ import Model.DAO.JogadorDAO;
 import Model.DAO.JogadorPartidaDAO;
 import Model.DAO.PartidaDAO;
 import Model.Jogador;
+import Model.JogadorPartida;
 import Model.Partida;
 import View.VotacaoView;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import javax.swing.JOptionPane;
 public class VotacaoController {
 
     Partida partida = null;
-    List<Jogador> marcadores = null;
+    List<JogadorPartida> marcadores1 = null;
     private TelaPartidaController controller;
     private VotacaoView view;
 
@@ -26,17 +27,17 @@ public class VotacaoController {
     public VotacaoController(VotacaoView view) {
         this.view = view;
         partida = TelaPartidaController.retornoPartida();
-        marcadores = TelaPartidaController.getMarcadores();
+        marcadores1 = TelaPartidaController.getMarcadores1();
     }
 
     int maiorQuantidadeCasa = 0;
     Jogador jogadorMaisVotadoGols = null;
     List<Jogador> jogadoresGols = new ArrayList<>();
-    
+
     public void carregarDados() {
 
         List<Jogador> todosJogadores = new ArrayList<>();
-        List<Jogador> marcadores = this.marcadores;
+        List<JogadorPartida> marcadores1 = this.marcadores1;
         todosJogadores.addAll(partida.getTimeCasa().getJogador());
         todosJogadores.addAll(partida.getTimeVisitante().getJogador());
 
@@ -45,14 +46,16 @@ public class VotacaoController {
         }
         view.getListaVotacaoMelhorJogador().setModel(listaMelhorJogador);
 
-        for (Jogador jogador : marcadores) {
-            listaGolMaisBonito.addElement(jogador);
+        for (JogadorPartida jogador : marcadores1) {
+            if (!listaGolMaisBonito.contains(jogador.getJogador())) {
+                listaGolMaisBonito.addElement(jogador.getJogador());
+            }
         }
         view.getListaVotacaoGolMaisBonito().setModel(listaGolMaisBonito);
 
         view.getLblVotosRestantesCasa().setText((String.valueOf(todosJogadores.size())));
         view.getLblVotosRestantesVisitante().setText((String.valueOf(todosJogadores.size())));
-        
+
         if (listaGolMaisBonito.size() == 1) {
             jogadorMaisVotadoGols = (Jogador) listaGolMaisBonito.getElementAt(0);
             view.getLblJogadorMelhorGol().setText("Jogador eleito automaticamente");
@@ -68,7 +71,7 @@ public class VotacaoController {
     public void addVotoMelhorGol() {
 
         if (listaGolMaisBonito.size() != 1) {
-            
+
             if (view.getLblVotosRestantesCasa().getText().equals("0")) {
                 JOptionPane.showMessageDialog(null, "Todos os votos ja foram efetuados!");
                 return;
@@ -160,7 +163,7 @@ public class VotacaoController {
             partida.setMelhor_jogador(jogadorMaisVotado.getNome());
             JogadorPartidaDAO.addMelhorJogador(jogadorMaisVotado);
 
-            for (Jogador jogador : marcadores) {
+            for (JogadorPartida jogador : marcadores1) {
                 JogadorPartidaDAO.atualizarGols(jogador);
             }
 
@@ -168,8 +171,8 @@ public class VotacaoController {
 
             PartidaDAO.associarTimePartida(id_partida, partida.getTimeCasa().getId_time(), partida.getGolsTimeCasa());
             PartidaDAO.associarTimePartida(id_partida, partida.getTimeVisitante().getId_time(), partida.getGolsTimeVisitante());
-            
-            if(id_partida != -1){
+
+            if (id_partida != -1) {
                 JOptionPane.showMessageDialog(null, "A votação foi realizada com sucesso");
                 return;
             }

@@ -34,14 +34,14 @@ public class JogadorPartidaDAO {
         }
     }
 
-    public static void atualizarGols(Jogador jogador) {
+    public static void atualizarGols(JogadorPartida jogador) {
         Connection conn = Conexao.getConnection();
         PreparedStatement st = null;
 
         try {
             st = conn.prepareStatement("UPDATE jogador_partida SET gols = gols + ? WHERE id_jogador = ?");
             st.setShort(1, jogador.getGolsMarcados());
-            st.setLong(2, jogador.getId());
+            st.setLong(2, jogador.getJogador().getId());
 
             st.executeUpdate();
         } catch (Exception e) {

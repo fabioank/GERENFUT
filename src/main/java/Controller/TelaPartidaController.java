@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 public class TelaPartidaController {
 
     public static List<Jogador> marcadores = new ArrayList<>();
+    public static List<JogadorPartida> marcadores1 = new ArrayList();
 
     private TelaPartidaView view;
 
@@ -85,76 +86,90 @@ public class TelaPartidaController {
     }
 
     public void addMarcadorTimeCasa() {
-
         Jogador jogadorSelecionado = (Jogador) view.getCbMarcadorTimeCasa().getSelectedItem();
 
         if (jogadorSelecionado != null) {
-            view.getListMarcadoresTimeCasa().setModel(listaCasa);
-            if (!marcadores.contains(jogadorSelecionado)) {
-                listaCasa.addElement(jogadorSelecionado);
+            JogadorPartida jogadorPartida = new JogadorPartida(jogadorSelecionado);
+
+            if (!marcadores1.contains(jogadorPartida)) {
+                marcadores1.add(jogadorPartida);
             }
-            jogadorSelecionado.setGolsMarcados((short) (jogadorSelecionado.getGolsMarcados() + 1));
+
+            view.getListMarcadoresTimeCasa().setModel(listaCasa);
+
+            if (!listaCasa.contains(jogadorPartida.getJogador())) {
+                listaCasa.addElement(jogadorPartida.getJogador());
+            }
+
+            jogadorPartida.setGolsMarcados((short) (jogadorPartida.getGolsMarcados() + 1));
 
             Integer placar = Integer.parseInt(view.getLblPlacarTimeCasa().getText());
             int placar1 = placar + 1;
             view.getLblPlacarTimeCasa().setText(String.valueOf(placar1));
-
-            if (!marcadores.contains(jogadorSelecionado)) {
-                marcadores.add(jogadorSelecionado);
-
-            }
         }
     }
 
     public void removerJogadorTimeCasa() {
-
         Jogador jogador = view.getListMarcadoresTimeCasa().getSelectedValue();
+        JogadorPartida jogadorPartida = new JogadorPartida(jogador);
 
         if (jogador != null) {
             listaCasa.removeElement(jogador);
             Integer placar = Integer.parseInt(view.getLblPlacarTimeCasa().getText());
             int placar1 = placar - 1;
             view.getLblPlacarTimeCasa().setText(String.valueOf(placar1));
-            marcadores.remove(jogador);
+
+            int index = marcadores1.indexOf(jogadorPartida);
+            if (index != -1) {
+                marcadores1.remove(index);
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Por favor, primeiramente selecione um jogador na lista antes de tentar remove-lo");
-            return;
+            JOptionPane.showMessageDialog(null, "Por favor, primeiramente selecione um jogador na lista antes de tentar removê-lo");
         }
     }
 
     public void removerJogadorTimeVisitante() {
         Jogador jogador = view.getListMarcadoresTimeVisitante().getSelectedValue();
+        JogadorPartida jogadorPartida = new JogadorPartida(jogador);
 
         if (jogador != null) {
             listaVisitante.removeElement(jogador);
-            marcadores.remove(jogador);
+
+            int index = marcadores1.indexOf(jogadorPartida);
+            if (index != -1) {
+                marcadores1.remove(index);
+            }
+
             Integer placar = Integer.parseInt(view.getLblPlacarTimeVisitante().getText());
             int placar1 = placar - 1;
             view.getLblPlacarTimeVisitante().setText(String.valueOf(placar1));
         } else {
-            JOptionPane.showMessageDialog(null, "Por favor, primeiramente selecione um jogador na lista antes de tentar remove-lo");
-            return;
+            JOptionPane.showMessageDialog(null, "Por favor, primeiramente selecione um jogador na lista antes de tentar removê-lo");
         }
     }
 
     public void addMarcadorTimeVisitante() {
 
         Jogador jogadorSelecionado = (Jogador) view.getCbMarcadorTimeVisitante().getSelectedItem();
+        JogadorPartida jogadorPartida = new JogadorPartida(jogadorSelecionado);
 
         if (jogadorSelecionado != null) {
-            view.getListMarcadoresTimeVisitante().setModel(listaVisitante);
-            if (!marcadores.contains(jogadorSelecionado)) {
-                listaVisitante.addElement(jogadorSelecionado);
+
+            if (!marcadores1.contains(jogadorPartida)) {
+                marcadores1.add(jogadorPartida);
             }
-            jogadorSelecionado.setGolsMarcados((short) (jogadorSelecionado.getGolsMarcados() + 1));
-            
+
+            view.getListMarcadoresTimeVisitante().setModel(listaVisitante);
+
+            if (!listaVisitante.contains(jogadorPartida.getJogador())) {
+                listaVisitante.addElement(jogadorPartida.getJogador());
+            }
+            jogadorPartida.setGolsMarcados((short) (jogadorPartida.getGolsMarcados() + 1));
+
             Integer placar = Integer.parseInt(view.getLblPlacarTimeVisitante().getText());
             int placar1 = placar + 1;
             view.getLblPlacarTimeVisitante().setText(String.valueOf(placar1));
 
-            if (!marcadores.contains(jogadorSelecionado)) {
-                marcadores.add(jogadorSelecionado);
-            }
         }
     }
 
@@ -176,7 +191,7 @@ public class TelaPartidaController {
         return partida;
     }
 
-    public static List<Jogador> getMarcadores() {
-        return marcadores;
+    public static List<JogadorPartida> getMarcadores1() {
+        return marcadores1;
     }
 }
