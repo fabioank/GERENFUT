@@ -81,32 +81,32 @@ public class JogadorPartidaDAO {
     }
 
     public static List<JogadorPartida> todosOsRegistros() {
-    List<JogadorPartida> lista = new ArrayList<>();
-    Connection conn = Conexao.getConnection();
-    PreparedStatement st = null;
-    ResultSet rs = null;
+        List<JogadorPartida> lista = new ArrayList<>();
+        Connection conn = Conexao.getConnection();
+        PreparedStatement st = null;
+        ResultSet rs = null;
 
-    try {
-        st = conn.prepareStatement("SELECT jp.*, j.nome FROM jogador_partida jp INNER JOIN jogador j ON jp.id_jogador = j.id_jogador");
-        rs = st.executeQuery();
+        try {
+            st = conn.prepareStatement("SELECT jp.*, j.nome FROM jogador_partida jp INNER JOIN jogador j ON jp.id_jogador = j.id_jogador");
+            rs = st.executeQuery();
 
-        while (rs.next()) {
-            Long idJogador = rs.getLong("id_jogador");
-            String nomeJogador = rs.getString("nome");
-            short titulosMelhorJogador = rs.getShort("titulos_melhor_jogador");
-            short titulosMelhorGol = rs.getShort("titulos_melhor_gol");
-            short gols = rs.getShort("gols");
+            while (rs.next()) {
+                Long idJogador = rs.getLong("id_jogador");
+                String nomeJogador = rs.getString("nome");
+                short titulosMelhorJogador = rs.getShort("titulos_melhor_jogador");
+                short titulosMelhorGol = rs.getShort("titulos_melhor_gol");
+                short gols = rs.getShort("gols");
 
-            Jogador jogador = new Jogador(idJogador, nomeJogador);
-            JogadorPartida jogadorPartida = new JogadorPartida(jogador, gols, titulosMelhorJogador, titulosMelhorGol );
-            lista.add(jogadorPartida);
+                Jogador jogador = new Jogador(idJogador, nomeJogador);
+                JogadorPartida jogadorPartida = new JogadorPartida(jogador, gols, titulosMelhorJogador, titulosMelhorGol);
+                lista.add(jogadorPartida);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } finally {
-    }
 
-    return lista;
-}
+        return lista;
+    }
 
 }

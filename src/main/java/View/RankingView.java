@@ -95,7 +95,7 @@ public class RankingView extends javax.swing.JFrame {
             controller.rankingArtilheiro();
         } else if (this.cbFiltro.getSelectedItem().toString().equals("Titulos de melhor jogador")) {
             controller.rankingMelhorJogador();
-        } else {
+        } else if(this.cbFiltro.getSelectedItem().toString().equals("Titulos de gol mais bonito")) {
             controller.rankingMelhorGol();
         }
     }//GEN-LAST:event_brnFiltrarActionPerformed

@@ -56,7 +56,7 @@ public class RankingController {
                     jogador.getJogador().getNome(),
                     jogador.getGolsMarcados(),
                     jogador.getTitulos_melhor_Jogador(),
-                    jogador.getTitulos_melhor_Jogador()};
+                    jogador.getTitulos_melhor_gol()};
                 defaultTableModel.addRow(jog);
             }
         }
@@ -77,7 +77,7 @@ public class RankingController {
                     defaultTableModel.getRowCount() + 1 + "°",
                     jogador.getJogador().getNome(),
                     jogador.getGolsMarcados(),
-                    jogador.getTitulos_melhor_gol(),
+                    jogador.getTitulos_melhor_Jogador(),
                     jogador.getTitulos_melhor_gol()};
                 defaultTableModel.addRow(jog);
             }

@@ -1,22 +1,15 @@
 package Controller;
 
-import Model.DAO.JogadorDAO;
-import Model.DAO.PartidaDAO;
 import Model.Jogador;
 import Model.JogadorComboboxModel;
 import Model.JogadorPartida;
 import Model.Partida;
 import View.TelaPartidaView;
-import View.VotacaoView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 public class TelaPartidaController {
 
@@ -39,6 +32,7 @@ public class TelaPartidaController {
         this.view = view;
         partida = CriarPartidaController.retornoPartida();
         marcadores.clear();
+        marcadores1.clear();
     }
 
     public void partida() {
@@ -86,18 +80,22 @@ public class TelaPartidaController {
     }
 
     public void addMarcadorTimeCasa() {
+
         Jogador jogadorSelecionado = (Jogador) view.getCbMarcadorTimeCasa().getSelectedItem();
 
         if (jogadorSelecionado != null) {
-            JogadorPartida jogadorPartida = new JogadorPartida(jogadorSelecionado);
+            JogadorPartida jogadorPartida = null;
 
-            if (!marcadores1.contains(jogadorPartida)) {
-                marcadores1.add(jogadorPartida);
+            for (JogadorPartida jp : marcadores1) {
+                if (jp.getJogador().equals(jogadorSelecionado)) {
+                    jogadorPartida = jp;
+                    break;
+                }
             }
-
-            view.getListMarcadoresTimeCasa().setModel(listaCasa);
-
-            if (!listaCasa.contains(jogadorPartida.getJogador())) {
+            if (jogadorPartida == null) {
+                jogadorPartida = new JogadorPartida(jogadorSelecionado);
+                marcadores1.add(jogadorPartida);
+                view.getListMarcadoresTimeCasa().setModel(listaCasa);
                 listaCasa.addElement(jogadorPartida.getJogador());
             }
 
@@ -149,27 +147,30 @@ public class TelaPartidaController {
     }
 
     public void addMarcadorTimeVisitante() {
-
         Jogador jogadorSelecionado = (Jogador) view.getCbMarcadorTimeVisitante().getSelectedItem();
-        JogadorPartida jogadorPartida = new JogadorPartida(jogadorSelecionado);
 
         if (jogadorSelecionado != null) {
+            JogadorPartida jogadorPartida = null;
 
-            if (!marcadores1.contains(jogadorPartida)) {
-                marcadores1.add(jogadorPartida);
+            for (JogadorPartida jp : marcadores1) {
+                if (jp.getJogador().equals(jogadorSelecionado)) {
+                    jogadorPartida = jp;
+                    break;
+                }
             }
-
-            view.getListMarcadoresTimeVisitante().setModel(listaVisitante);
-
-            if (!listaVisitante.contains(jogadorPartida.getJogador())) {
+            
+            if (jogadorPartida == null) {
+                jogadorPartida = new JogadorPartida(jogadorSelecionado);
+                marcadores1.add(jogadorPartida);
+                view.getListMarcadoresTimeVisitante().setModel(listaVisitante);
                 listaVisitante.addElement(jogadorPartida.getJogador());
             }
+
             jogadorPartida.setGolsMarcados((short) (jogadorPartida.getGolsMarcados() + 1));
 
             Integer placar = Integer.parseInt(view.getLblPlacarTimeVisitante().getText());
             int placar1 = placar + 1;
             view.getLblPlacarTimeVisitante().setText(String.valueOf(placar1));
-
         }
     }
 
